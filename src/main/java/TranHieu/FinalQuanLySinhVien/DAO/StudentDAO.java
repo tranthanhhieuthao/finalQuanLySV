@@ -3,6 +3,7 @@ package TranHieu.FinalQuanLySinhVien.DAO;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +12,7 @@ import org.hibernate.cfg.Configuration;
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 
 @ManagedBean(name ="studentDAO")
+@SessionScoped
 public class StudentDAO {
 	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
@@ -38,7 +40,7 @@ public class StudentDAO {
 	
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
-		List<Student> listStudent = session.createQuery("FROM Student").list();
+		List<Student> listStudent = session.createQuery("FROM student").list();
 		return listStudent;
 	}
 }

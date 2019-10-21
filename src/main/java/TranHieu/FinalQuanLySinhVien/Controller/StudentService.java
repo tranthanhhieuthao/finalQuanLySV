@@ -15,11 +15,15 @@ import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 @SessionScoped
 public class StudentService {
 	
-	@ManagedProperty(value = "studentDAO")
+	@ManagedProperty(value = "#{studentDAO}")
 	private StudentDAO studentDAO;
 	
 	public List<Student> listStudent(){
 		return studentDAO.showAll();
+	}
+
+	public StudentDAO getStudentDAO() {
+		return studentDAO;
 	}
 
 }

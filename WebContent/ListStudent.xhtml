@@ -36,7 +36,7 @@
 <h:body>
 	<h3>List Student</h3>
 	<h:form>
-		<h:dataTable value="#{controller.lists}" var="list"
+		<h:dataTable value="#{controllerStudent.lists}" var="list"
 			styleClass="employeeTable" headerClass="employeeTableHeader"
 			rowClasses="employeeTableOddRow,employeeTableEvenRow">
 
@@ -75,7 +75,23 @@
                #{list.note}
             </h:column>
 
-
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandButton value="Delete"
+					action="#{controller.deleteStudent(list.id)}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Detail</f:facet>
+				<h:commandButton value="Detail"
+					action="#{controller.DetailStudent(list.id)}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Edit</f:facet>
+				<h:commandButton value="Edit"
+					action="#{controller.EditStudent(list.id)}" />
+			</h:column>
 			
 		</h:dataTable>
 

@@ -2,10 +2,14 @@ package TranHieu.FinalQuanLySinhVien.BO;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.*;
 
+@ManagedBean(name ="studentBean")
 @Entity
 @Table(name = "student")
 public class Student {
@@ -25,7 +29,7 @@ public class Student {
 	private String village;
 
 	@Column(name = "phone")
-	private double phone;
+	private int phone;
 
 	@Column(name = "email")
 	private String email;
@@ -33,8 +37,18 @@ public class Student {
 	@Column(name = "note")
 	private String note;
 
-	@Column(name = "birthDay")
-	private DateFormat birthDay;
+//	@Column(name = "birthDay")
+//	private DateFormat birthDay;
+	
+	
+	public Student(String nameStudent, int age, String village, int phone, String email, String note) {
+		this.nameStudent = nameStudent;
+		this.age = age;
+		this.village = village;
+		this.phone = phone;
+		this.email = email;
+		this.note = note;
+			}
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
@@ -42,9 +56,9 @@ public class Student {
 	private List<Class> studentClass = new ArrayList<Class>();
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Student_Course", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
+	@JoinTable(name = "Student_Course", joinColumns = { @JoinColumn(name = "student_id")  }, inverseJoinColumns = {
 			@JoinColumn(name = "course_id") })
-	private List<Course> studentCourse = new ArrayList<Course>();
+	private Set<Course> studentCourse = new HashSet<Course>();
 
 	public int getId() {
 		return id;
@@ -82,7 +96,7 @@ public class Student {
 		return phone;
 	}
 
-	public void setPhone(double phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 
@@ -110,20 +124,20 @@ public class Student {
 		this.studentClass = studentClass;
 	}
 
-	public List<Course> getStudentCourse() {
+	public Set<Course> getStudentCourse() {
 		return studentCourse;
 	}
 
-	public void setStudentCourse(List<Course> studentCourse) {
+	public void setStudentCourse(Set<Course> studentCourse) {
 		this.studentCourse = studentCourse;
 	}
 
-	public DateFormat getBirthDay() {
-		return birthDay;
-	}
-
-	public void setBirthDay(DateFormat birthDay) {
-		this.birthDay = birthDay;
-	}
+//	public DateFormat getBirthDay() {
+//		return birthDay;
+//	}
+//
+//	public void setBirthDay(DateFormat birthDay) {
+//		this.birthDay = birthDay;
+//	}
 
 }
