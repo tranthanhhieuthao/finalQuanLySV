@@ -15,6 +15,9 @@ import TranHieu.FinalQuanLySinhVien.BO.Student;
 @SessionScoped
 public class StudentDAO {
 	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+	
+	public StudentDAO() {
+	}
 
 	public void save(Student student) {
 		Session session = sessionFactory.openSession();
@@ -40,7 +43,7 @@ public class StudentDAO {
 	
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
-		List<Student> listStudent = session.createQuery("FROM student").list();
+		List<Student> listStudent = session.createQuery("FROM Student").list();
 		return listStudent;
 	}
 }

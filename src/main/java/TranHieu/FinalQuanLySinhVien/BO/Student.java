@@ -40,6 +40,10 @@ public class Student {
 //	@Column(name = "birthDay")
 //	private DateFormat birthDay;
 	
+	public Student() {
+		
+	}
+	
 	
 	public Student(String nameStudent, int age, String village, int phone, String email, String note) {
 		this.nameStudent = nameStudent;
