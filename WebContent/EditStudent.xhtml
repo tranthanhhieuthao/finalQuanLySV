@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Quan ly Sinh Vien</title>
+
+</h:head>
+<h:body>
+<h2>Edit Student</h2>
+<h:form>
+		<h:commandButton value="Back" action="ListStudent?faces-redirect=true" />
+	</h:form>
+	<hr />
+
+	<h:form>
+		<table>
+
+			<tr>
+				<td>Name :</td>
+				<td><h:inputText size="10" value="#{controllerStudent.student.nameStudent}" /></td>
+			</tr>
+
+			<tr>
+				<td>Age :</td>
+				<td><h:inputText size="5" value="#{controllerStudent.student.age}" /></td>
+			</tr>
+
+			<tr>
+				<td>Village :</td>
+				<td><h:inputText size="5" value="#{controllerStudent.student.village}" /></td>
+			</tr>
+
+			<tr>
+				<td>Phone :</td>
+				<td><h:inputText size="5" value="#{controllerStudent.student.phone}" /></td>
+			</tr>
+
+			<tr>
+				<td>Email :</td>
+				<td><h:inputText size="5" value="#{controllerStudent.student.email}" /></td>
+			</tr>
+
+			<tr>
+				<td>Note :</td>
+				<td><h:inputText size="5" value="#{controllerStudent.student.note}" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><h:commandButton value="Edit Student"
+						action="ListStudent?faces-redirect=true" /></td>
+			</tr>
+		</table>
+	</h:form>
+</h:body>
+</html> 

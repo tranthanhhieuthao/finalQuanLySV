@@ -55,6 +55,14 @@ public class Controller implements Serializable {
 		student = studentService.findStudentById(id);
 		return "DetailStudent";
 	}
+	
+
+	public String EditStudent(int id) {
+		Student studentEdit = studentService.findStudentById(id);
+		studentService.EditStudent(studentEdit);
+		return "EditStudent";
+		
+	}
 
 
 	public Student getStudent() {

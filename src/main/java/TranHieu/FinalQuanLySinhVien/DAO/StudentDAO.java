@@ -49,10 +49,29 @@ public class StudentDAO {
 	
 	public void Delete(int id) {
 		Session session = sessionFactory.openSession();
+		try {
 		session.beginTransaction();
 		Student studentRemove = this.findById(id);
 		session.delete(studentRemove);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 		session.getTransaction().commit();
 		session.close();
+		}
+	}
+	
+	public void Edit(Student studentEdit) {
+		Session session = sessionFactory.openSession();
+		try {
+		session.beginTransaction();
+		session.update(studentEdit);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+		session.getTransaction().commit();
+		session.close();
+		}
+		
 	}
 }

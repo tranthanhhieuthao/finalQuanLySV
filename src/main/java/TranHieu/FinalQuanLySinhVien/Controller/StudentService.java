@@ -13,7 +13,7 @@ import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 
 @ManagedBean(name ="studentService")
 @SessionScoped
-public class StudentService {
+public class StudentService implements StudentInterface {
 	
 	
 	//khi inject cac thuoc tinh nen them phuong thuc set cho bean do (khong dung get)
@@ -41,6 +41,12 @@ public class StudentService {
 	public Student findStudentById(int id) {
 		return studentDAO.findById(id);
 	}
+	
+	public void EditStudent(Student studentEdit) {
+		studentDAO.Edit(studentEdit);
+	}
+
+
 
 
 
