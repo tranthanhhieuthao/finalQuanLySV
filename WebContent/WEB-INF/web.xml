@@ -7,7 +7,8 @@
    id = "WebApp_ID" version="2.5">
 	
    <welcome-file-list>
-      <welcome-file>faces/ListStudent.xhtml</welcome-file>
+      <welcome-file>ListStudent.xhtml</welcome-file>
+      <welcome-file>DetailStudent.xhtml</welcome-file>
    </welcome-file-list>
 	
    <!-- 
@@ -41,5 +42,21 @@
       <servlet-name>Faces Servlet</servlet-name>
       <url-pattern>*.xhtml</url-pattern>
    </servlet-mapping>
+   
+   <context-param>
+                <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
+                <param-value>com.sun.facelets.FaceletViewHandler</param-value>
+        </context-param>
+   
+   <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+</context-param>
+   
+   
+<context-param>
+  <param-name>com.sun.faces.enableRestoreView11Compatibility</param-name>
+  <param-value>true</param-value>
+</context-param>
 	
 </web-app>

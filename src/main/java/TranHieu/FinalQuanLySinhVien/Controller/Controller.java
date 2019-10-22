@@ -17,10 +17,13 @@ public class Controller implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Controller() {
-	System.out.println("abc");
+	
 	}
 
 	private List<Student> students ;
+	
+	@ManagedProperty(value = "#{studentBean}")
+	private Student student;
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
@@ -35,6 +38,27 @@ public class Controller implements Serializable {
 
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
+	}
+	
+	public String Delete(int id) {
+		studentService.Delete(id);
+		return null;
+	}
+
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+
+	public String DetailStudent(int id) {
+		student = studentService.findStudentById(id);
+		return "DetailStudent";
+	}
+
+
+	public Student getStudent() {
+		return student;
 	}
 
 

@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
 @ManagedBean(name ="studentBean")
+@SessionScoped
 @Entity
 @Table(name = "student")
 public class Student {
@@ -40,6 +42,8 @@ public class Student {
 //	@Column(name = "birthDay")
 //	private DateFormat birthDay;
 	
+	
+	//nen them contructor khong tham so de khoi tao Entity
 	public Student() {
 		
 	}

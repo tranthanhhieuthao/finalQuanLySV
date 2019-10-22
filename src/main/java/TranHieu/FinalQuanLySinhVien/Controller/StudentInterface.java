@@ -10,5 +10,9 @@ public interface StudentInterface {
 	public List<Student> listStudent();
 	
 	public StudentDAO getStudentDAO();
+	
+	public void Delete(int id);
+	
+	public Student findStudentById(int id);
 
 }

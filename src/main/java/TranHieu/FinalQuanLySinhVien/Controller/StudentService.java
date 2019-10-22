@@ -15,6 +15,8 @@ import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 @SessionScoped
 public class StudentService {
 	
+	
+	//khi inject cac thuoc tinh nen them phuong thuc set cho bean do (khong dung get)
 	@ManagedProperty(value = "#{studentDAO}")
 	private StudentDAO studentDAO;
 	
@@ -32,6 +34,13 @@ public class StudentService {
 	}
 
 
+	public void Delete(int id) {
+		studentDAO.Delete(id);
+	}
+	
+	public Student findStudentById(int id) {
+		return studentDAO.findById(id);
+	}
 
 
 

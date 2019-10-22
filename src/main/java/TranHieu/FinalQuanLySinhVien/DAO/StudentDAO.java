@@ -46,4 +46,13 @@ public class StudentDAO {
 		List<Student> listStudent = session.createQuery("FROM Student").list();
 		return listStudent;
 	}
+	
+	public void Delete(int id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Student studentRemove = this.findById(id);
+		session.delete(studentRemove);
+		session.getTransaction().commit();
+		session.close();
+	}
 }
