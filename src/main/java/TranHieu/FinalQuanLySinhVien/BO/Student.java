@@ -100,7 +100,7 @@ public class Student {
 		this.village = village;
 	}
 
-	public double getPhone() {
+	public int getPhone() {
 		return phone;
 	}
 

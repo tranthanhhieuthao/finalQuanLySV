@@ -9,99 +9,85 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-	<style>
-.employeeTable {
-	border-collapse: collapse;
-	border: 1px solid #000000;
-}
 
-.employeeTableHeader {
-	text-align: center;
-	background: none repeat scroll 0 0 #B5B5B5;
-	border-bottom: 1px solid #000000;
-	padding: 2px;
-}
-
-.employeeTableOddRow {
-	text-align: center;
-	background: none repeat scroll 0 0 #FFFFFFF;
-}
-
-.employeeTableEvenRow {
-	text-align: center;
-	background: none repeat scroll 0 0 #D3D3D3;
-}
-</style>
 </h:head>
 <h:body>
 	<h3>List Student</h3>
+	<h:form>
+		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" 
+			style="margin-bottom:20px">
 
-<h:form>
-		<h:dataTable value="#{controllerStudent.students}" var="list"
-			styleClass="employeeTable" headerClass="employeeTableHeader"
-			rowClasses="employeeTableOddRow,employeeTableEvenRow">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{list.id}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">ID</f:facet>    				
-               #{list.id}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="nameStudent" />
+				</f:facet>
+				<h:outputText value="#{list.nameStudent}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">nameStudent</f:facet>
-               #{list.nameStudent}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Age" />
+				</f:facet>
+				<h:outputText value="#{list.age}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">Age</f:facet>
-               #{list.age}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Village" />
+				</f:facet>
+				<h:outputText value="#{list.village}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">village</f:facet>
-               #{list.village}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Phone" />
+				</f:facet>
+				<h:outputText value="#{list.phone}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">Phone</f:facet>
-               #{list.phone}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value=" #{list.email}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">Email</f:facet>
-               #{list.email}
-            </h:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Note" />
+				</f:facet>
+				<h:outputText value="#{list.note}" />
+			</p:column>
 
-			<h:column>
-				<f:facet name="header">Note</f:facet>
-               #{list.note}
-            </h:column>
-            
-            <h:column>
+			<p:column>
 				<f:facet name="header">Delete</f:facet>
-				<h:commandButton value="Delete"
+				<p:commandButton value="Delete" style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerStudent.Delete(list.id)}" />
-			</h:column>
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Detail</f:facet>
-				<h:commandButton value="Detail"
+				<i class="pi pi-times"></i><p:commandButton value="Detail" style="margin-right:20px;" styleClass="ui-priority-primary" 
 					action="#{controllerStudent.DetailStudent(list.id)}" />
-			</h:column>
+			</p:column>
 
-			<h:column>
+			<p:column>
 				<f:facet name="header">Edit</f:facet>
-				<h:commandButton value="Edit"
+				<p:commandButton value="Edit" style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerStudent.viewEditStudent(list.id)}" />
-			</h:column>
-
-
-
-		</h:dataTable>
-
-		<h:commandButton value="AddStudent"
+			</p:column>
+		</p:dataTable>
+		<p:commandButton value="AddStudent" style="margin-right:20px;" styleClass="ui-priority-primary"
 			action="#{controllerStudent.addStudent}" />
-
-
 
 	</h:form>
 </h:body>

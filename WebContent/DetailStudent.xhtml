@@ -13,8 +13,8 @@
 </h:head>
 <h:body>
 	<h3>Detail Student</h3>
-<h:form>
-		<h:commandButton value="Back" action="ListStudent?faces-redirect=true" />
+	<h:form>
+		<p:commandButton value="Back" action="ListStudent?faces-redirect=true" />
 	</h:form>
 	<hr />
 
@@ -22,40 +22,42 @@
 	<table>
 
 		<tr>
-			<td>Name: </td>
-			<td>#{controllerStudent.student.nameStudent}</td>
+			<td><h3>Name</h3></td>
+			<td><p:inputText
+					value="#{controllerStudent.student.nameStudent}" /></td>
 		</tr>
 
 
 		<tr>
-			<td>Age: </td>
-			<td>#{controllerStudent.student.age}</td>
+			<td><h3>Age</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.age}" /></td>
 		</tr>
 
 
 		<tr>
-			<td>Village: </td>
-			<td>#{controllerStudent.student.village}</td>
+			<td><h3>Village</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.village}" /></td>
 		</tr>
 
 
 		<tr>
-			<td>Phone: </td>
-			<td>#{controllerStudent.student.phone}</td>
+			<td><h3>Phone</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
 		</tr>
 
 
 		<tr>
-			<td>Email: </td>
-			<td>#{controllerStudent.student.email}</td>
+			<td><h3>Email</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.email}" />
+			</td>
 		</tr>
 
 		<tr>
-			<td>Note: </td>
-			<td>#{controllerStudent.student.note}</td>
+			<td><h3>Note</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.note}" /></td>
 		</tr>
 	</table>
-	
 
-	</h:body>
-	</html>
+
+</h:body>
+</html>

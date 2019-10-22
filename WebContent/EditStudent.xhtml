@@ -14,7 +14,7 @@
 <h:body>
 <h2>Edit Student</h2>
 <h:form>
-		<h:commandButton value="Back" action="ListStudent?faces-redirect=true" />
+		<p:commandButton value="Back" action="ListStudent?faces-redirect=true" />
 	</h:form>
 	<hr />
 
@@ -22,38 +22,44 @@
 		<table>
 
 			<tr>
-				<td>Name :</td>
-				<td><h:inputText size="10" value="#{controllerStudent.student.nameStudent}" /></td>
-			</tr>
+			<td><h3>Name</h3></td>
+			<td><p:inputText
+					value="#{controllerStudent.student.nameStudent}" /></td>
+		</tr>
 
-			<tr>
-				<td>Age :</td>
-				<td><h:inputText size="5" value="#{controllerStudent.student.age}" /></td>
-			</tr>
 
-			<tr>
-				<td>Village :</td>
-				<td><h:inputText size="5" value="#{controllerStudent.student.village}" /></td>
-			</tr>
+		<tr>
+			<td><h3>Age</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.age}" /></td>
+		</tr>
 
-			<tr>
-				<td>Phone :</td>
-				<td><h:inputText size="5" value="#{controllerStudent.student.phone}" /></td>
-			</tr>
 
-			<tr>
-				<td>Email :</td>
-				<td><h:inputText size="5" value="#{controllerStudent.student.email}" /></td>
-			</tr>
+		<tr>
+			<td><h3>Village</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.village}" /></td>
+		</tr>
 
-			<tr>
-				<td>Note :</td>
-				<td><h:inputText size="5" value="#{controllerStudent.student.note}" /></td>
-			</tr>
+
+		<tr>
+			<td><h3>Phone</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
+		</tr>
+
+
+		<tr>
+			<td><h3>Email</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.email}" />
+			</td>
+		</tr>
+
+		<tr>
+			<td><h3>Note</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.note}" /></td>
+		</tr>
 
 			<tr>
 				<td></td>
-				<td><h:commandButton value="Edit Student"
+				<td><p:commandButton value="Edit Student"
 						action="#{controllerStudent.EditStudent()}" /></td>
 			</tr>
 		</table>

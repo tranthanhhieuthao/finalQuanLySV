@@ -37,21 +37,14 @@ public class StudentDAO {
 
 	public Student findById(int id) {
 		Session session = sessionFactory.openSession();
-		Student student = new Student();
-		try {
-			session.beginTransaction();
-			student = (Student) session.load(Student.class, id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			session.getTransaction().commit();
-		}
+		Student student = (Student) session.load(Student.class, id);
 		return student;
 	}
 
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
 		List<Student> listStudent = session.createQuery("FROM Student").list();
+		
 		return listStudent;
 	}
 
