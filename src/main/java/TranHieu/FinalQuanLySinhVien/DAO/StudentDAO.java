@@ -11,11 +11,11 @@ import org.hibernate.cfg.Configuration;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 
-@ManagedBean(name ="studentDAO")
+@ManagedBean(name = "studentDAO")
 @SessionScoped
 public class StudentDAO {
 	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-	
+
 	public StudentDAO() {
 	}
 
@@ -34,44 +34,52 @@ public class StudentDAO {
 			session.close();
 		}
 	}
-	
+
 	public Student findById(int id) {
 		Session session = sessionFactory.openSession();
-		Student student = (Student)session.load(Student.class, id);
+		Student student = new Student();
+		try {
+			session.beginTransaction();
+			student = (Student) session.load(Student.class, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.getTransaction().commit();
+		}
 		return student;
 	}
-	
+
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
 		List<Student> listStudent = session.createQuery("FROM Student").list();
 		return listStudent;
 	}
-	
+
 	public void Delete(int id) {
 		Session session = sessionFactory.openSession();
 		try {
-		session.beginTransaction();
-		Student studentRemove = this.findById(id);
-		session.delete(studentRemove);
+			session.beginTransaction();
+			Student studentRemove = this.findById(id);
+			session.delete(studentRemove);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-		session.getTransaction().commit();
-		session.close();
+			session.getTransaction().commit();
+			session.close();
 		}
 	}
-	
+
 	public void Edit(Student studentEdit) {
 		Session session = sessionFactory.openSession();
 		try {
-		session.beginTransaction();
-		session.update(studentEdit);
+			session.beginTransaction();
+			session.update(studentEdit);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-		session.getTransaction().commit();
-		session.close();
+			session.getTransaction().commit();
+			session.close();
 		}
-		
+
 	}
 }
