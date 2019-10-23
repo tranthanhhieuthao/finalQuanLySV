@@ -20,14 +20,14 @@
             <h:outputLabel for="txt1" value="Text 1: *" />
             <p:inputText id="txt1" value="#{controllerStudent.nameSearch}" required="true" label="Text 1">     
             </p:inputText>
-
-
         </h:panelGrid>
     </p:panel>
  
     <h:panelGrid columns="2">
         <p:commandButton value="Search start" action="#{controllerStudent.searchByName(controllerStudent.nameSearch)}"
-							         />
+						update="panel"	         >
+						<!-- <p:ajax event="click" update="form"></p:ajax> -->
+						</p:commandButton>
     </h:panelGrid>
 </h:form>
 
@@ -42,7 +42,11 @@
 							<p:commandButton action="#{controllerStudent.sortBy()}"
 								value="Sort start" update="form">
 					<!-- 			<p:ajax event="click" update="form"></p:ajax> -->
-							</p:commandButton>		
+							</p:commandButton>	
+							
+							
+							
+								
 			</f:facet>
 
 

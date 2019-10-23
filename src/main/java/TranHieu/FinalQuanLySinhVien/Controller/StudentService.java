@@ -60,6 +60,10 @@ public class StudentService implements StudentInterface {
 	}
 
 
+	public List<Class> findListClassByStudentId(List<Class> listClass,int id){
+		listClass = studentDAO.findListClassByStudentId(listClass, id);
+		return listClass;
+	}
 
 
 

@@ -20,5 +20,7 @@ public interface StudentInterface {
 	public List<Student> sortBy(List<Student> listStudent,String sortBy);
 	
 	public List<Student> searchByName(List<Student> list,String name);
+	
+	public List<Class> findListClassByStudentId(List<Class> listClass,int id);
 
 }

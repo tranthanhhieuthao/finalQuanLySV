@@ -17,8 +17,7 @@ public class Controller implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Controller() {
-		
-	
+			
 	}
 	
 	private String sort;
@@ -46,6 +45,17 @@ public class Controller implements Serializable {
 
 	private List<Student> students ;
 	
+	private List<Class> listClass;
+	
+	public List<Class> getListClass() {
+		return listClass;
+	}
+
+
+	public void setListClass(List<Class> listClass) {
+		this.listClass = listClass;
+	}
+
 	@ManagedProperty(value = "#{studentBean}")
 	private Student student;
 
@@ -76,6 +86,7 @@ public class Controller implements Serializable {
 
 	public String DetailStudent(int id) {
 		student = studentService.findStudentById(id);
+		listClass =studentService.findListClassByStudentId(listClass, id);
 		return "DetailStudent";
 	}
 	
