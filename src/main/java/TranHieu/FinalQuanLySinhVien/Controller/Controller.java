@@ -54,7 +54,6 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		students = new ArrayList<Student>();
 		students = studentService.listStudent();
 		return students;
 	}
