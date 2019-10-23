@@ -77,5 +77,23 @@ public class StudentDAO {
 		}
 	}
 	
+	public List<Student> sortBy(List<Student> listStudent,String sortBy){
+		Session session = sessionFactory.openSession();
+		String hql =null;
+		switch (sortBy) {
+		case "Id":
+			 hql= "FROM Student S ORDER BY S.id DESC";
+			 break;
+		case "nameStudent":
+			hql= "FROM Student S ORDER BY S.nameStudent DESC ";
+			break;
+		case "Age":
+			hql= "FROM Student S ORDER BY S.age DESC ";
+		}
+
+		 listStudent = session.createQuery(hql).list();
+		 return listStudent;
+	}
+	
 
 }

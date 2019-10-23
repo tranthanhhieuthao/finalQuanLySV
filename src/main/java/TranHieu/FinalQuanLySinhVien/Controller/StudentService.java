@@ -49,6 +49,10 @@ public class StudentService implements StudentInterface {
 	public void SaveStudent(Student student) {
 		studentDAO.save(student);
 	}
+	
+	public List<Student> sortBy(List<Student> listStudent,String sortBy) {
+		return studentDAO.sortBy(listStudent, sortBy);
+	}
 
 
 

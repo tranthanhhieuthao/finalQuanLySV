@@ -56,6 +56,11 @@ public class Controller implements Serializable {
 		return "DetailStudent";
 	}
 	
+	public String Back() {
+		student = new Student();
+		return "ListStudent?faces-redirect=true";
+	}
+	
 
 	public String EditStudent() {
 		studentService.EditStudent(student);
@@ -85,6 +90,8 @@ public class Controller implements Serializable {
 	public Student getStudent() {
 		return student;
 	}
+
+
 
 
 //	public StudentService getStudentService() {
