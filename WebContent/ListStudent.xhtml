@@ -13,11 +13,38 @@
 </h:head>
 <h:body>
 	<h3>List Student</h3>
-	<h:form>
+	<h:form>      
+    <p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
+ 
+        <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="txt1" value="Text 1: *" />
+            <p:inputText id="txt1" value="#{controllerStudent.nameSearch}" required="true" label="Text 1">     
+            </p:inputText>
+
+
+        </h:panelGrid>
+    </p:panel>
+ 
+    <h:panelGrid columns="2">
+        <p:commandButton value="Search start" action="#{controllerStudent.searchByName(controllerStudent.nameSearch)}"
+							         />
+    </h:panelGrid>
+</h:form>
+
+	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
-		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                 paginator="true" rows="10" 
-			style="margin-bottom:20px">
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginator="true" rows="10" style="margin-bottom:20px">
+
+
+			<f:facet name="header">						
+							<h:inputText id="input" value="#{controllerStudent.sort}" />
+							<p:commandButton action="#{controllerStudent.sortBy()}"
+								value="Sort start" update="form">
+					<!-- 			<p:ajax event="click" update="form"></p:ajax> -->
+							</p:commandButton>		
+			</f:facet>
+
 
 			<p:column>
 				<f:facet name="header">
@@ -70,24 +97,28 @@
 
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
-				<p:commandButton value="Delete" style="margin-right:20px;" styleClass="ui-priority-primary"
+				<p:commandButton value="Delete" style="margin-right:20px;"
+					styleClass="ui-priority-primary"
 					action="#{controllerStudent.Delete(list.id)}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Detail</f:facet>
-				<p:commandButton value="Detail" style="margin-right:20px;" styleClass="ui-priority-primary" 
+
+				<p:commandButton value="Detail" style="margin-right:20px;"
+					styleClass="ui-priority-primary"
 					action="#{controllerStudent.DetailStudent(list.id)}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Edit</f:facet>
-				<p:commandButton value="Edit" style="margin-right:20px;" styleClass="ui-priority-primary"
+				<p:commandButton value="Edit" style="margin-right:20px;"
+					styleClass="ui-priority-primary"
 					action="#{controllerStudent.viewEditStudent(list.id)}" />
 			</p:column>
 		</p:dataTable>
-		<p:commandButton value="AddStudent" style="margin-right:20px;" styleClass="ui-priority-primary"
-			action="#{controllerStudent.addStudent}" />
+		<p:commandButton value="AddStudent" style="margin-right:20px;"
+			styleClass="ui-priority-primary" action="AddStudent" />
 
 	</h:form>
 </h:body>

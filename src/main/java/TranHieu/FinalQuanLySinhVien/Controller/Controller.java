@@ -17,7 +17,31 @@ public class Controller implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Controller() {
+		
 	
+	}
+	
+	private String sort;
+	
+	private String nameSearch;
+
+	public String getNameSearch() {
+		return nameSearch;
+	}
+
+
+	public void setNameSearch(String nameSearch) {
+		this.nameSearch = nameSearch;
+	}
+
+
+	public String getSort() {
+		return sort;
+	}
+
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	private List<Student> students ;
@@ -30,8 +54,7 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		students = new ArrayList<Student>();
-		students = studentService.listStudent();
+		if(nameSearch == null && sort == null )students = studentService.listStudent();
 		return students;
 	}
 
@@ -42,7 +65,7 @@ public class Controller implements Serializable {
 	
 	public String Delete(int id) {
 		studentService.Delete(id);
-		return null;
+		return "ListStudent?faces-redirect=true";
 	}
 
 
@@ -56,10 +79,15 @@ public class Controller implements Serializable {
 		return "DetailStudent";
 	}
 	
+	public String Back() {
+		student = new Student();
+		return "ListStudent?faces-redirect=true";
+	}
+	
 
 	public String EditStudent() {
 		studentService.EditStudent(student);
-		return "EditStudent";
+		return "ListStudent";
 		
 	}
 	
@@ -68,11 +96,38 @@ public class Controller implements Serializable {
 		return "EditStudent";
 		
 	}
+	
+	public String AddStudent() {
+		studentService.SaveStudent(student);
+		student = new Student();
+		return "ListStudent";
+	}
+	
+	public String viewAddStudent() {
+		student = new Student();
+		student.setId(students.size() +1);
+		return "AddStudent";
+	}
+	
+	
+	public String searchByName(String name) {
+		students =studentService.searchByName(students, name);
+		return "ListStudent";
+	}
+	
+	public String sortBy() {
+		students =studentService.sortBy(students, sort);
+		return "ListStudent";
+	}
+	
+
 
 
 	public Student getStudent() {
 		return student;
 	}
+
+
 
 
 //	public StudentService getStudentService() {

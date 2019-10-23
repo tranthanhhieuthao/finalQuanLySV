@@ -14,5 +14,11 @@ public interface StudentInterface {
 	public Student findStudentById(int id);
 	
 	public void EditStudent(Student studentEdit);
+	
+	public void SaveStudent(Student student);
+	
+	public List<Student> sortBy(List<Student> listStudent,String sortBy);
+	
+	public List<Student> searchByName(List<Student> list,String name);
 
 }
