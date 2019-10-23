@@ -37,14 +37,14 @@ public class StudentDAO {
 
 	public Student findById(int id) {
 		Session session = sessionFactory.openSession();
-		Student student = (Student) session.load(Student.class, id);
+		Student student = (Student) session.get(Student.class, id);
+		session.close();
 		return student;
 	}
 
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
 		List<Student> listStudent = session.createQuery("FROM Student").list();
-		
 		return listStudent;
 	}
 
@@ -54,10 +54,11 @@ public class StudentDAO {
 			session.beginTransaction();
 			Student studentRemove = this.findById(id);
 			session.delete(studentRemove);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			session.getTransaction().commit();
+			
 			session.close();
 		}
 	}
@@ -67,12 +68,14 @@ public class StudentDAO {
 		try {
 			session.beginTransaction();
 			session.update(studentEdit);
+			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			session.getTransaction().rollback();
 		} finally {
-			session.getTransaction().commit();
 			session.close();
 		}
-
 	}
+	
+
 }

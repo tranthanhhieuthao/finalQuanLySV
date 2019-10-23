@@ -45,6 +45,10 @@ public class StudentService implements StudentInterface {
 	public void EditStudent(Student studentEdit) {
 		studentDAO.Edit(studentEdit);
 	}
+	
+	public void SaveStudent(Student student) {
+		studentDAO.save(student);
+	}
 
 
 

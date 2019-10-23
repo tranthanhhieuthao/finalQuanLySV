@@ -42,7 +42,7 @@ public class Controller implements Serializable {
 	
 	public String Delete(int id) {
 		studentService.Delete(id);
-		return null;
+		return "ListStudent?faces-redirect=true";
 	}
 
 
@@ -59,7 +59,7 @@ public class Controller implements Serializable {
 
 	public String EditStudent() {
 		studentService.EditStudent(student);
-		return "EditStudent";
+		return "ListStudent";
 		
 	}
 	
@@ -67,6 +67,18 @@ public class Controller implements Serializable {
 		student =studentService.findStudentById(id);
 		return "EditStudent";
 		
+	}
+	
+	public String AddStudent() {
+		studentService.SaveStudent(student);
+		student = new Student();
+		return "ListStudent";
+	}
+	
+	public String viewAddStudent() {
+		student = new Student();
+		student.setId(students.size() +1);
+		return "AddStudent";
 	}
 
 

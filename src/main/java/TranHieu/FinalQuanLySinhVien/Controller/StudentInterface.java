@@ -14,5 +14,7 @@ public interface StudentInterface {
 	public Student findStudentById(int id);
 	
 	public void EditStudent(Student studentEdit);
+	
+	public void SaveStudent(Student student);
 
 }
