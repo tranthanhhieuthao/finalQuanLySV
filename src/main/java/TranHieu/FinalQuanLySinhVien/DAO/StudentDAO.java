@@ -45,6 +45,7 @@ public class StudentDAO {
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
 		List<Student> listStudent = session.createQuery("FROM Student").list();
+		session.close();
 		return listStudent;
 	}
 
