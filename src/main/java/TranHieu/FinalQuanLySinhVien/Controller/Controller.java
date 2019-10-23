@@ -17,7 +17,31 @@ public class Controller implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Controller() {
+		
 	
+	}
+	
+	private String sort;
+	
+	private String nameSearch;
+
+	public String getNameSearch() {
+		return nameSearch;
+	}
+
+
+	public void setNameSearch(String nameSearch) {
+		this.nameSearch = nameSearch;
+	}
+
+
+	public String getSort() {
+		return sort;
+	}
+
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	private List<Student> students ;
@@ -85,6 +109,19 @@ public class Controller implements Serializable {
 		student.setId(students.size() +1);
 		return "AddStudent";
 	}
+	
+	
+	public String searchByName(String name) {
+		students =studentService.searchByName(students, name);
+		return "ListStudent";
+	}
+	
+	public String sortBy() {
+		students =studentService.sortBy(students, sort);
+		return "ListStudent";
+	}
+	
+
 
 
 	public Student getStudent() {

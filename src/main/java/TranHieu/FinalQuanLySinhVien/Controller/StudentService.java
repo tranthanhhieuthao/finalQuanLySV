@@ -53,6 +53,11 @@ public class StudentService implements StudentInterface {
 	public List<Student> sortBy(List<Student> listStudent,String sortBy) {
 		return studentDAO.sortBy(listStudent, sortBy);
 	}
+	
+	public List<Student> searchByName(List<Student> list,String name) {
+		list =studentDAO.searchByName(list, name);
+		return list;
+	}
 
 
 

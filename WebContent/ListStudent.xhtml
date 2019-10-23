@@ -13,11 +13,48 @@
 </h:head>
 <h:body>
 	<h3>List Student</h3>
+
+	<h:form>
+		<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
+			<p:messages id="messages" />
+			<h:panelGrid columns="4" cellpadding="5">
+				<h:outputLabel for="txt1" value="Text 1: *" />
+				<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
+					required="true" label="Search">
+					<f:validateLength minimum="2" />
+				</p:inputText>
+				<p:message for="txt1" />
+				<h:outputText value="#{controllerStudent.students}" />
+			</h:panelGrid>
+		</p:panel>
+
+		<h:panelGrid columns="2">
+			<p:commandButton process="@parent:@parent" update="@form"
+				action="#{controllerStudent.searchByName(controllerStudent.nameSearch)}"
+				value="Search start" />
+		</h:panelGrid>
+	</h:form>
+
+
+
+
 	<h:form>
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			paginator="true" rows="10" style="margin-bottom:20px">
+			
+			
 
+			<f:facet name="header">
+				<h:inputText id="input" value="#{controllerStudent.sort}" />
+				<p:commandButton action="#{controllerStudent.sortBy()}"
+					value="Sort start">
+					<f:ajax execute="@form" render="@form" />
+				</p:commandButton>
+
+				<h:outputText id="out" value="#{controllerStudent.sort}" />
+
+			</f:facet>
 
 
 			<p:column>

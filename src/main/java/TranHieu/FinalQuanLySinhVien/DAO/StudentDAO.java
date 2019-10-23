@@ -58,7 +58,6 @@ public class StudentDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			
 			session.close();
 		}
 	}
@@ -77,23 +76,32 @@ public class StudentDAO {
 		}
 	}
 	
-	public List<Student> sortBy(List<Student> listStudent,String sortBy){
-		Session session = sessionFactory.openSession();
-		String hql =null;
-		switch (sortBy) {
-		case "Id":
-			 hql= "FROM Student S ORDER BY S.id DESC";
-			 break;
-		case "nameStudent":
-			hql= "FROM Student S ORDER BY S.nameStudent DESC ";
-			break;
-		case "Age":
-			hql= "FROM Student S ORDER BY S.age DESC ";
-		}
-
-		 listStudent = session.createQuery(hql).list();
-		 return listStudent;
+	public List<Student> searchByName(List<Student> list,String name) {
+		Session session =sessionFactory.openSession();
+		list =session.createQuery("FROM Student WHERE nameStudent LIKE:name").setParameter("name", "%"+name+"%").list();
+		for (Student customer : list) {
+		      System.out.println(customer.getNameStudent());
+		     
+		    }
+		return list;
 	}
-	
+
+	public List<Student> sortBy(List<Student> listStudent, String sortBy) {
+		Session session = sessionFactory.openSession();
+		String hql = null;
+		if (sortBy.equals("Id")) {
+			hql = "FROM Student S ORDER BY S.id DESC";}
+		else if (sortBy.equals("nameStudent")) {
+			hql = "FROM Student S ORDER BY S.nameStudent DESC ";}
+		else if (sortBy.equals("Age")) {
+			hql = "FROM Student S ORDER BY S.age DESC ";}
+
+		listStudent = session.createQuery(hql).list();
+		 for (Student customer : listStudent) {
+		      System.out.println(customer.getNameStudent());
+		     
+		    }
+		return listStudent;
+	}
 
 }
