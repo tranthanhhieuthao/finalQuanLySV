@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.BO.Class;
 
 @ManagedBean(name = "controllerStudent", eager = true)
 @SessionScoped
@@ -101,7 +102,6 @@ public class Controller implements Serializable {
 
 	public String DetailStudent(int id) {
 		student = studentService.findStudentById(id);
-		listClass =studentService.findListClassByStudentId(listClass, id);
 		return "DetailStudent";
 	}
 	

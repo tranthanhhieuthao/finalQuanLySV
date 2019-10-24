@@ -3,6 +3,7 @@ package TranHieu.FinalQuanLySinhVien.Controller;
 import java.util.List;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.BO.Class;
 import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 
 public interface StudentInterface {
@@ -21,6 +22,6 @@ public interface StudentInterface {
 	
 	public List<Student> searchByName(List<Student> list,String name);
 	
-	public List<Class> findListClassByStudentId(List<Class> listClass,int id);
+
 
 }

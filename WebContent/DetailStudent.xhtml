@@ -13,50 +13,73 @@
 </h:head>
 <h:body>
 	<h2>Detail Student</h2>
+
 	<h:form>
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}" />
 	</h:form>
 	<hr />
+	<h:form>
+		<p:dataTable id="tbl" var="list" value="#{controllerStudent.student}"
+			rows="10" style="margin-bottom:20px">
 
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
+				</f:facet>
+				<h:outputText value="#{list.nameStudent}" />
+			</p:column>
 
-	<table>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Age" />
+				</f:facet>
+				<h:outputText value="#{list.age}" />
+			</p:column>
 
-		<tr>
-			<td><h3>Name</h3></td>
-			<td><p:inputText
-					value="#{controllerStudent.student.nameStudent}" /></td>
-		</tr>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Village" />
+				</f:facet>
+				<h:outputText value="#{list.village}" />
+			</p:column>
 
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Phone" />
+				</f:facet>
+				<h:outputText value="#{list.phone}" />
+			</p:column>
 
-		<tr>
-			<td><h3>Age</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.age}" /></td>
-		</tr>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{list.email}" />
+			</p:column>
 
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Note" />
+				</f:facet>
+				<h:outputText value="#{list.note}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Class" />
+				</f:facet>
+				<ui:repeat id="tbl" var="list" value="#{controllerStudent.student}">
+					<ui:repeat var="listClass" value="#{list.studentClass}">
+						<div>
+							<h:outputText value="#{listClass.nameClass}" />
+							<h:outputText value=" :  #{listClass.note}" />
+						</div>
+					</ui:repeat>
+				</ui:repeat>
 
-		<tr>
-			<td><h3>Village</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.village}" /></td>
-		</tr>
+			</p:column>
+		</p:dataTable>
+	</h:form>
 
-
-		<tr>
-			<td><h3>Phone</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
-		</tr>
-
-
-		<tr>
-			<td><h3>Email</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.email}" />
-			</td>
-		</tr>
-
-		<tr>
-			<td><h3>Note</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.note}" /></td>
-		</tr>
-	</table>
 
 
 </h:body>

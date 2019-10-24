@@ -25,6 +25,10 @@ public class Class {
 
 	@Column(name = "note")
 	private String note;
+	
+	public Class() {
+		
+	}
 
 	public Class(String nameClass, String note) {
 		this.nameClass = nameClass;
@@ -39,7 +43,7 @@ public class Class {
 		this.nameClass = nameClass;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "class_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "student_id") })
 	private Set<Student> classStuden = new HashSet<Student>();

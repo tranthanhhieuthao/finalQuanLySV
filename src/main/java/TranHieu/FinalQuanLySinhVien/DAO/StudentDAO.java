@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.BO.Class;
 
 @ManagedBean(name = "studentDAO")
 @SessionScoped
@@ -141,20 +142,6 @@ public class StudentDAO {
 		return listStudent;
 	}
 
-	public List<Class> findListClassByStudentId(List<Class> listClass, int id) {
-		Session session = sessionFactory.openSession();
-		try {
-			session.getTransaction().begin();
-			String hql = "FROM Class c JOIN Student s ON s.id =:id";
-			listClass = session.createQuery(hql).setParameter("id", id).list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		} finally {
-			session.close();
-		}
-		return listClass;
-	}
+
 
 }

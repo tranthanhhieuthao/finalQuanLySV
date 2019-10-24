@@ -58,7 +58,7 @@ public class Student {
 		this.note = note;
 			}
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "class_id") })
 	private List<Class> studentClass = new ArrayList<Class>();

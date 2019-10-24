@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.BO.Class;
 import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 
 @ManagedBean(name ="studentService")
@@ -59,11 +60,6 @@ public class StudentService implements StudentInterface {
 		return list;
 	}
 
-
-	public List<Class> findListClassByStudentId(List<Class> listClass,int id){
-		listClass = studentDAO.findListClassByStudentId(listClass, id);
-		return listClass;
-	}
 
 
 
