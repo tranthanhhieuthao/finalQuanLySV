@@ -25,6 +25,7 @@
 				<p:outputLabel for="onemenu3" value="Type Search" />
 				<p:selectOneMenu id="onemenu3"
 					value="#{controllerStudent.valueSearch}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="WORD" itemValue="WORD" />
 					<f:selectItem itemLabel="ALL" itemValue="ALL" />
 					<f:selectItem itemLabel="fillter" itemValue="fillter" />
@@ -32,6 +33,7 @@
 
 				<p:outputLabel for="onemenu4" value="Column Search" />
 				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
 					<f:selectItem itemLabel="Village" itemValue="Village" />
 					<f:selectItem itemLabel="Email" itemValue="Email" />
@@ -59,6 +61,7 @@
 					styleClass="ui-priority-primary" action="AddStudent" />
 				<p:outputLabel for="onemenu" value="Srot By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="Age" itemValue="Age" />
 					<f:selectItem itemLabel="Id" itemValue="Id" />
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
@@ -66,6 +69,7 @@
 
 				<p:outputLabel for="onemenu1" value="increase/reduction" />
 				<p:selectOneMenu id="onemenu1" value="#{controllerStudent.value}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="ASC" itemValue="ASC" />
 					<f:selectItem itemLabel="DESC" itemValue="DESC" />
 				</p:selectOneMenu>

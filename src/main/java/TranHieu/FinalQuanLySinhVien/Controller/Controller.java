@@ -21,8 +21,8 @@ public class Controller implements Serializable {
 			
 	}
 	
-	private String sort ="Id";
-	private String value ="DESC";
+	private String sort ;
+	private String value ;
 	private String column;
 	private String valueSearch;
 	
