@@ -80,6 +80,9 @@ public class Controller implements Serializable {
 		return "ListStudent?faces-redirect=true";
 	}
 
+	public Student getStudent() {
+		return student;
+	}
 
 	public void setStudent(Student student) {
 		this.student = student;
@@ -99,7 +102,8 @@ public class Controller implements Serializable {
 	
 
 	public String EditStudent() {
-		studentService.EditStudent(student);	
+		studentService.EditStudent(student);
+		student = new Student();
 		return "ListStudent";
 		
 	}
@@ -117,8 +121,7 @@ public class Controller implements Serializable {
 		return "ListStudent";
 	}
 	
-	public String viewAddStudent() {
-		student = new Student();
+	public String viewAddStudent() {		
 		student.setId(students.size() +1);
 		return "AddStudent";
 	}
@@ -128,30 +131,10 @@ public class Controller implements Serializable {
 		students = studentService.listStudent();
 		return "ListStudent";
 	}
-	
-	
-//	public String searchByName(String name) {
-//		students =studentService.searchByName(students, name);
-//		return "ListStudent";
-//	}
-//	
-//	public String sortBy() {
-//		students =studentService.sortBy(students, sort);
-//		return "ListStudent";
-//	}
-	
-
-
-
-	public Student getStudent() {
-		return student;
-	}
+		
 
 
 
 
-//	public StudentService getStudentService() {
-//		return studentService;
-//	}
 
 }
