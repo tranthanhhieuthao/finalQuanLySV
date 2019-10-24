@@ -110,18 +110,21 @@ public class StudentDAO {
 		return list;
 	}
 
-	public List<Student> sortBy(List<Student> listStudent, String sortBy) {
+	public List<Student> sortBy(List<Student> listStudent, String sortBy ,String value) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
 			String hql = null;
 			if (sortBy.equals("Id")) {
-				hql = "FROM Student S ORDER BY S.id DESC";
+				hql = "FROM Student S ORDER BY S.id ";
 			} else if (sortBy.equals("nameStudent")) {
-				hql = "FROM Student S ORDER BY S.nameStudent DESC ";
+				hql = "FROM Student S ORDER BY S.nameStudent  ";
 			} else if (sortBy.equals("Age")) {
-				hql = "FROM Student S ORDER BY S.age DESC ";
+				hql = "FROM Student S ORDER BY S.age ";
 			}
+			
+			if(value.equals("DESC")) hql = hql + "DESC";
+			else hql = hql +"ASC";
 
 			listStudent = session.createQuery(hql).list();
 			for (Student customer : listStudent) {

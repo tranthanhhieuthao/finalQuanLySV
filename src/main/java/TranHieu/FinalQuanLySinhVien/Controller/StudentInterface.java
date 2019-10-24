@@ -17,7 +17,7 @@ public interface StudentInterface {
 	
 	public void SaveStudent(Student student);
 	
-	public List<Student> sortBy(List<Student> listStudent,String sortBy);
+	public List<Student> sortBy(List<Student> listStudent,String sortBy,String value);
 	
 	public List<Student> searchByName(List<Student> list,String name);
 	

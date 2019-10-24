@@ -50,8 +50,8 @@ public class StudentService implements StudentInterface {
 		studentDAO.save(student);
 	}
 	
-	public List<Student> sortBy(List<Student> listStudent,String sortBy) {
-		return studentDAO.sortBy(listStudent, sortBy);
+	public List<Student> sortBy(List<Student> listStudent,String sortBy,String value) {
+		return studentDAO.sortBy(listStudent, sortBy,value);
 	}
 	
 	public List<Student> searchByName(List<Student> list,String name) {

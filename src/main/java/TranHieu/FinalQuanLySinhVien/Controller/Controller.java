@@ -21,7 +21,17 @@ public class Controller implements Serializable {
 	}
 	
 	private String sort ="Id";
+	private String value ="DESC";
 	
+	public String getValue() {
+		return value;
+	}
+
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 	private String nameSearch;
 
 	public String getNameSearch() {
@@ -65,7 +75,7 @@ public class Controller implements Serializable {
 
 	public List<Student> getStudents() {
 		if(nameSearch != null) students = studentService.searchByName(students, nameSearch);
-		else if(sort != null) students = studentService.sortBy(students, sort);
+		else if(sort != null) students = studentService.sortBy(students, sort,value);
 		else students = studentService.listStudent();
 		return students;
 	}
