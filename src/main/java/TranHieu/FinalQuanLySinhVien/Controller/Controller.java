@@ -20,7 +20,7 @@ public class Controller implements Serializable {
 			
 	}
 	
-	private String sort;
+	private String sort ="Id";
 	
 	private String nameSearch;
 
@@ -64,7 +64,9 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		if(nameSearch == null && sort == null )students = studentService.listStudent();
+		if(nameSearch != null) students = studentService.searchByName(students, nameSearch);
+		else if(sort != null) students = studentService.sortBy(students, sort);
+		else students = studentService.listStudent();
 		return students;
 	}
 
@@ -97,13 +99,14 @@ public class Controller implements Serializable {
 	
 
 	public String EditStudent() {
-		studentService.EditStudent(student);
+		studentService.EditStudent(student);	
 		return "ListStudent";
 		
 	}
 	
 	public String viewEditStudent(int id) {
 		student =studentService.findStudentById(id);
+		getStudents();
 		return "EditStudent";
 		
 	}
@@ -120,16 +123,22 @@ public class Controller implements Serializable {
 		return "AddStudent";
 	}
 	
-	
-	public String searchByName(String name) {
-		students =studentService.searchByName(students, name);
+	public String Reset() {
+		nameSearch =null;
+		students = studentService.listStudent();
 		return "ListStudent";
 	}
 	
-	public String sortBy() {
-		students =studentService.sortBy(students, sort);
-		return "ListStudent";
-	}
+	
+//	public String searchByName(String name) {
+//		students =studentService.searchByName(students, name);
+//		return "ListStudent";
+//	}
+//	
+//	public String sortBy() {
+//		students =studentService.sortBy(students, sort);
+//		return "ListStudent";
+//	}
 	
 
 

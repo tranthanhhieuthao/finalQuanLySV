@@ -1,5 +1,6 @@
 package TranHieu.FinalQuanLySinhVien.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -46,10 +47,17 @@ public class StudentDAO {
 
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		List<Student> listStudent = session.createQuery("FROM Student").list();
-		session.getTransaction().commit();
-		session.close();
+		List<Student> listStudent = new ArrayList<Student>();
+		try {
+			session.beginTransaction();
+			listStudent = session.createQuery("FROM Student").list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
 		return listStudent;
 	}
 
@@ -86,8 +94,7 @@ public class StudentDAO {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			
-		 list = session.createQuery("FROM Student WHERE nameStudent LIKE:name")
+			list = session.createQuery("FROM Student WHERE nameStudent LIKE:name")
 					.setParameter("name", "%" + name + "%").list();
 			session.getTransaction().commit();
 			for (Student customer : list) {
@@ -130,21 +137,21 @@ public class StudentDAO {
 		}
 		return listStudent;
 	}
-	
-	public List<Class> findListClassByStudentId(List<Class> listClass,int id){
+
+	public List<Class> findListClassByStudentId(List<Class> listClass, int id) {
 		Session session = sessionFactory.openSession();
 		try {
-		session.getTransaction().begin();
-		String hql ="FROM Class c JOIN Student s ON s.id =:id";
-		 listClass =session.createQuery(hql).setParameter("id", id).list();
-		 session.getTransaction().commit();
-		} catch(Exception e) {
+			session.getTransaction().begin();
+			String hql = "FROM Class c JOIN Student s ON s.id =:id";
+			listClass = session.createQuery(hql).setParameter("id", id).list();
+			session.getTransaction().commit();
+		} catch (Exception e) {
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		} finally {
 			session.close();
 		}
-		 return listClass;
+		return listClass;
 	}
 
 }
