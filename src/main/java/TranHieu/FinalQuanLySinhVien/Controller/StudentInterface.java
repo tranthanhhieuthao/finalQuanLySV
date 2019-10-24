@@ -20,7 +20,7 @@ public interface StudentInterface {
 	
 	public List<Student> sortBy(List<Student> listStudent,String sortBy,String value);
 	
-	public List<Student> searchByName(List<Student> list,String name);
+	public List<Student> searchByName(List<Student> list,String name,String value,String column);
 	
 
 

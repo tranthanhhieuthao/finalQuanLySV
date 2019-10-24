@@ -55,8 +55,8 @@ public class StudentService implements StudentInterface {
 		return studentDAO.sortBy(listStudent, sortBy,value);
 	}
 	
-	public List<Student> searchByName(List<Student> list,String name) {
-		list =studentDAO.searchByName(list, name);
+	public List<Student> searchByName(List<Student> list,String name,String value,String column) {
+		list =studentDAO.searchByName(list, name,value,column);
 		return list;
 	}
 

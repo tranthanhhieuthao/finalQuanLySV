@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -90,13 +91,22 @@ public class StudentDAO {
 		}
 	}
 
-	public List<Student> searchByName(List<Student> list, String name) {
+	public List<Student> searchByName(List<Student> list, String name,String value,String column) {
 
 		Session session = sessionFactory.openSession();
+		String hql ="FROM Student WHERE" +" "+column+" " +"LIKE :name";
+	
 		try {
 			session.beginTransaction();
-			list = session.createQuery("FROM Student WHERE nameStudent LIKE:name")
-					.setParameter("name", "%" + name + "%").list();
+			if(value.equals("ALL")) column ="nameStudent LIKE :name OR village LIKE :name OR email";
+			else if (value.equals("WORD") && column.equals("NameStudent")) column ="nameStudent";			
+			else if (value.equals("WORD") && column.equals("Village")) column ="village";			
+			else if (value.equals("WORD") && column.equals("Email")) column ="email";		
+//			else if(value.equals("fillter")) column ="nameStudent LIKE:name AND village LIKE:name AND phone LIKE:phoneStudent AND (age >= :ageStudent OR)    AND email ";
+			
+			Query query =session.createQuery( hql).setParameter("name", "%"+ name+"%");
+			list= query.list();
+			
 			session.getTransaction().commit();
 			for (Student customer : list) {
 				System.out.println(customer.getNameStudent());
@@ -111,7 +121,7 @@ public class StudentDAO {
 		return list;
 	}
 
-	public List<Student> sortBy(List<Student> listStudent, String sortBy ,String value) {
+	public List<Student> sortBy(List<Student> listStudent, String sortBy, String value) {
 		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
@@ -123,9 +133,11 @@ public class StudentDAO {
 			} else if (sortBy.equals("Age")) {
 				hql = "FROM Student S ORDER BY S.age ";
 			}
-			
-			if(value.equals("DESC")) hql = hql + "DESC";
-			else hql = hql +"ASC";
+
+			if (value.equals("DESC"))
+				hql = hql + "DESC";
+			else
+				hql = hql + "ASC";
 
 			listStudent = session.createQuery(hql).list();
 			for (Student customer : listStudent) {
@@ -141,7 +153,5 @@ public class StudentDAO {
 		}
 		return listStudent;
 	}
-
-
 
 }

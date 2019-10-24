@@ -23,6 +23,8 @@ public class Controller implements Serializable {
 	
 	private String sort ="Id";
 	private String value ="DESC";
+	private String column;
+	private String valueSearch;
 	
 	public String getValue() {
 		return value;
@@ -63,6 +65,26 @@ public class Controller implements Serializable {
 	}
 
 
+	public String getColumn() {
+		return column;
+	}
+
+
+	public void setColumn(String column) {
+		this.column = column;
+	}
+
+
+	public String getValueSearch() {
+		return valueSearch;
+	}
+
+
+	public void setValueSearch(String valueSearch) {
+		this.valueSearch = valueSearch;
+	}
+
+
 	public void setListClass(List<Class> listClass) {
 		this.listClass = listClass;
 	}
@@ -75,7 +97,7 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		if(nameSearch != null) students = studentService.searchByName(students, nameSearch);
+		if(nameSearch != null) students = studentService.searchByName(students, nameSearch,valueSearch,column);
 		else if(sort != null) students = studentService.sortBy(students, sort,value);
 		else students = studentService.listStudent();
 		return students;
