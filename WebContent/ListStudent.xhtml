@@ -26,11 +26,11 @@
 
 		<h:panelGrid columns="2">
 			<p:commandButton value="Search start"
-				action="#{controllerStudent. getStudents()}" update="panel">
+				action="#{controllerStudent. getStudents()}"  update="form">
 				<!-- <p:ajax event="click" update="form"></p:ajax> -->
 			</p:commandButton>
 			<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
-				update="panel">
+				 update="form">
 				<!-- <p:ajax event="click" update="form"></p:ajax> -->
 			</p:commandButton>
 		</h:panelGrid>
