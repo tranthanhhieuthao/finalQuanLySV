@@ -17,24 +17,37 @@
 		<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
 
 			<h:panelGrid columns="4" cellpadding="5">
-				<h:outputLabel for="txt1" value="Search: *" />
+				<p:outputLabel for="txt1" value="Search" />
 				<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
 					required="true" label="nameSearch"></p:inputText>
-					<p:inputText id="valueSearch" value="#{controllerStudent.valueSearch}"
-					required="true" label="valueSearch"></p:inputText>
-					<p:inputText id="column" value="#{controllerStudent.column}"
-					required="true" label="Column">
-				</p:inputText>
+
+
+				<p:outputLabel for="onemenu3" value="Value Search" />
+				<p:selectOneMenu id="onemenu3"
+					value="#{controllerStudent.valueSearch}">
+					<f:selectItem itemLabel="WORD" itemValue="WORD" />
+					<f:selectItem itemLabel="ALL" itemValue="ALL" />
+					<f:selectItem itemLabel="fillter" itemValue="fillter" />
+				</p:selectOneMenu>
+
+
+				<p:outputLabel for="onemenu4" value="Column Search" />
+				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
+					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
+					<f:selectItem itemLabel="Village" itemValue="Village" />
+					<f:selectItem itemLabel="Email" itemValue="Email" />
+				</p:selectOneMenu>
+
 			</h:panelGrid>
 		</p:panel>
 
 		<h:panelGrid columns="2">
 			<p:commandButton value="Search start"
-				action="#{controllerStudent. getStudents()}"  update="form">
+				action="#{controllerStudent. getStudents()}" update="form">
 				<!-- <p:ajax event="click" update="form"></p:ajax> -->
 			</p:commandButton>
 			<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
-				 update="form">
+				update="form">
 				<!-- <p:ajax event="click" update="form"></p:ajax> -->
 			</p:commandButton>
 		</h:panelGrid>
@@ -47,11 +60,21 @@
 
 
 			<f:facet name="header">
-				<h:inputText id="input" value="#{controllerStudent.sort}" />
-				<h:inputText id="inputvalue" value="#{controllerStudent.value}" />
+
+				<p:outputLabel for="onemenu" value="Srot By" />
+				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
+					<f:selectItem itemLabel="Age" itemValue="Age" />
+					<f:selectItem itemLabel="Id" itemValue="Id" />
+					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="onemenu1" value="increase/reduction" />
+				<p:selectOneMenu id="onemenu1" value="#{controllerStudent.value}">
+					<f:selectItem itemLabel="ASC" itemValue="ASC" />
+					<f:selectItem itemLabel="DESC" itemValue="DESC" />
+				</p:selectOneMenu>
 				<p:commandButton action="#{controllerStudent. getStudents()}"
 					value="Sort start" update="form">
-					<!-- 			<p:ajax event="click" update="form"></p:ajax> -->
 				</p:commandButton>
 
 
