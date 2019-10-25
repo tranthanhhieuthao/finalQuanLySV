@@ -39,10 +39,15 @@
 					<f:selectItem itemLabel="Email" itemValue="Email" />
 				</p:selectOneMenu>
 
-				<p:commandButton value="Search start"
-					action="#{controllerStudent. getStudents()}" update="form" />
+				<p:commandButton id="buttonSearch" value="Search start"
+					action="#{controllerStudent. getStudents()}" update="form" >
+						<f:ajax execute="buttonSearch" render="outResult"/>
+					</p:commandButton>
 				<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
 					update="form" />
+					<h:outputText id="outResult"  value="Results : Found #{controllerStudent.students.size()}" >
+				
+					</h:outputText>
 
 			</h:panelGrid>
 		</p:panel>
