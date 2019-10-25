@@ -30,11 +30,11 @@ public class Course {
 		this.coefficient = coefficient;
 		this.note = note;
 	}
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "course")
+	private List<Score> listScore = new ArrayList<Score>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Student_Course", joinColumns = { @JoinColumn(name = "course_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "student_id") })
-	private Set<Student> courseStudent = new HashSet<Student>();
+	
 
 	public int getId() {
 		return id;
@@ -68,12 +68,6 @@ public class Course {
 		this.note = note;
 	}
 
-	public Set<Student> getCourseStudent() {
-		return courseStudent;
-	}
 
-	public void setCourseStudent(Set<Student> courseStudent) {
-		this.courseStudent = courseStudent;
-	}
 
 }

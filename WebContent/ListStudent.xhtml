@@ -6,12 +6,17 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-
 </h:head>
 <h:body>
+ <div id="header" style="background-color: aqua;border-color: black;">
+		<ui:insert name="header" >
+		  <ui:include src="/Header.xhtml" />
+		</ui:insert>
+	    </div>
 	<h2>List Student</h2>
 	<h:form>
 		<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
@@ -33,40 +38,40 @@
 
 				<p:outputLabel for="onemenu4" value="Column Search" />
 				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
 					<f:selectItem itemLabel="Village" itemValue="Village" />
 					<f:selectItem itemLabel="Email" itemValue="Email" />
 				</p:selectOneMenu>
 
 				<p:commandButton id="buttonSearch" value="Search start"
-					action="#{controllerStudent. getStudents()}" update="form" >
-						<f:ajax execute="buttonSearch" render="outResult"/>
-					</p:commandButton>
+					action="#{controllerStudent. getStudents()}" update="form">
+					<f:ajax execute="buttonSearch" render="outResult" />
+				</p:commandButton>
 				<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
 					update="form" />
-					<h:outputText id="outResult"  value="Results : Found #{controllerStudent.students.size()}" >
-				
-					</h:outputText>
+				<h:outputText id="outResult"
+					value="Results : Found #{controllerStudent.students.size()}">
+
+				</h:outputText>
 
 			</h:panelGrid>
 		</p:panel>
 
 	</h:form>
-
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-			paginator="true" rows="20" style="margin-bottom:20px">
+			paginator="true" rows="15" style="margin-bottom:20px">
 
 
 			<f:facet name="header">
 				<p:commandButton value="AddStudent"
 					style="margin-right:20px;float:left"
 					styleClass="ui-priority-primary" action="AddStudent" />
-				<p:outputLabel for="onemenu" value="Srot By" />
+				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="Age" itemValue="Age" />
 					<f:selectItem itemLabel="Id" itemValue="Id" />
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
@@ -74,7 +79,7 @@
 
 				<p:outputLabel for="onemenu1" value="increase/reduction" />
 				<p:selectOneMenu id="onemenu1" value="#{controllerStudent.value}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="ASC" itemValue="ASC" />
 					<f:selectItem itemLabel="DESC" itemValue="DESC" />
 				</p:selectOneMenu>
@@ -138,6 +143,20 @@
 				</f:facet>
 				<h:outputText value="#{list.note}" />
 			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Agv" />
+				</f:facet>
+				<h:outputText value="#{list.avgStudent}" />
+			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Birth Day" />
+				</f:facet>
+				<h:outputText value="#{list.birthDay}" />
+			</p:column>
 
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
@@ -165,5 +184,6 @@
 		</p:dataTable>
 
 	</h:form>
+
 </h:body>
 </html>

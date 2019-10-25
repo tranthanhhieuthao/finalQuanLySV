@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
-import TranHieu.FinalQuanLySinhVien.BO.Class;
+import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 
 @ManagedBean(name = "studentDAO")
 @SessionScoped
@@ -22,8 +22,8 @@ public class StudentDAO {
 	public StudentDAO() {
 	}
 
-	public void save(Student student) {
-		Session session = sessionFactory.openSession();
+	public void save(Object student) {
+		Session session = sessionFactory.openSession();	
 		try {
 			session.beginTransaction();
 			session.save(student);
@@ -139,10 +139,10 @@ public class StudentDAO {
 				hql = hql + "ASC";
 
 			listStudent = session.createQuery(hql).list();
-			for (Student customer : listStudent) {
-				System.out.println(customer.getNameStudent());
-
-			}
+//			for (Student customer : listStudent) {
+//				System.out.println(customer.getNameStudent());
+//
+//			}
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

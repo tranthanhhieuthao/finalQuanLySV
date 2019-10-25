@@ -12,8 +12,14 @@
 
 </h:head>
 <h:body>
-<h2>Add Student</h2>
-<h:form>
+	<div id="header" style="background-color: aqua;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<h2>Add Student</h2>
+	<h:form>
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}" />
 	</h:form>
 	<hr />
@@ -22,40 +28,40 @@
 		<table>
 
 			<tr>
-			<td><h3>Name</h3></td>
-			<td><p:inputText
-					value="#{controllerStudent.student.nameStudent}" /></td>
-		</tr>
+				<td><h3>Name</h3></td>
+				<td><p:inputText
+						value="#{controllerStudent.student.nameStudent}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Age</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.age}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Age</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.age}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Village</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.village}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Village</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.village}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Phone</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Phone</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Email</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.email}" />
-			</td>
-		</tr>
+			<tr>
+				<td><h3>Email</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.email}" />
+				</td>
+			</tr>
 
-		<tr>
-			<td><h3>Note</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.note}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Note</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.note}" /></td>
+			</tr>
 
 			<tr>
 				<td></td>
@@ -64,5 +70,6 @@
 			</tr>
 		</table>
 	</h:form>
+
 </h:body>
-</html> 
+</html>

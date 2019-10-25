@@ -12,6 +12,11 @@
 
 </h:head>
 <h:body>
+ <div id="header" style="background-color: aqua;">
+		<ui:insert name="header" >
+		  <ui:include src="/Header.xhtml" />
+		</ui:insert>
+	    </div>
 	<h2>Detail Student</h2>
 
 	<h:form>
@@ -79,7 +84,6 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
-
 
 
 </h:body>

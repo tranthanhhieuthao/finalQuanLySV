@@ -12,6 +12,11 @@
 
 </h:head>
 <h:body>
+ <div id="header" style="background-color: aqua;">
+		<ui:insert name="header" >
+		  <ui:include src="/Header.xhtml" />
+		</ui:insert>
+	    </div>
 <h2>Edit Student</h2>
 <h:form>
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}" />
@@ -64,5 +69,6 @@
 			</tr>
 		</table>
 	</h:form>
+
 </h:body>
 </html> 

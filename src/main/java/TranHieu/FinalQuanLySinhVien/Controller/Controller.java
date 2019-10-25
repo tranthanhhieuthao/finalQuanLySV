@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
-import TranHieu.FinalQuanLySinhVien.BO.Class;
+import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 
 @ManagedBean(name = "controllerStudent", eager = true)
 @SessionScoped

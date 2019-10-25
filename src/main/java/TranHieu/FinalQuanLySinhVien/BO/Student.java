@@ -2,6 +2,7 @@ package TranHieu.FinalQuanLySinhVien.BO;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,34 +40,50 @@ public class Student {
 	@Column(name = "note")
 	private String note;
 
-//	@Column(name = "birthDay")
-//	private DateFormat birthDay;
+	@Column(name = "birthDay")
+	private Date birthDay;
+	
+	@Column(name ="avgStudent")
+	private float avgStudent;
 	
 	
+
+
+
 	//nen them contructor khong tham so de khoi tao Entity
 	public Student() {
 		
 	}
 	
 	
-	public Student(String nameStudent, int age, String village, int phone, String email, String note) {
+	
+
+
+	public Student( String nameStudent, int age, String village, int phone, String email, String note,
+			Date birthDay, float avgStudent) {
+
 		this.nameStudent = nameStudent;
 		this.age = age;
 		this.village = village;
 		this.phone = phone;
 		this.email = email;
 		this.note = note;
-			}
+		this.birthDay = birthDay;
+		this.avgStudent = avgStudent;
+	}
+
+
+
+
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "class_id") })
-	private List<Class> studentClass = new ArrayList<Class>();
+	private List<ClassStudent> studentClass = new ArrayList<ClassStudent>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "Student_Course", joinColumns = { @JoinColumn(name = "student_id")  }, inverseJoinColumns = {
-			@JoinColumn(name = "course_id") })
-	private Set<Course> studentCourse = new HashSet<Course>();
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
+	private List<Score> listScore = new ArrayList<Score>();
+
 
 	public int getId() {
 		return id;
@@ -124,28 +141,31 @@ public class Student {
 		this.note = note;
 	}
 
-	public List<Class> getStudentClass() {
+	public List<ClassStudent> getStudentClass() {
 		return studentClass;
 	}
 
-	public void setStudentClass(List<Class> studentClass) {
+	public void setStudentClass(List<ClassStudent> studentClass) {
 		this.studentClass = studentClass;
 	}
 
-	public Set<Course> getStudentCourse() {
-		return studentCourse;
+
+
+	public Date getBirthDay() {
+		return birthDay;
 	}
 
-	public void setStudentCourse(Set<Course> studentCourse) {
-		this.studentCourse = studentCourse;
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+	
+	public float getAvgStudent() {
+		return avgStudent;
 	}
 
-//	public DateFormat getBirthDay() {
-//		return birthDay;
-//	}
-//
-//	public void setBirthDay(DateFormat birthDay) {
-//		this.birthDay = birthDay;
-//	}
+
+	public void setAvgStudent(float avgStudent) {
+		this.avgStudent = avgStudent;
+	}
 
 }
