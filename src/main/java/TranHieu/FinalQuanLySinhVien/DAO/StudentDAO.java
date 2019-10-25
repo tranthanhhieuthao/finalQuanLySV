@@ -52,7 +52,7 @@ public class StudentDAO {
 		List<Student> listStudent = new ArrayList<Student>();
 		try {
 			session.beginTransaction();
-			listStudent = session.createQuery("FROM Student").list();
+			listStudent = session.createQuery("FROM Student").setFirstResult(0).setMaxResults(1000).list();
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
