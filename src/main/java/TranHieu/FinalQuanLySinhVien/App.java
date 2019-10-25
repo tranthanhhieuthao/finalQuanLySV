@@ -17,7 +17,7 @@ public class App
     public static void main( String[] args )
     {
         StudentDAO studentDAO = new StudentDAO();
-        ClassStudent classStudent = new ClassStudent("A1","Chuyen Toan");     
+    
         String[] nameStudent= {"Hieu","Thao","Linh Chi","Minh","Thao Tran","Tran Hieu","Nam","Tuan Anh","Thanh Quang","Xuan Hai","Sang","Thu Sang","Trang","Giang","Tran Son",
         		"Quang Nam","Dinh Vu","Hao Ngoc","Vinh Tran","Quoc Anh","Tran Thien","Bao Ngoc","Lam","Dat","Tung","Chung","Gia","Thanh Thien","Quoc Bao"};
         String[] provide = {"Nghe An","Cao Bang","Lang son","Ha Noi","Ha Tinh","Thanh Hoa","Ha Nam","Vinh Phuc","Son La","Hai Duong","Nam Đinh","Thai Binh",
@@ -29,19 +29,34 @@ public class App
         String[] note = {"haha","khong co gi","đang chan doi","dang yeu đoi","fall in love"};
         Date[] birthDay = {new Date(1992, 06, 15),new Date(1993, 12, 21),new Date(1988, 02, 15),new Date(1996, 04, 15),new Date(1997, 04, 14),new Date(1995, 06, 15),new Date(1998, 07, 15)
         		,new Date(1996, 05, 15)};
-        for(int i=1;i<=800;i++) {
-      	
-        	   Student student = new Student(nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],
-        			age[(int)Math.round(Math.random()*(age.length-1))],
-        			provide[(int)Math.round(Math.random()*(provide.length-1))],
-        			phone[(int)Math.round(Math.random()*(phone.length-1))],
-        			email[(int)Math.round(Math.random()*(email.length-1))],      			       	        			
-        			note[(int)Math.round(Math.random()*(note.length-1))],
-        			birthDay[(int)Math.round(Math.random()*(birthDay.length-1))],
-        			agv[(int)Math.round(Math.random()*(agv.length-1))]
-        			);
-        	studentDAO.save(student);
-
+//        for(int i=1;i<=800;i++) {
+//      	
+//        	   Student student = new Student(nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],
+//        			age[(int)Math.round(Math.random()*(age.length-1))],
+//        			provide[(int)Math.round(Math.random()*(provide.length-1))],
+//        			phone[(int)Math.round(Math.random()*(phone.length-1))],
+//        			email[(int)Math.round(Math.random()*(email.length-1))],      			       	        			
+//        			note[(int)Math.round(Math.random()*(note.length-1))],
+//        			birthDay[(int)Math.round(Math.random()*(birthDay.length-1))],
+//        			agv[(int)Math.round(Math.random()*(agv.length-1))]
+//        			);
+//        	studentDAO.save(student);
+//
+//        }
+        
+        
+        String[] nameClass = {"A1-Chuyen toan","A2-Chuyen Hoa","A3-Chuyen Ly","A4-Chuyen Sinh","A5-Chuyen Van","A6-Chuyen Su"};
+        String[] noteStudent = {"Khong co gi"};
+        
+        for(int i =1;i<=800;i++) {
+        	ClassStudent classStudent = new ClassStudent(nameClass[(int)Math.round(Math.random()*(nameClass.length-1))],
+        			noteStudent[(int)Math.round(Math.random()*(noteStudent.length-1))]);
+        	studentDAO.save(classStudent);
+        }
+        
+        int[] student_id = new  int[800];
+        for(int i=1;i<800;i++) {
+        	student_id[i]=(int)(Math.round(Math.random()*800));
         }
     }
 }

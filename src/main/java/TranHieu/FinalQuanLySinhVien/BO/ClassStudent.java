@@ -17,8 +17,6 @@ public class ClassStudent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	@Column(name = "timeClass")
-//	private DateFormat timeClass;
 
 	@Column(name = "nameClass")
 	private String nameClass;
@@ -30,14 +28,6 @@ public class ClassStudent {
 		
 	}
 	
-	
-
-	public ClassStudent(String nameClass, String note, List<Student> classStuden) {
-		this.nameClass = nameClass;
-		this.note = note;
-		this.classStuden = classStuden;
-	}
-
 
 
 	public ClassStudent(String nameClass, String note) {
