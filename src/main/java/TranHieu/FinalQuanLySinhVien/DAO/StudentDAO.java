@@ -94,16 +94,15 @@ public class StudentDAO {
 	public List<Student> searchByName(List<Student> list, String name,String value,String column) {
 
 		Session session = sessionFactory.openSession();
-		String hql ="FROM Student WHERE" +" "+column+" " +"LIKE :name";
-	
+		String condition="";	
 		try {
 			session.beginTransaction();
-			if(value.equals("ALL")) column ="nameStudent LIKE :name OR village LIKE :name OR email";
-			else if (value.equals("WORD") && column.equals("NameStudent")) column ="nameStudent";			
-			else if (value.equals("WORD") && column.equals("Village")) column ="village";			
-			else if (value.equals("WORD") && column.equals("Email")) column ="email";		
+			if(value.equals("ALL")) condition =" nameStudent LIKE :name OR village LIKE :name OR email";
+			else if (value.equals("WORD") && column.equals("NameStudent")) condition ="nameStudent";			
+			else if (value.equals("WORD") && column.equals("Village")) condition ="village";			
+			else if (value.equals("WORD") && column.equals("Email")) condition ="email";		
 //			else if(value.equals("fillter")) column ="nameStudent LIKE:name AND village LIKE:name AND phone LIKE:phoneStudent AND (age >= :ageStudent OR)    AND email ";
-			
+			String hql ="FROM Student WHERE" +condition+" " +"LIKE :name";
 			Query query =session.createQuery( hql).setParameter("name", "%"+ name+"%");
 			list= query.list();
 			
