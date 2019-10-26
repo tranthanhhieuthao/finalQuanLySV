@@ -163,6 +163,20 @@ public class Controller implements Serializable {
 		students = studentService.listStudent();
 		return "ListStudent";
 	}
+	
+	public float Avg(int id) {
+		float avg =0 ;
+		float sum =0;
+		float sumCoefficient=0;
+		student =studentService.findStudentById(id);
+		for(int i=0;i <student.getListScore().size();i++) {
+		 sum += student.getListScore().get(i).getScoreStudent()*student.getListScore().get(i).getCourse().getCoefficient();
+		 sumCoefficient +=student.getListScore().get(i).getCourse().getCoefficient();
+		}
+		avg =sum/sumCoefficient;
+		student.setAvgStudent(avg) ;
+		return avg;
+	}
 		
 
 

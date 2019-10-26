@@ -72,27 +72,31 @@
 				<f:facet name="header">
 					<h:outputText value="Class" />
 				</f:facet>
-				<ui:repeat id="tbl" var="list" value="#{controllerStudent.student}">
+
 					<ui:repeat var="listClass" value="#{list.studentClass}">
 						<div>
 							 <h:outputText value="#{listClass.nameClass}" /> 
 							<h:outputText value=" :  #{listClass.note}" />
 						</div>
 					</ui:repeat>
-				</ui:repeat>
+
 
 			</p:column>
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Course" />
 				</f:facet>
-				<ui:repeat id="tbl1" var="list" value="#{controllerStudent.student}">
+
 					<ui:repeat var="score" value="#{list.listScore}">
 						<div>
-							 <h:outputText value="#{score.scoreStudent}" /> 
+							 
+					 <h:outputText value="#{score.course.nameCourse} " /> 
+					 <h:outputText value="he so : #{score.course.coefficient}" />
+							 <h:outputText value=":#{score.scoreStudent} diem" />  
+							 <h:outputText value=" TEST:#{score.course.coefficient*score.scoreStudent +=score.course.coefficient*score.scoreStudent} " /> 
 						</div>
 					</ui:repeat>
-				</ui:repeat>
+
 
 			</p:column>
 		</p:dataTable>
