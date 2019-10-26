@@ -25,10 +25,12 @@ public class Controller implements Serializable {
 	private String value ;
 	private String column;
 	private String valueSearch;
+
 	
 	public String getValue() {
 		return value;
 	}
+
 
 
 	public void setValue(String value) {
@@ -173,9 +175,16 @@ public class Controller implements Serializable {
 		 sum += student.getListScore().get(i).getScoreStudent()*student.getListScore().get(i).getCourse().getCoefficient();
 		 sumCoefficient +=student.getListScore().get(i).getCourse().getCoefficient();
 		}
-		avg =sum/sumCoefficient;
-		student.setAvgStudent(avg) ;
+		avg =((float)sum/sumCoefficient) ;
+		student.setAvgStudent((float)avg) ;
 		return avg;
+	}
+	
+	public String pass_Failed(int id) {
+		student =studentService.findStudentById(id);
+		if((float)student.getAvgStudent() > (float)5) return "Pass";
+		else return "Failed";
+		
 	}
 		
 

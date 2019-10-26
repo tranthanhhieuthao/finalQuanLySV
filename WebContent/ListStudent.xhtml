@@ -151,6 +151,13 @@
 				</f:facet>
 				<h:outputText value="#{list.birthDay}" />
 			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Pass/Failed" />
+				</f:facet>
+				<h:outputText value="#{controllerStudent.pass_Failed(list.id)}" />
+			</p:column>
 
 			<p:column>
 				<f:facet name="header">Delete</f:facet>
