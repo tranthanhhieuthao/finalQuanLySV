@@ -20,16 +20,16 @@ public class App
     
         String[] nameStudent= {"Hieu","Thao","Linh Chi","Minh","Thao Tran","Tran Hieu","Nam","Tuan Anh","Thanh Quang","Xuan Hai","Sang","Thu Sang","Trang","Giang","Tran Son",
         		"Quang Nam","Dinh Vu","Hao Ngoc","Vinh Tran","Quoc Anh","Tran Thien","Bao Ngoc","Lam","Dat","Tung","Chung","Gia","Thanh Thien","Quoc Bao"};
-        String[] provide = {"Nghe An","Cao Bang","Lang son","Ha Noi","Ha Tinh","Thanh Hoa","Ha Nam","Vinh Phuc","Son La","Hai Duong","Nam Đinh","Thai Binh",
-        		"Ho Chi Minh","Da Nang","Can Tho","Ba Ria Vung Tau","Binh Đinh"};
-        String[] email = {"hieu@gmail.com","nam@gmail.com","chien@gmail.com","sang@gmail.com","tien@gmail.com","hải@gmail.com","dinh@gmail.com","dat@gmail.com","chung@gmail.com","tung@gmail.com","gia@gmail.com"};
+        String[] provide = {"Nghe An","Cao Bang","Lang son","Ha Noi","Ha Tinh","Thanh Hoa","Ha Nam","Vinh Phuc","Son La","Hai Duong","Nam Dinh","Thai Binh",
+        		"Ho Chi Minh","Da Nang","Can Tho","Ba Ria Vung Tau","Binh Dinh"};
+        String[] email = {"hieu@gmail.com","nam@gmail.com","chien@gmail.com","sang@gmail.com","tien@gmail.com","hai@gmail.com","dinh@gmail.com","dat@gmail.com","chung@gmail.com","tung@gmail.com","gia@gmail.com"};
         float[] agv = {5.0f,6.5f,6.8f,4.0f,9.0f,10.0f,4.5f,5.0f,8.5f,7.5f,7.0f,9.5f,5.4f,8.4f,7.3f,9.2f,4.6f,9.2f};
         int[] age = {25,18,16,20,23,21,24,28,34,35,26,28,27,35,31,36,14,16,19,18,17,15,11,10,32,24,25,26,25};
         int[] phone = {0234,0125,0236,01223,0145,0235,01256,2856};
-        String[] note = {"haha","khong co gi","đang chan doi","dang yeu đoi","fall in love"};
+        String[] note = {"haha","khong co gi","dang chan doi","dang yeu đoi","fall in love"};
         Date[] birthDay = {new Date(1992, 06, 15),new Date(1993, 12, 21),new Date(1988, 02, 15),new Date(1996, 04, 15),new Date(1997, 04, 14),new Date(1995, 06, 15),new Date(1998, 07, 15)
         		,new Date(1996, 05, 15)};
-//        for(int i=1;i<=800;i++) {
+//        for(int i=1;i<=250;i++) {
 //      	
 //        	   Student student = new Student(nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],
 //        			age[(int)Math.round(Math.random()*(age.length-1))],
@@ -44,19 +44,21 @@ public class App
 //
 //        }
         
+
         
-        String[] nameClass = {"A1-Chuyen toan","A2-Chuyen Hoa","A3-Chuyen Ly","A4-Chuyen Sinh","A5-Chuyen Van","A6-Chuyen Su"};
-        String[] noteStudent = {"Khong co gi"};
         
-        for(int i =1;i<=800;i++) {
-        	ClassStudent classStudent = new ClassStudent(nameClass[(int)Math.round(Math.random()*(nameClass.length-1))],
-        			noteStudent[(int)Math.round(Math.random()*(noteStudent.length-1))]);
-        	studentDAO.save(classStudent);
-        }
+//        String[] nameClass = {"A1-Chuyen toan","A2-Chuyen Hoa","A3-Chuyen Ly","A4-Chuyen Sinh","A5-Chuyen Van","A6-Chuyen Su"};
+//        String[] noteStudent = {"Khong co gi"};
+//        
+
         
-        int[] student_id = new  int[800];
-        for(int i=1;i<800;i++) {
-        	student_id[i]=(int)(Math.round(Math.random()*800));
-        }
+//        int[] student_id = new  int[800];
+//        int[] class_id = new  int[6];
+//        for(int i=1;i<=800;i++) {
+//        	student_id[i]=(int)(Math.round(Math.random()*800)+1);
+//        }
+//        for(int i=1;i<=6;i++) {  
+//        	class_id[i] =(int)(Math.round(Math.random()*6)+1);
+//        }
     }
 }

@@ -35,18 +35,24 @@ public class ClassStudent {
 		this.note = note;
 	}
 
+
+
 	public String getNameClass() {
 		return nameClass;
 	}
+
+
 
 	public void setNameClass(String nameClass) {
 		this.nameClass = nameClass;
 	}
 
+
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "class_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "student_id") })
-	private List<Student> classStuden = new ArrayList<Student>();
+	private Set<Student> classStudent = new HashSet<Student>();
 
 	public int getId() {
 		return id;
@@ -72,12 +78,12 @@ public class ClassStudent {
 		this.note = note;
 	}
 
-	public List<Student> getClassStuden() {
-		return classStuden;
+	public Set<Student> getClassStudent() {
+		return classStudent;
 	}
 
-	public void setClassStuden(List<Student> classStuden) {
-		this.classStuden = classStuden;
+	public void setClassStudent(Set<Student> classStudent) {
+		this.classStudent = classStudent;
 	}
 
 }

@@ -89,6 +89,22 @@ public class Student {
 		return id;
 	}
 
+	public List<Score> getListScore() {
+		return listScore;
+	}
+
+
+
+
+
+	public void setListScore(List<Score> listScore) {
+		this.listScore = listScore;
+	}
+
+
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
