@@ -51,11 +51,11 @@
 				<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
 					update="form" />
 				<h:outputText id="outResult"
-					value="Results : Found #{controllerStudent.students.size()}">
+					value="Results : Found #{controllerStudent.students.size()}" >
 
 				</h:outputText>
-
 			</h:panelGrid>
+		
 		</p:panel>
 
 	</h:form>
@@ -87,13 +87,7 @@
 					value="Sort start" update="form">
 				</p:commandButton>
 
-
-
-
-
-
 			</f:facet>
-
 
 			<p:column>
 				<f:facet name="header">

@@ -24,6 +24,10 @@ public class Course {
 
 	@Column(name = "note")
 	private String note;
+	
+	public Course() {
+		
+	}
 
 	public Course(String nameCourse, float coefficient, String note) {
 		this.nameCourse = nameCourse;
@@ -62,6 +66,14 @@ public class Course {
 
 	public String getNote() {
 		return note;
+	}
+
+	public List<Score> getListScore() {
+		return listScore;
+	}
+
+	public void setListScore(List<Score> listScore) {
+		this.listScore = listScore;
 	}
 
 	public void setNote(String note) {

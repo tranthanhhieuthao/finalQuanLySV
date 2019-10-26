@@ -5,6 +5,7 @@ import java.util.Date;
 import org.primefaces.component.calendar.Calendar;
 
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
+import TranHieu.FinalQuanLySinhVien.BO.Score;
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 
@@ -52,13 +53,23 @@ public class App
 //        
 
         
-//        int[] student_id = new  int[800];
-//        int[] class_id = new  int[6];
-//        for(int i=1;i<=800;i++) {
-//        	student_id[i]=(int)(Math.round(Math.random()*800)+1);
+//        int[] student_id = new  int[250];
+//        int[] course_id = new  int[16];
+//        float[] score = new float[20];
+//        for(int i=1;i<=250;i++) {
+//        	student_id[i]=(int)(Math.round(Math.random()*250)+1);
 //        }
-//        for(int i=1;i<=6;i++) {  
-//        	class_id[i] =(int)(Math.round(Math.random()*6)+1);
+//        for(int i=1;i<=16;i++) {  
+//        	course_id[i] =(int)(Math.round(Math.random()*16)+1);
 //        }
+//        for(int i=1;i<=20;i++) {  
+//        	score[i] =(float)(Math.round(Math.random()*10.0)+4.0);
+//        }
+        
+//        Score scoreStudent = new Score();
+      
+        
+     
+        
     }
 }

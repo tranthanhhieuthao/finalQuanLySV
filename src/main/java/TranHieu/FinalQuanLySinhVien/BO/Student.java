@@ -45,20 +45,12 @@ public class Student {
 	
 	@Column(name ="avgStudent")
 	private float avgStudent;
-	
-	
-
-
 
 	//nen them contructor khong tham so de khoi tao Entity
 	public Student() {
 		
 	}
-	
-	
-	
-
-
+			
 	public Student( String nameStudent, int age, String village, int phone, String email, String note,
 			Date birthDay, float avgStudent) {
 
@@ -71,10 +63,6 @@ public class Student {
 		this.birthDay = birthDay;
 		this.avgStudent = avgStudent;
 	}
-
-
-
-
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
@@ -93,17 +81,9 @@ public class Student {
 		return listScore;
 	}
 
-
-
-
-
 	public void setListScore(List<Score> listScore) {
 		this.listScore = listScore;
 	}
-
-
-
-
 
 	public void setId(int id) {
 		this.id = id;
@@ -164,8 +144,6 @@ public class Student {
 	public void setStudentClass(List<ClassStudent> studentClass) {
 		this.studentClass = studentClass;
 	}
-
-
 
 	public Date getBirthDay() {
 		return birthDay;

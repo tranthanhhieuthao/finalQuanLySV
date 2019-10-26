@@ -82,6 +82,19 @@
 				</ui:repeat>
 
 			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Course" />
+				</f:facet>
+				<ui:repeat id="tbl1" var="list" value="#{controllerStudent.student}">
+					<ui:repeat var="score" value="#{list.listScore}">
+						<div>
+							 <h:outputText value="#{score.scoreStudent}" /> 
+						</div>
+					</ui:repeat>
+				</ui:repeat>
+
+			</p:column>
 		</p:dataTable>
 	</h:form>
 
