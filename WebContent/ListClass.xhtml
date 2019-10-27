@@ -49,22 +49,22 @@
 			
 
 			<p:column>
-				<f:facet name="header">Delete</f:facet>
-				<p:commandButton value="Delete" style="margin-right:20px;"
+				<f:facet name="header">Student of Class</f:facet>
+				<p:commandButton value="Student learn Class" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
-					action="#{controllerStudent.Delete(list.id)}" />
+					action="#{controllerClass.findClassStudentById(list.id)}" />
 			</p:column>
 
 			<p:column>
-				<f:facet name="header">Detail</f:facet>
+				<f:facet name="header">Add Student</f:facet>
 
-				<p:commandButton value="Detail" style="margin-right:20px;"
+				<p:commandButton value="Add" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
 					action="#{controllerStudent.DetailStudent(list.id)}" />
 			</p:column>
 
 			<p:column>
-				<f:facet name="header">Edit</f:facet>
+				<f:facet name="header">Edit Class</f:facet>
 				<p:commandButton id="edit" value="Edit" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
 					action="#{controllerStudent.viewEditStudent(list.id)}">

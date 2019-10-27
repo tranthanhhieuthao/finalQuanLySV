@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Header</title>
+</h:head>
+<body>
+<div id="header" style="background-color: aqua;">
+		<ui:insert name="header" >
+		  <ui:include src="/Header.xhtml" />
+		</ui:insert>
+	    </div>
+	<h2>Detail Student</h2>
+
+	<h:form>
+		<p:commandButton value="Back" action="ListClass" />
+	</h:form>
+	<hr />
+	<h:form>
+
+		<p:dataTable id="tbl" var="list" value="#{controllerClass.classStudentBean.classStudent}"
+			rows="10" style="margin-bottom:20px">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
+				</f:facet>
+				<h:outputText value="#{list.nameStudent}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Age" />
+				</f:facet>
+				<h:outputText value="#{list.age}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Village" />
+				</f:facet>
+				<h:outputText value="#{list.village}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Phone" />
+				</f:facet>
+				<h:outputText value="#{list.phone}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{list.email}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Note" />
+				</f:facet>
+				<h:outputText value="#{list.note}" />
+			</p:column>
+		
+			
+		</p:dataTable>
+	</h:form>
+</body>
+</html>

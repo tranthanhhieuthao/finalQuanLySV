@@ -15,6 +15,9 @@ public class ControllerClass {
 	@ManagedProperty(value ="#{classService}")
 	private ClassService classService;
 	
+	@ManagedProperty(value ="#{classBean}")
+	private ClassStudent classStudentBean;
+	
 	private List<ClassStudent> listClassStudent;
 
 
@@ -34,6 +37,21 @@ public class ControllerClass {
 	public void setListClassStudent(List<ClassStudent> listClassStudent) {
 		this.listClassStudent = listClassStudent;
 	}
+	
+	public String findClassStudentById(int id) {
+		classStudentBean =classService.findClassStudentById(id);
+		return "StudentOfClass";
+	}
+
+	public void setClassStudentBean(ClassStudent classStudentBean) {
+		this.classStudentBean = classStudentBean;
+	}
+
+	public ClassStudent getClassStudentBean() {
+		return classStudentBean;
+	}
+
+
 
 	
 }
