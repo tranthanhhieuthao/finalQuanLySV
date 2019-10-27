@@ -105,7 +105,7 @@ public class Controller implements Serializable {
 	}
 
 	@ManagedProperty(value = "#{studentBean}")
-	private Student student;
+	private Student student = new Student();
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;

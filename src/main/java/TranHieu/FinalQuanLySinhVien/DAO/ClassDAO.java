@@ -36,7 +36,7 @@ SessionFactory sessionFactory = new Configuration().configure().buildSessionFact
 			List<ClassStudent> listClassStudent = new ArrayList<ClassStudent>();
 			try {
 				session.beginTransaction();
-				listClassStudent = session.createQuery("FROM ClassStudent").setFirstResult(0).setMaxResults(1000).list();
+				listClassStudent = session.createQuery("FROM ClassStudent").list();
 				session.getTransaction().commit();
 			} catch (Exception e) {
 				e.printStackTrace();
