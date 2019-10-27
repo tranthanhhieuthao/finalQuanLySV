@@ -1,7 +1,11 @@
 package TranHieu.FinalQuanLySinhVien.BO;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
+@ManagedBean(name ="scoreBean")
+@SessionScoped
 @Entity
 @Table(name="score")
 public class Score {

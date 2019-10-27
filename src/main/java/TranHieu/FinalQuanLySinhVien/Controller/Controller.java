@@ -175,6 +175,8 @@ public class Controller implements Serializable {
 	
 	public String Reset() {
 		nameSearch =null;
+		nameSearch=null;
+		column =null;
 		students = studentService.listStudent();
 		return "ListStudent";
 	}

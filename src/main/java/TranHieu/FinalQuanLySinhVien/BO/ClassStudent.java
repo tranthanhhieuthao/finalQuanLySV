@@ -6,8 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
+@ManagedBean(name="classBean")
+@SessionScoped
 @Entity
 @Table(name = "class")
 public class ClassStudent {
