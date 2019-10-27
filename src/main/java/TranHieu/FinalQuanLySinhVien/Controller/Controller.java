@@ -25,8 +25,21 @@ public class Controller implements Serializable {
 	private String value ;
 	private String column;
 	private String valueSearch;
+	private float avg =0 ;
 
 	
+	public float getAvg() {
+		return avg;
+	}
+
+
+
+	public void setAvg(float avg) {
+		this.avg = avg;
+	}
+
+
+
 	public String getValue() {
 		return value;
 	}
@@ -166,8 +179,7 @@ public class Controller implements Serializable {
 		return "ListStudent";
 	}
 	
-	public float Avg(int id) {
-		float avg =0 ;
+	public float Avg(int id) {		
 		float sum =0;
 		float sumCoefficient=0;
 		student =studentService.findStudentById(id);
@@ -180,10 +192,9 @@ public class Controller implements Serializable {
 		return avg;
 	}
 	
-	public String pass_Failed(int id) {
-		student =studentService.findStudentById(id);
-		if((float)student.getAvgStudent() > (float)5) return "Pass";
-		else return "Failed";
+	public String pass_Failed() {
+		if(avg >= 5.0f) return "Pass"  ;
+		else return "Failed" ;
 		
 	}
 		
