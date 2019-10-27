@@ -168,7 +168,8 @@ public class Controller implements Serializable {
 		return "ListStudent";
 	}
 	
-	public String viewAddStudent() {		
+	public String viewAddStudent() {
+		student = new Student();
 		student.setId(students.size() +1);
 		return "AddStudent";
 	}

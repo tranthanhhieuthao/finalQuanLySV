@@ -68,7 +68,7 @@
 			<f:facet name="header">
 				<p:commandButton value="AddStudent"
 					style="margin-right:20px;float:left"
-					styleClass="ui-priority-primary" action="AddStudent" />
+					styleClass="ui-priority-primary" action="#{controllerStudent.viewAddStudent()}" />
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
 					<f:selectItem itemLabel="Select One" itemValue="" />
