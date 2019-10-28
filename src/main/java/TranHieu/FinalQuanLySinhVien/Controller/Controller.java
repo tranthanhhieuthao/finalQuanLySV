@@ -173,7 +173,7 @@ public class Controller implements Serializable {
 	public List<Student> getStudents() {
 		if(nameSearch != null) students = studentService.searchByName(students, nameSearch,column);
 		else if(sort != null) students = studentService.sortBy(students, sort,value);
-		else if(nameStudentFillter !=null || emailStudentFillter !=null || villageStudentFillter !=null ) {
+		else if(nameStudentFillter !=null ) {
 	
 			students=studentService.searchFillter(students, nameStudentFillter, villageStudentFillter, emailStudentFillter, ageStudentFillter, valueAgeFillter);
 		}
@@ -239,7 +239,7 @@ public class Controller implements Serializable {
 	
 	public String Reset() {
 		nameSearch =null;
-		nameSearch=null;
+		nameStudentFillter=null;
 		column =null;
 		students = studentService.listStudent();
 		return "ListStudent";
