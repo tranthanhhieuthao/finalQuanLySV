@@ -60,6 +60,9 @@ public class StudentService implements StudentInterface {
 		return list;
 	}
 
+	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,int ageStudent,String valueAge){
+		return studentDAO.searchFillter(list, nameStudent, villageStudent, emailStudent, ageStudent, valueAge);
+	}
 
 
 

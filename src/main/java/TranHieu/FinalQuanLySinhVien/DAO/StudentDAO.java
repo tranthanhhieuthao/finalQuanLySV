@@ -23,7 +23,7 @@ public class StudentDAO {
 	}
 
 	public void save(Object student) {
-		Session session = sessionFactory.openSession();	
+		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
 			session.save(student);
@@ -91,20 +91,24 @@ public class StudentDAO {
 		}
 	}
 
-	public List<Student> searchByName(List<Student> list, String name,String column) {
+	public List<Student> searchByName(List<Student> list, String name, String column) {
 
-		Session session = sessionFactory.openSession();	
+		Session session = sessionFactory.openSession();
 		try {
 			session.beginTransaction();
-			if(column.equals("ALL")) column =" nameStudent LIKE :name OR village LIKE :name OR note LIKE :name OR email ";
-			else if ( column.equals("NameStudent")) column =" nameStudent";			
-			else if ( column.equals("Village")) column =" village";			
-			else if ( column.equals("Email")) column =" email";		
-//			else if(value.equals("fillter")) column ="nameStudent LIKE:name AND village LIKE:name AND phone LIKE:phoneStudent AND (age >= :ageStudent OR)    AND email ";
-			String hql ="FROM Student WHERE" +column+" " +"LIKE :name";
-			Query query =session.createQuery( hql).setParameter("name", "%"+ name+"%");
-			list= query.list();
-			
+			if (column.equals("ALL"))
+				column = " nameStudent LIKE :name OR village LIKE :name OR note LIKE :name OR email ";
+			else if (column.equals("NameStudent"))
+				column = " nameStudent";
+			else if (column.equals("Village"))
+				column = " village";
+			else if (column.equals("Email"))
+				column = " email";
+
+			String hql = "FROM Student WHERE" + column + " " + "LIKE :name";
+			Query query = session.createQuery(hql).setParameter("name", "%" + name + "%");
+			list = query.list();
+
 			session.getTransaction().commit();
 			for (Student customer : list) {
 				System.out.println(customer.getNameStudent());
@@ -118,6 +122,36 @@ public class StudentDAO {
 		}
 		return list;
 	}
+	
+	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,int ageStudent,String valueAge) {
+		Session session = sessionFactory.openSession();
+		String hql ="FROM Student WHERE nameStudent LIKE:nameStudent AND village LIKE:villageStudent  AND email LIKE :emailStudent  AND ";
+		try {
+			session.beginTransaction();
+		 if (valueAge.equals("cong"))
+			hql = hql+ "age >= :ageStudent";
+		 else if( valueAge.equals("tru"))
+			 hql = hql+ "age <= :ageStudent";
+			Query query = session.createQuery(hql).setParameter("nameStudent", "%" + nameStudent + "%")
+													.setParameter("villageStudent", "%" + villageStudent + "%")
+													.setParameter("emailStudent", "%" + emailStudent + "%")
+													.setParameter("ageStudent",  ageStudent );
+			list = query.list();
+			session.getTransaction().commit();
+			for (Student customer : list) {
+				System.out.println(customer.getNameStudent());
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+			
+		return list;	
+	}
+	
 
 	public List<Student> sortBy(List<Student> listStudent, String sortBy, String value) {
 		Session session = sessionFactory.openSession();

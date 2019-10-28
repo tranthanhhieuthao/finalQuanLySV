@@ -12,57 +12,100 @@
 	<title>Quan ly Sinh Vien</title>
 </h:head>
 <h:body>
- <div id="header" style="background-color: aqua;border-color: black;">
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header" style="background-color: aqua; border-color: black;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
-	    
-	<h2>List Student</h2>
+	</div>
 	<h:form>
-		<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
 
-			<h:panelGrid columns="6" cellpadding="5">
-				<p:outputLabel for="txt1" value="Search" />
-				<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
-					required="true" label="nameSearch"></p:inputText>
+			
+				<p:commandButton value="Search" type="button"
+					onclick="PF('dlg1').show();" />
+					<p:commandButton value="Search Fillter" type="button"
+					onclick="PF('dlg2').show();" />
+					
+					
+				<p:dialog header="Search" widgetVar="dlg1" minHeight="40">
+					<p:outputLabel for="txt1" value="Search" />
+					<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
+						required="true" label="nameSearch"></p:inputText>
 
+					<p:outputLabel for="onemenu4" value="Column Search" />
+					<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
+						<f:selectItem itemLabel="Village" itemValue="Village" />
+						<f:selectItem itemLabel="Email" itemValue="Email" />
+						<f:selectItem itemLabel="ALL" itemValue="ALL" />
+						<f:selectItem itemLabel="fillter" itemValue="fillter" />
+					</p:selectOneMenu>
 
-				<p:outputLabel for="onemenu4" value="Column Search" />
-				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
-					<f:selectItem itemLabel="Village" itemValue="Village" />
-					<f:selectItem itemLabel="Email" itemValue="Email" />
-					<f:selectItem itemLabel="ALL" itemValue="ALL" />
-					<f:selectItem itemLabel="fillter" itemValue="fillter" />
-				</p:selectOneMenu>
+					<p:commandButton id="buttonSearch" value="Search start"
+						action="#{controllerStudent. getStudents()}" update="form">
+						<f:ajax execute="buttonSearch" render="outResult" />
+					</p:commandButton>
+					<p:commandButton value="Reset"
+						action="#{controllerStudent.Reset()}" update="form" />
+					<h:outputText id="outResult"
+						value="Results : Found #{controllerStudent.students.size()}">
 
-				<p:commandButton id="buttonSearch" value="Search start"
-					action="#{controllerStudent. getStudents()}" update="form">
-					<f:ajax execute="buttonSearch" render="outResult" />
-				</p:commandButton>
-				<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
-					update="form" />
-				<h:outputText id="outResult"
-					value="Results : Found #{controllerStudent.students.size()}" >
-
-				</h:outputText>
-			</h:panelGrid>
-		
-		</p:panel>
+					</h:outputText>
+				</p:dialog>
+				
+				
 
 	</h:form>
+	<h:form id="searchFillter">
+		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40">
+								
+						<p:outputLabel for="onemenu8" value="Value Age" />
+					<p:selectOneMenu id="onemenu8" value="#{controllerStudent.valueAgeFillter}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItem itemLabel="+" itemValue="cong" />
+						<f:selectItem itemLabel="-" itemValue="tru" />
+					</p:selectOneMenu>
+					
+						<p:outputLabel for="txt4" value="Age" />
+					<p:inputText id="txt4" value="#{controllerStudent.ageStudentFillter}" 
+						required="true" label="Age Fillter"></p:inputText> 
+					
+						
+						<p:outputLabel for="txt5" value="Name" />
+					<p:inputText id="txt5" value="#{controllerStudent.nameStudentFillter}"
+						required="true" label="Name Fillter"></p:inputText>
+						
+						<p:outputLabel for="txt6" value="Village" />
+					<p:inputText id="txt6" value="#{controllerStudent.villageStudentFillter}"
+						required="true" label="Village Fillter"></p:inputText>
+						
+						<p:outputLabel for="txt7" value="Email" />
+					<p:inputText id="txt7" value="#{controllerStudent.emailStudentFillter}"
+						required="true" label="Email Fillter"></p:inputText>
+
+					<p:commandButton id="buttonSearch2" value="Search start"
+						action="#{controllerStudent. getStudents()}" update="searchFillter">
+						<f:ajax execute="buttonSearch2" render="outResult1" />
+					</p:commandButton>
+					<p:commandButton value="Reset"
+						action="#{controllerStudent.Reset()}" update="searchFillter" />
+					<h:outputText id="outResult1"
+						value="Results : Found #{controllerStudent.students.size()}">
+
+					</h:outputText>
+				</p:dialog>
+	</h:form>
 	<h:form id="form">
-		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}" 
+		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
 			paginator="true" rows="15" style="margin-bottom:20px">
 
 
 			<f:facet name="header">
-				<p:commandButton value="AddStudent" 
+				<p:commandButton value="AddStudent"
 					style="margin-right:20px;float:left"
-					styleClass="ui-priority-primary" action="#{controllerStudent.viewAddStudent()}" />
+					styleClass="ui-priority-primary"
+					action="#{controllerStudent.viewAddStudent()}" />
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
 					<f:selectItem itemLabel="Select One" itemValue="" />
@@ -131,21 +174,21 @@
 				</f:facet>
 				<h:outputText value="#{list.note}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Agv" />
 				</f:facet>
 				<h:outputText value="#{controllerStudent.Avg(list.id)}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Birth Day" />
 				</f:facet>
 				<h:outputText value="#{list.birthDay}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Pass/Failed" />

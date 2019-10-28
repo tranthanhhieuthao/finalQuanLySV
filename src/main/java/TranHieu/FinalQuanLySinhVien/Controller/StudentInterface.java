@@ -22,6 +22,7 @@ public interface StudentInterface {
 	
 	public List<Student> searchByName(List<Student> list,String name,String column);
 	
+	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,int ageStudent,String valueAge);
 
 
 }
