@@ -84,11 +84,11 @@
 						required="true" label="Email Fillter"></p:inputText>
 
 					<p:commandButton id="buttonSearch2" value="Search start"
-						action="#{controllerStudent. getStudents()}" update="searchFillter">
+						action="#{controllerStudent. getStudents()}" update="form">
 						<f:ajax execute="buttonSearch2" render="outResult1" />
 					</p:commandButton>
 					<p:commandButton value="Reset"
-						action="#{controllerStudent.Reset()}" update="searchFillter" />
+						action="#{controllerStudent.Reset()}" update="form" />
 					<h:outputText id="outResult1"
 						value="Results : Found #{controllerStudent.students.size()}">
 
