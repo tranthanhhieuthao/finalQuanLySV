@@ -67,21 +67,21 @@ public class Student {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "class_id") })
-	private List<ClassStudent> studentClass = new ArrayList<ClassStudent>();
+	private Set<ClassStudent> studentClass = new HashSet<ClassStudent>();
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
-	private List<Score> listScore = new ArrayList<Score>();
+	private Set<Score> listScore = new HashSet<Score>();
 
 
 	public int getId() {
 		return id;
 	}
 
-	public List<Score> getListScore() {
+	public Set<Score> getListScore() {
 		return listScore;
 	}
 
-	public void setListScore(List<Score> listScore) {
+	public void setListScore(Set<Score> listScore) {
 		this.listScore = listScore;
 	}
 
@@ -137,11 +137,11 @@ public class Student {
 		this.note = note;
 	}
 
-	public List<ClassStudent> getStudentClass() {
+	public Set<ClassStudent> getStudentClass() {
 		return studentClass;
 	}
 
-	public void setStudentClass(List<ClassStudent> studentClass) {
+	public void setStudentClass(Set<ClassStudent> studentClass) {
 		this.studentClass = studentClass;
 	}
 

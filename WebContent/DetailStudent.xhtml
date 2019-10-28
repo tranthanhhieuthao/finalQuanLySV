@@ -73,7 +73,7 @@
 					<h:outputText value="Class" />
 				</f:facet>
 
-					<ui:repeat var="listClass" value="#{list.studentClass}">
+					<ui:repeat var="listClass" value="#{list.studentClass.toArray()}">
 						<div>
 							 <h:outputText value="#{listClass.nameClass}" /> 
 							<h:outputText value=" :  #{listClass.note}" />
@@ -86,7 +86,7 @@
 					<h:outputText value="Course" />
 				</f:facet>
 
-					<ui:repeat var="score" value="#{list.listScore}">
+					<ui:repeat var="score" value="#{list.listScore.toArray()}">
 						<div>
 							 
 					 <h:outputText value="#{score.course.nameCourse}_ " /> 

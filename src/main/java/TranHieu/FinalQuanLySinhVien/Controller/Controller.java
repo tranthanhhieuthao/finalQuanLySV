@@ -2,7 +2,9 @@ package TranHieu.FinalQuanLySinhVien.Controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
+import TranHieu.FinalQuanLySinhVien.BO.Score;
 
 @ManagedBean(name = "controllerStudent", eager = true)
 @SessionScoped
@@ -186,9 +189,9 @@ public class Controller implements Serializable {
 		float sum =0;
 		float sumCoefficient=0;
 		student =studentService.findStudentById(id);
-		for(int i=0;i <student.getListScore().size();i++) {
-		 sum += student.getListScore().get(i).getScoreStudent()*student.getListScore().get(i).getCourse().getCoefficient();
-		 sumCoefficient +=student.getListScore().get(i).getCourse().getCoefficient();
+		for(Score list : student.getListScore()) {
+		 sum += list.getScoreStudent()*list.getCourse().getCoefficient();
+		 sumCoefficient +=list.getCourse().getCoefficient();
 		}
 		avg =((float)sum/sumCoefficient) ;
 		student.setAvgStudent((float)avg) ;
