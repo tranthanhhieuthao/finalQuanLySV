@@ -27,7 +27,6 @@ public class Controller implements Serializable {
 	private String sort ;
 	private String value ;
 	private String column;
-	private String valueSearch;
 	private float avg =0 ;
 
 	
@@ -92,17 +91,6 @@ public class Controller implements Serializable {
 		this.column = column;
 	}
 
-
-	public String getValueSearch() {
-		return valueSearch;
-	}
-
-
-	public void setValueSearch(String valueSearch) {
-		this.valueSearch = valueSearch;
-	}
-
-
 	public void setListClass(List<Class> listClass) {
 		this.listClass = listClass;
 	}
@@ -115,7 +103,7 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		if(nameSearch != null) students = studentService.searchByName(students, nameSearch,valueSearch,column);
+		if(nameSearch != null) students = studentService.searchByName(students, nameSearch,column);
 		else if(sort != null) students = studentService.sortBy(students, sort,value);
 		else students = studentService.listStudent();
 		return students;

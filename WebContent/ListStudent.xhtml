@@ -17,6 +17,7 @@
 		  <ui:include src="/Header.xhtml" />
 		</ui:insert>
 	    </div>
+	    
 	<h2>List Student</h2>
 	<h:form>
 		<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
@@ -27,21 +28,14 @@
 					required="true" label="nameSearch"></p:inputText>
 
 
-				<p:outputLabel for="onemenu3" value="Type Search" />
-				<p:selectOneMenu id="onemenu3"
-					value="#{controllerStudent.valueSearch}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItem itemLabel="WORD" itemValue="WORD" />
-					<f:selectItem itemLabel="ALL" itemValue="ALL" />
-					<f:selectItem itemLabel="fillter" itemValue="fillter" />
-				</p:selectOneMenu>
-
 				<p:outputLabel for="onemenu4" value="Column Search" />
 				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
 					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
 					<f:selectItem itemLabel="Village" itemValue="Village" />
 					<f:selectItem itemLabel="Email" itemValue="Email" />
+					<f:selectItem itemLabel="ALL" itemValue="ALL" />
+					<f:selectItem itemLabel="fillter" itemValue="fillter" />
 				</p:selectOneMenu>
 
 				<p:commandButton id="buttonSearch" value="Search start"
@@ -60,13 +54,13 @@
 
 	</h:form>
 	<h:form id="form">
-		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}" 
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
 			paginator="true" rows="15" style="margin-bottom:20px">
 
 
 			<f:facet name="header">
-				<p:commandButton value="AddStudent"
+				<p:commandButton value="AddStudent" 
 					style="margin-right:20px;float:left"
 					styleClass="ui-priority-primary" action="#{controllerStudent.viewAddStudent()}" />
 				<p:outputLabel for="onemenu" value="Sort By" />
