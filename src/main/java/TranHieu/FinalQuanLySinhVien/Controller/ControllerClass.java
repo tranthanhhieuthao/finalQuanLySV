@@ -1,12 +1,18 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+
+
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
+import TranHieu.FinalQuanLySinhVien.BO.Student;
+
 
 @ManagedBean(name="controllerClass")
 @SessionScoped
@@ -18,8 +24,33 @@ public class ControllerClass {
 	@ManagedProperty(value ="#{classBean}")
 	private ClassStudent classStudentBean;
 	
+	@ManagedProperty(value = "#{studentService}")
+	private StudentService studentService;
+	
 	private List<ClassStudent> listClassStudent;
+	
+	private Student studentInClass;
+	
+	private List<Student> students ;
+	
+	public List<Student> getStudents() {
+		students = studentService.listStudent();
+		return students;
+	}
+	
 
+
+	public void setStudentService(StudentService studentService) {
+		this.studentService = studentService;
+	}
+
+	public Student getStudent() {
+		return studentInClass;
+	}
+
+	public void setStudent(Student studentInClass) {
+		this.studentInClass = studentInClass;
+	}
 
 	public ControllerClass() {
 		
@@ -49,6 +80,27 @@ public class ControllerClass {
 
 	public ClassStudent getClassStudentBean() {
 		return classStudentBean;
+	}
+	
+//	public String addStudent() {
+//		Set<Student> student_class = new HashSet<Student>();
+//		student_class.add(studentInClass);
+//		classStudentBean.setClassStudent(student_class );
+//		return "ListClass";
+//	}
+	
+	public String viewAddStudent(int id) {
+		classStudentBean = classService.findClassStudentById(id);
+		return"viewAddStudentOnClass";
+	}
+	
+	public String addNowStudent(int id) {
+//		Set<Student> student_class = new HashSet<Student>();
+//		studentInClass =studentService.findStudentById(id);
+//		student_class.add(studentService.findStudentById(id));
+		classStudentBean.getClassStudent().add(studentService.findStudentById(id));
+		System.out.println("thanh cong");
+		return "ListClass?faces-redirect=true";
 	}
 
 
