@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import TranHieu.FinalQuanLySinhVien.BO.Course;
+import TranHieu.FinalQuanLySinhVien.BO.Score;
 
 @ManagedBean(name ="controllerCourse")
 @SessionScoped
@@ -51,5 +52,6 @@ public class ControllerCourse {
 		courseBean = courseService.findCourseStudentById(id);
 		return "StudentLearnCourse?faces-redirect=true";
 	}
+	
 
 }
