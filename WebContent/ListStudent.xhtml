@@ -108,15 +108,13 @@
 					action="#{controllerStudent.viewAddStudent()}" />
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItem itemLabel="Age" itemValue="Age" />
-					<f:selectItem itemLabel="Id" itemValue="Id" />
+				<f:selectItem itemLabel="Id" itemValue="Id" />
+					<f:selectItem itemLabel="Age" itemValue="Age" />				
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
 				</p:selectOneMenu>
 
 				<p:outputLabel for="onemenu1" value="increase/reduction" />
 				<p:selectOneMenu id="onemenu1" value="#{controllerStudent.value}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
 					<f:selectItem itemLabel="ASC" itemValue="ASC" />
 					<f:selectItem itemLabel="DESC" itemValue="DESC" />
 				</p:selectOneMenu>
