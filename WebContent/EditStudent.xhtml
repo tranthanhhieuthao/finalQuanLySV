@@ -23,8 +23,13 @@
 	</h:form>
 	<hr />
 
-	<h:form>
+	<h:form id="editStudent">
 		<table>
+		
+		<tr>
+			<td><h3>Id</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.id}" /></td>
+		</tr>
 
 			<tr>
 			<td><h3>Name</h3></td>
@@ -61,11 +66,22 @@
 			<td><h3>Note</h3></td>
 			<td><p:inputText value="#{controllerStudent.student.note}" /></td>
 		</tr>
+		
+		<tr>
+			<td><h3>Birth Day</h3></td>
+			<td><p:calendar value="#{controllerStudent.student.birthDay}"> </p:calendar></td>
+		</tr>
+		
+		<tr>
+			<td><h3>Avg</h3></td>
+			<td><p:inputText value="#{controllerStudent.student.avgStudent}"> </p:inputText></td>
+		</tr>
+		
 
 			<tr>
 				<td></td>
 				<td><p:commandButton value="Edit Student"
-						action="#{controllerStudent.EditStudent()}" /></td>
+						action="#{controllerStudent.EditStudent()}" update="editStudent" /></td>
 			</tr>
 		</table>
 	</h:form>

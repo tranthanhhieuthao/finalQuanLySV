@@ -212,15 +212,15 @@ public class Controller implements Serializable {
 	
 
 	public String EditStudent() {
+		System.out.println("da chay vao day");
 		studentService.EditStudent(student);
-		student = new Student();
+		System.out.println("da edit oke");
 		return "ListStudent";
 		
 	}
 	
 	public String viewEditStudent(int id) {
 		student =studentService.findStudentById(id);
-		getStudents();
 		return "EditStudent";
 		
 	}

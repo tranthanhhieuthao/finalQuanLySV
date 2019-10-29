@@ -130,10 +130,10 @@
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				<h:outputText value="#{list.id}" />
+				<h:outputText value="#{list.id}" update="form"/>
 			</p:column>
 
-			<p:column>
+			<p:column>	
 				<f:facet name="header">
 					<h:outputText value="nameStudent" />
 				</f:facet>
@@ -186,7 +186,8 @@
 				<f:facet name="header">
 					<h:outputText value="Birth Day" />
 				</f:facet>
-				<h:outputText value="#{list.birthDay}" />
+				<h:outputText value="#{list.birthDay}" >
+				<f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
 			</p:column>
 
 			<p:column>
