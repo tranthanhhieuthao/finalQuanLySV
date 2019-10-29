@@ -18,6 +18,19 @@ public class ControllerCourse {
 	
 	@ManagedProperty(value="#{courseService}")
 	private CourseService courseService;
+	
+	@ManagedProperty(value ="#{courseBean}")
+	private Course courseBean;
+	
+	
+
+	public Course getCourseBean() {
+		return courseBean;
+	}
+
+	public void setCourseBean(Course courseBean) {
+		this.courseBean = courseBean;
+	}
 
 	public void setCourseService(CourseService courseService) {
 		this.courseService = courseService;
@@ -34,6 +47,9 @@ public class ControllerCourse {
 		this.listCourseStudent = listCourseStudent;
 	}
 	
-	
+	public String findStudentLearnCourse(int id) {
+		courseBean = courseService.findCourseStudentById(id);
+		return "StudentLearnCourse?faces-redirect=true";
+	}
 
 }
