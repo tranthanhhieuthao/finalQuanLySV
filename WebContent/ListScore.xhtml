@@ -75,6 +75,14 @@
 					styleClass="ui-priority-primary"
 					action="#{controllerClass.viewAddStudent(list.id)}" />
 			</p:column>
+			
+			<p:column>
+				<f:facet name="header">Edit Score</f:facet>
+
+				<p:commandButton value="Edit Score" style="margin-right:20px;"
+					styleClass="ui-priority-primary"
+					action="#{controllerScore.viewEditScore(list.id)}" />
+			</p:column>
 
 			<p:column>
 				<f:facet name="header">Delete Score</f:facet>

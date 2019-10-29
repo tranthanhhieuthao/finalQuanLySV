@@ -31,6 +31,11 @@ public class ControllerScore {
 	public void setScoreBean(Score scoreBean) {
 		this.scoreBean = scoreBean;
 	}
+	
+
+	public Score getScoreBean() {
+		return scoreBean;
+	}
 
 	public List<Score> getListScoreStudent() {
 		return scoreService.listScoreStudent();
@@ -38,6 +43,27 @@ public class ControllerScore {
 
 	public void setListScoreStudent(List<Score> listScoreStudent) {
 		this.listScoreStudent = listScoreStudent;
+	}
+	
+	public String EditScore() {
+		scoreService.update(scoreBean);
+		return "ListScore";
+		
+	}
+	
+	public String viewEditScore(int id) {
+		scoreBean =scoreService.findScoreOfStudentById(id);
+		return "EditScore";
+		
+	}
+	
+	
+	public String MarkScoreForStudent() {
+		scoreBean.setCourse(null);//hien 1 list course roi pick theo id
+		scoreBean.setScoreStudent(0);
+		scoreBean.setStudent(null);//hien 1 list student roi pick theo id
+		scoreService.save(scoreBean);
+		return null;
 	}
 	
 	

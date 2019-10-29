@@ -1,52 +1,55 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>Quan ly Sinh Vien</title>
+<div id="header">
 
-</h:head>
-<h:body>
-<h2>View Search</h2>
-<h:form>
-	<p:panel id="panel" header="Search Form" style="margin-bottom:10px;">
-
-			<h:panelGrid columns="6" cellpadding="5">
-				<p:outputLabel for="txt1" value="Search" />
-				<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
-					required="true" label="nameSearch"></p:inputText>
-
-
-				<p:outputLabel for="onemenu3" value="Type Search" />
-				<p:selectOneMenu id="onemenu3"
-					value="#{controllerStudent.valueSearch}">
-					<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItem itemLabel="WORD" itemValue="WORD" />
-					<f:selectItem itemLabel="ALL" itemValue="ALL" />
-					<f:selectItem itemLabel="fillter" itemValue="fillter" />
-				</p:selectOneMenu>
-
-				<p:outputLabel for="onemenu4" value="Column Search" />
-				<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-					<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
-					<f:selectItem itemLabel="Village" itemValue="Village" />
-					<f:selectItem itemLabel="Email" itemValue="Email" />
-				</p:selectOneMenu>
-
-				<p:commandButton value="Search start"
-					action="#{controllerStudent. getStudents()}" update="form" />
-				<p:commandButton value="Reset" action="#{controllerStudent.Reset()}"
-					update="form" />
-
-			</h:panelGrid>
-		</p:panel>
-
-	</h:form>
-	</h:body>
-</html>
+<div class="top-head cb">
+    <div class="container">
+        <a id="right-menu" class="active iconmenu" href="#sidr-right"></a>
+        <div id="logo" class="logo">
+            <div id="Header1_logopane">
+                <div><a href="#" title=""><img class="img-responsive" src="/Images/banner_left.png"> </a></div>
+            </div>
+        </div>
+        <div class="bg-menu-top" id="menuright">
+            <div class="col-xs-12 hidden visible-md visible-lg visible-xl">
+                <ul class="menu">
+                    
+<div>
+<div id="Header1_LoginPanel2_pnlLogin" class="cssLogin">
+	
+    <a id="Header1_LoginPanel2_lnkLogin" href="login.aspx">Đăng nhập</a>
+    
+</div>
+    
+    </div>       
+			    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+	<div>
+        <div class="navigation" id="navigation" style="width: 100%">                
+          <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                  </button>      
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav">
+                        <li><a href="/default.aspx" id="A3"><i class="glyphicon glyphicon-home" style="padding-right:5px"></i>TRANG CHỦ</a></li>
+                        <li><a href="/ChuongTrinhDaoTaoToanTruong.aspx" id="A4"><i class="glyphicon glyphicon-book" style="padding-right:5px"></i><span>CHƯƠNG TRÌNH ĐÀOTẠO</span></a></li>
+                        <li><a href="/LichDangKyHoc.aspx" id="A5"><span><i class="glyphicon glyphicon-calendar" style="padding-right:5px"></i>LỊCH ĐĂNG KÝ HỌC</span></a></li>
+                        <li><a href="VanBangTotNghiepSearch.aspx" id="A6"><i class="glyphicon glyphicon-search" style="padding-right:5px"></i><span>TRA CỨU VĂN BẰNG</span></a></li>
+                        <li><a href="/help/HuongDanSuDungDangKyHoc.htm" target="_blank" id="A7"><i class="glyphicon glyphicon-question-sign" style="padding-right:5px"></i><span>HƯỚNG DẪN ĐĂNG KÝ</span></a></li>       
+                        <li><a href="/Forum/Forumhome.aspx" id="A8"><i class="glyphicon glyphicon-user" style="padding-right:5px"></i><span>DIỄN ĐÀN</span></a></li>	
+                  </ul>    
+                </div>
+              </div>
+            </nav>
+        </div>
+	</div>
+</div>
+</div>
