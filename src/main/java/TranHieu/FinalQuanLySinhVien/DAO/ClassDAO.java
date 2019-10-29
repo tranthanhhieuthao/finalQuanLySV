@@ -2,6 +2,7 @@ package TranHieu.FinalQuanLySinhVien.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,6 +22,36 @@ SessionFactory sessionFactory = new Configuration().configure().buildSessionFact
 	 
  }
 
+ 
+	public void save(ClassStudent classStudent) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			session.save(classStudent);
+			session.getTransaction().commit();
+			System.out.println("insert success!!");
+		} catch (RuntimeException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.close();
+		}
+	}
+	
+	public void Delete(int id) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			ClassStudent classRemove = this.findById(id);
+			session.delete(classRemove);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
 
 		public ClassStudent findById(int id) {
 			Session session = sessionFactory.openSession();

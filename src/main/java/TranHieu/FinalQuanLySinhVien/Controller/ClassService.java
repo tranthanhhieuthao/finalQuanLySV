@@ -1,6 +1,7 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -32,6 +33,14 @@ public class ClassService implements ClassInterface{
 	@Override
 	public ClassStudent findClassStudentById(int id) {
 		return classDAO.findById(id);
+	}
+	
+	public void save(ClassStudent classStudent) {
+		classDAO.save(classStudent);
+	}
+	
+	public void Delete(int id) {
+		classDAO.Delete(id);
 	}
 
 }

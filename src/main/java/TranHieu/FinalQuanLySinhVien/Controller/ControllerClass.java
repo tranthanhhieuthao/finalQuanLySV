@@ -8,37 +8,32 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-
-
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 
-
-@ManagedBean(name="controllerClass")
+@ManagedBean(name = "controllerClass")
 @SessionScoped
 public class ControllerClass {
-	
-	@ManagedProperty(value ="#{classService}")
+
+	@ManagedProperty(value = "#{classService}")
 	private ClassService classService;
-	
-	@ManagedProperty(value ="#{classBean}")
+
+	@ManagedProperty(value = "#{classBean}")
 	private ClassStudent classStudentBean;
-	
+
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
-	
+
 	private List<ClassStudent> listClassStudent;
-	
+
 	private Student studentInClass;
-	
-	private List<Student> students ;
-	
+
+	private List<Student> students;
+
 	public List<Student> getStudents() {
 		students = studentService.listStudent();
 		return students;
 	}
-	
-
 
 	public void setStudentService(StudentService studentService) {
 		this.studentService = studentService;
@@ -53,7 +48,7 @@ public class ControllerClass {
 	}
 
 	public ControllerClass() {
-		
+
 	}
 
 	public void setClassService(ClassService classService) {
@@ -61,16 +56,19 @@ public class ControllerClass {
 	}
 
 	public List<ClassStudent> getListClassStudent() {
-		listClassStudent =classService.listClassStudent();
+		for (Student a : classStudentBean.getClassStudent()) {
+			System.out.println("truoc khi add method::" + a.getNameStudent());
+		}
+		listClassStudent = classService.listClassStudent();
 		return listClassStudent;
 	}
 
 	public void setListClassStudent(List<ClassStudent> listClassStudent) {
 		this.listClassStudent = listClassStudent;
 	}
-	
+
 	public String findClassStudentById(int id) {
-		classStudentBean =classService.findClassStudentById(id);
+		classStudentBean = classService.findClassStudentById(id);
 		return "StudentOfClass";
 	}
 
@@ -81,29 +79,28 @@ public class ControllerClass {
 	public ClassStudent getClassStudentBean() {
 		return classStudentBean;
 	}
-	
-//	public String addStudent() {
-//		Set<Student> student_class = new HashSet<Student>();
-//		student_class.add(studentInClass);
-//		classStudentBean.setClassStudent(student_class );
-//		return "ListClass";
-//	}
-	
+
 	public String viewAddStudent(int id) {
 		classStudentBean = classService.findClassStudentById(id);
-		return"viewAddStudentOnClass";
+		classService.Delete(id);
+		return "viewAddStudentOnClass";
 	}
-	
+
 	public String addNowStudent(int id) {
-//		Set<Student> student_class = new HashSet<Student>();
-//		studentInClass =studentService.findStudentById(id);
-//		student_class.add(studentService.findStudentById(id));
+		for (Student a : classStudentBean.getClassStudent()) {
+			System.out.println("truoc khi add" + a.getNameStudent());
+		}
 		classStudentBean.getClassStudent().add(studentService.findStudentById(id));
-		System.out.println("thanh cong");
+		classService.save(classStudentBean);
+		for (Student a : classStudentBean.getClassStudent()) {
+			System.out.println(a.getNameStudent());
+		}
 		return "ListClass?faces-redirect=true";
 	}
 
+	public String Delete(int id) {
+		classService.Delete(id);
+		return "ListClass";
+	}
 
-
-	
 }

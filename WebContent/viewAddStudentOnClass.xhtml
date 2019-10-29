@@ -77,10 +77,10 @@
 
 			<p:column>
 				<f:facet name="header">Add</f:facet>
-				<p:commandButton id="edit" value="Edit" style="margin-right:20px;"
+				<p:commandButton id="add" value="Add" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
-					action="#{controllerClass.addNowStudent(list.id)}">
-					<!-- <f:ajax execute="edit" render="tbl" /> -->
+					action="#{controllerClass.addNowStudent(list.id)}" >
+	<!-- 		<f:ajax execute="add" render="tbl" />  -->
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
