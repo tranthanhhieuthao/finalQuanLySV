@@ -25,12 +25,6 @@
 			paginator="true" rows="20" style="margin-bottom:20px">
 
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Id" />
-				</f:facet>
-				<h:outputText value="#{list.id}" />
-			</p:column>
 
 			<p:column>
 				<f:facet name="header">
@@ -63,11 +57,11 @@
 			</p:column>
 
 			<p:column>
-				<f:facet name="header">Edit Class</f:facet>
-				<p:commandButton id="edit" value="Edit" style="margin-right:20px;"
+				<f:facet name="header">Delete Class</f:facet>
+				<p:commandButton id="delete" value="Delete" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
-					action="#{controllerStudent.viewEditStudent(list.id)}">
-					<f:ajax execute="edit" render="tbl" />
+					action="#{controllerStudent.Delete(list.id)}">
+					<f:ajax execute="delete" render="tbl" />
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>

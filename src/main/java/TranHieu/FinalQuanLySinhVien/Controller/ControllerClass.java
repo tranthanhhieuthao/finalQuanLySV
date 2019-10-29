@@ -56,9 +56,6 @@ public class ControllerClass {
 	}
 
 	public List<ClassStudent> getListClassStudent() {
-		for (Student a : classStudentBean.getClassStudent()) {
-			System.out.println("truoc khi add method::" + a.getNameStudent());
-		}
 		listClassStudent = classService.listClassStudent();
 		return listClassStudent;
 	}
@@ -82,19 +79,12 @@ public class ControllerClass {
 
 	public String viewAddStudent(int id) {
 		classStudentBean = classService.findClassStudentById(id);
-		classService.Delete(id);
 		return "viewAddStudentOnClass";
 	}
 
 	public String addNowStudent(int id) {
-		for (Student a : classStudentBean.getClassStudent()) {
-			System.out.println("truoc khi add" + a.getNameStudent());
-		}
 		classStudentBean.getClassStudent().add(studentService.findStudentById(id));
-		classService.save(classStudentBean);
-		for (Student a : classStudentBean.getClassStudent()) {
-			System.out.println(a.getNameStudent());
-		}
+		classService.update(classStudentBean);
 		return "ListClass?faces-redirect=true";
 	}
 

@@ -42,5 +42,9 @@ public class ClassService implements ClassInterface{
 	public void Delete(int id) {
 		classDAO.Delete(id);
 	}
+	
+	public void update(ClassStudent classUpdate) {
+		classDAO.update(classUpdate);
+	}
 
 }

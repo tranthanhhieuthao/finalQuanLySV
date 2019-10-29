@@ -14,5 +14,7 @@ public interface ClassInterface {
 	public void save(ClassStudent classStudent);
 	
 	public void Delete(int id);
+	
+	public void update(ClassStudent classUpdate);
 
 }

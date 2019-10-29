@@ -39,6 +39,20 @@ SessionFactory sessionFactory = new Configuration().configure().buildSessionFact
 		}
 	}
 	
+	public void update(ClassStudent classUpdate) {
+		Session session = sessionFactory.openSession();
+		try {
+			session.beginTransaction();
+			session.update(classUpdate);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
 	public void Delete(int id) {
 		Session session = sessionFactory.openSession();
 		try {
