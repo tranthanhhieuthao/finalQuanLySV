@@ -12,94 +12,93 @@
 
 </h:head>
 <h:body>
- <div id="header" style="background-color: aqua;">
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header" style="background-color: aqua;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
+	</div>
 	<h2>Detail Student</h2>
 
 	<h:form>
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}" />
 	</h:form>
 	<hr />
-	<h:form>
-		<p:dataTable id="tbl" var="list" value="#{controllerStudent.student}"
-			rows="10" style="margin-bottom:20px">
+	<p:panelGrid columns="3">
+		<h:form>
+			<ui:repeat var="list" value="#{controllerStudent.student}">
+				<p:panelGrid columns="2">
+					<f:facet name="header">
+						<h:outputText value="Student" />
+					</f:facet>
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Name" />
-				</f:facet>
-				<h:outputText value="#{list.nameStudent}" />
-			</p:column>
+					<h:outputText value="#{list.nameStudent}" />
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Age" />
-				</f:facet>
-				<h:outputText value="#{list.age}" />
-			</p:column>
+					<h:outputText value="#{list.age}" />
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Village" />
-				</f:facet>
-				<h:outputText value="#{list.village}" />
-			</p:column>
+					<h:outputText value="#{list.village}" />
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Phone" />
-				</f:facet>
-				<h:outputText value="#{list.phone}" />
-			</p:column>
+					<h:outputText value="#{list.phone}" />
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Email" />
-				</f:facet>
-				<h:outputText value="#{list.email}" />
-			</p:column>
+					<h:outputText value="#{list.email}" />
 
-			<p:column>
-				<f:facet name="header">
 					<h:outputText value="Note" />
-				</f:facet>
-				<h:outputText value="#{list.note}" />
-			</p:column>
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Class" />
-				</f:facet>
+					<h:outputText value="#{list.note}" />
 
-					<ui:repeat var="listClass" value="#{list.studentClass.toArray()}">
-						<div>
-							 <h:outputText value="#{listClass.nameClass}" /> 
-							<h:outputText value=" :  #{listClass.note}" />
-						</div>
-					</ui:repeat>
-			</p:column>
-			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Course" />
-				</f:facet>
-
-					<ui:repeat var="score" value="#{list.listScore.toArray()}">
-						<div>
-							 
-					 <h:outputText value="#{score.course.nameCourse}_ " /> 
-					 <h:outputText value="he so : #{score.course.coefficient} _" />
-							 <h:outputText value="diem:#{score.scoreStudent} " /> 
-							
-						</div>
-					</ui:repeat>
+				</p:panelGrid>
+			</ui:repeat>
+		</h:form>
 
 
-			</p:column>
-		</p:dataTable>
-	</h:form>
+		<h:form>
+			<ui:repeat var="list" value="#{controllerStudent.student}">
+				<ui:repeat var="listClass" value="#{list.studentClass.toArray()}">
+					<p:panelGrid columns="2">
+						<f:facet name="header">
+							<h:outputText value="Class" />
+						</f:facet>
+
+						<h:outputText value="Name Class" />
+						<h:outputText value="#{listClass.nameClass}" />
+
+						<h:outputText value="Note" />
+						<h:outputText value="#{listClass.note}" />
+
+
+					</p:panelGrid>
+				</ui:repeat>
+			</ui:repeat>
+		</h:form>
+
+
+		<h:form>
+			<ui:repeat var="list" value="#{controllerStudent.student}">
+				<ui:repeat var="score" value="#{list.listScore.toArray()}">
+					<p:panelGrid columns="2">
+						<f:facet name="header">
+							<h:outputText value="Course" />
+						</f:facet>
+
+						<h:outputText value="Name" />
+						<h:outputText value="#{score.course.nameCourse}" />
+
+						<h:outputText value="coefficient" />
+						<h:outputText value="#{score.course.coefficient}" />
+
+						<h:outputText value="Score" />
+						<h:outputText value="#{score.scoreStudent}" />
+
+					</p:panelGrid>
+				</ui:repeat>
+			</ui:repeat>
+		</h:form>
+	</p:panelGrid>
+
+
 
 
 </h:body>
