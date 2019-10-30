@@ -13,7 +13,7 @@ import javax.persistence.*;
 @ManagedBean(name="classBean")
 @SessionScoped
 @Entity
-@Table(name = "class")
+@Table(name = "classStudent")
 public class ClassStudent {
 
 	@Id
@@ -32,7 +32,6 @@ public class ClassStudent {
 		
 	}
 	
-
 
 	public ClassStudent(String nameClass, String note) {
 		this.nameClass = nameClass;
@@ -53,10 +52,13 @@ public class ClassStudent {
 
 
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "class_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "student_id") })
-	private Set<Student> classStudent = new HashSet<Student>();
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "class_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "student_id") })
+//	private Set<Student> classStudent = new HashSet<Student>();
+	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "classStudent")
+	private Set<Score> scoreStudent ;
 
 	public int getId() {
 		return id;
@@ -82,12 +84,25 @@ public class ClassStudent {
 		this.note = note;
 	}
 
-	public Set<Student> getClassStudent() {
-		return classStudent;
+//	public Set<Student> getClassStudent() {
+//		return classStudent;
+//	}
+//
+//	public void setClassStudent(Set<Student> classStudent) {
+//		this.classStudent = classStudent;
+//	}
+
+
+
+	public Set<Score> getScoreStudent() {
+		return scoreStudent;
 	}
 
-	public void setClassStudent(Set<Student> classStudent) {
-		this.classStudent = classStudent;
+
+
+	public void setScoreStudent(Set<Score> scoreStudent) {
+		this.scoreStudent = scoreStudent;
 	}
+	
 
 }

@@ -53,7 +53,6 @@ public class Student {
 			
 	public Student( String nameStudent, int age, String village, int phone, String email, String note,
 			Date birthDay, float avgStudent) {
-
 		this.nameStudent = nameStudent;
 		this.age = age;
 		this.village = village;
@@ -64,10 +63,10 @@ public class Student {
 		this.avgStudent = avgStudent;
 	}
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "class_id") })
-	private Set<ClassStudent> studentClass = new HashSet<ClassStudent>();
+//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
+//			@JoinColumn(name = "class_id") })
+//	private Set<ClassStudent> studentClass = new HashSet<ClassStudent>();
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
 	private Set<Score> listScore = new HashSet<Score>();
@@ -137,13 +136,13 @@ public class Student {
 		this.note = note;
 	}
 
-	public Set<ClassStudent> getStudentClass() {
-		return studentClass;
-	}
-
-	public void setStudentClass(Set<ClassStudent> studentClass) {
-		this.studentClass = studentClass;
-	}
+//	public Set<ClassStudent> getStudentClass() {
+//		return studentClass;
+//	}
+//
+//	public void setStudentClass(Set<ClassStudent> studentClass) {
+//		this.studentClass = studentClass;
+//	}
 
 	public Date getBirthDay() {
 		return birthDay;

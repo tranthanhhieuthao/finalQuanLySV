@@ -1,5 +1,7 @@
 package TranHieu.FinalQuanLySinhVien.BO;
 
+import java.util.Date;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
@@ -15,6 +17,15 @@ public class Score {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name="timeStart")
+	private Date timeStart;
+	
+	@Column(name="timeEnd")
+	private Date timeEnd;
+	
+	@Column(name="teacher")
+	private String teacher;
+	
 	@Column(name="scoreStudent")
 	private float scoreStudent;
 	
@@ -27,9 +38,47 @@ public class Score {
 	@JoinColumn(name="course1_id",nullable=false)
 	private Course course;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="classStudent_id",nullable=false)
+	private ClassStudent classStudent;
+	
 	public Score() {
 		
 	}
+
+	public Date getTimeStart() {
+		return timeStart;
+	}
+
+	public void setTimeStart(Date timeStart) {
+		this.timeStart = timeStart;
+	}
+
+
+
+	public Date getTimeEnd() {
+		return timeEnd;
+	}
+
+
+
+	public void setTimeEnd(Date timeEnd) {
+		this.timeEnd = timeEnd;
+	}
+
+
+
+	public String getTeacher() {
+		return teacher;
+	}
+
+
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -62,6 +111,15 @@ public class Score {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+
+	public ClassStudent getClassStudent() {
+		return classStudent;
+	}
+
+	public void setClassStudent(ClassStudent classStudent) {
+		this.classStudent = classStudent;
+	}
+	
 	
 	
 	
