@@ -194,30 +194,18 @@
 				</f:facet>
 				<h:outputText value="#{controllerStudent.pass_Failed()}" />
 			</p:column>
-
+			
 			<p:column>
-				<f:facet name="header">Delete</f:facet>
-				<p:commandButton value="Delete" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerStudent.Delete(list.id)}" />
+			<f:facet name="header">
+					<h:outputText value="Action" />
+				</f:facet>
+			<p:splitButton id="Detail" value="Detail" action="#{controllerStudent.DetailStudent(list.id)}"  icon="pi pi-save">
+            <p:menuitem  id="edit" value="Update" action="#{controllerStudent.viewEditStudent(list.id)}"  icon="pi pi-refresh" >
+            <f:ajax execute="edit" render="tbl" /></p:menuitem>
+            <p:menuitem value="Delete" action="#{controllerStudent.Delete(list.id)}" ajax="false" icon="pi pi-times" />
+        </p:splitButton> 
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Detail</f:facet>
-
-				<p:commandButton value="Detail" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerStudent.DetailStudent(list.id)}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Edit</f:facet>
-				<p:commandButton id="edit" value="Edit" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerStudent.viewEditStudent(list.id)}">
-					<f:ajax execute="edit" render="tbl" />
-				</p:commandButton>
-			</p:column>
 		</p:dataTable>
 
 	</h:form>

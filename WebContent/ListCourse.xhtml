@@ -12,27 +12,26 @@
 	<title>Quan ly Sinh Vien</title>
 </h:head>
 <h:body>
- <div id="header" style="background-color: aqua;border-color: black;">
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header" style="background-color: aqua; border-color: black;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
+	</div>
 	<h2>List Course</h2>
 
 	<h:form id="form">
-		<p:dataTable id="tbl" var="list" value="#{controllerCourse.listCourseStudent}"
+		<p:dataTable id="tbl" var="list"
+			value="#{controllerCourse.listCourseStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			paginator="true" rows="20" style="margin-bottom:20px">
-
-
-
+		
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="nameCourse" />
 				</f:facet>
 				<h:outputText value="#{list.nameCourse}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="coefficient" />
@@ -46,12 +45,12 @@
 				</f:facet>
 				<h:outputText value="#{list.note}" />
 			</p:column>
-			
+
 
 			<p:column>
 				<f:facet name="header">Student learn</f:facet>
-				<p:commandButton value="Student learn Course" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
+				<p:commandButton value="Student learn Course"
+					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerCourse.findStudentLearnCourse(list.id)}" />
 			</p:column>
 
@@ -65,8 +64,8 @@
 
 			<p:column>
 				<f:facet name="header">Delete Course</f:facet>
-				<p:commandButton id="delete" value="Delete" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
+				<p:commandButton id="delete" value="Delete"
+					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerStudent.Delete(list.id)}">
 					<f:ajax execute="delete" render="tbl" />
 				</p:commandButton>
