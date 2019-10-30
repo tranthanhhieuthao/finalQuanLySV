@@ -40,6 +40,13 @@
 				<h:outputText value="#{list.note}" />
 			</p:column>
 			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Status Class" />
+				</f:facet>
+				<h:outputText value="#{controllerClass.statusClass(list.id)}" />
+			</p:column>
+			
 
 			<p:column>
 				<f:facet name="header">Student of Class</f:facet>

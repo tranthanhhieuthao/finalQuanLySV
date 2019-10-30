@@ -92,5 +92,13 @@ public class ControllerClass {
 		classService.Delete(id);
 		return "ListClass";
 	}
+	
+	public String statusClass(int id) {
+		int quatity =0;
+		classStudentBean = classService.findClassStudentById(id);
+		quatity = classStudentBean.getClassStudent().size();
+		if(quatity <50) return "Have"+" "+(50-quatity)+" "+"slot";
+		return "Full_"+50;
+	}
 
 }
