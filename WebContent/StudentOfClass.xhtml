@@ -25,48 +25,48 @@
 	<hr />
 	<h:form>
 
-		<p:dataTable id="tbl" var="list" value="#{controllerClass.classStudentBean.classStudent}"
+		<p:dataTable id="tbl" var="list" value="#{controllerClass.classStudentBean.scoreStudent}"
 			rows="20" style="margin-bottom:20px">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name" />
 				</f:facet>
-				<h:outputText value="#{list.nameStudent}" />
+				<h:outputText value="#{list.student.nameStudent}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Age" />
 				</f:facet>
-				<h:outputText value="#{list.age}" />
+				<h:outputText value="#{list.student.age}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Village" />
 				</f:facet>
-				<h:outputText value="#{list.village}" />
+				<h:outputText value="#{list.student.village}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Phone" />
 				</f:facet>
-				<h:outputText value="#{list.phone}" />
+				<h:outputText value="#{list.student.phone}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Email" />
 				</f:facet>
-				<h:outputText value="#{list.email}" />
+				<h:outputText value="#{list.student.email}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Note" />
 				</f:facet>
-				<h:outputText value="#{list.note}" />
+				<h:outputText value="#{list.student.note}" />
 			</p:column>
 		
 			

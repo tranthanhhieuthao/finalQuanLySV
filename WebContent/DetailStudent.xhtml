@@ -54,25 +54,25 @@
 		</h:form>
 
 
-<!-- 		<h:form>
+ 		<h:form>
 			<ui:repeat var="list" value="#{controllerStudent.student}">
-				<ui:repeat var="listClass" value="#{list.studentClass.toArray()}">
+				<ui:repeat var="listClass" value="#{list.listScore.toArray()}">
 					<p:panelGrid columns="2">
 						<f:facet name="header">
 							<h:outputText value="Class" />
 						</f:facet>
 
 						<h:outputText value="Name Class" />
-						<h:outputText value="#{listClass.nameClass}" />
+						<h:outputText value="#{listClass.classStudent.nameClass}" />
 
 						<h:outputText value="Note" />
-						<h:outputText value="#{listClass.note}" />
+						<h:outputText value="#{listClass.classStudent.note}" />
 
 
 					</p:panelGrid>
 				</ui:repeat>
 			</ui:repeat>
-		</h:form> -->
+		</h:form> 
 
 
 		<h:form>
