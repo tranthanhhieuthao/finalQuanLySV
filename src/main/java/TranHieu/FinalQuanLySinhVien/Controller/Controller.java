@@ -135,14 +135,15 @@ public class Controller implements Serializable {
 
 
 	public List<Student> getStudents() {
-		if (nameSearch != null)
-			students = studentService.searchByName(students, nameSearch, column);
-		else if (sort != null)
-			students = studentService.sortBy(students, sort, value);
-		else if (nameStudentFillter != null && nameSearch == null) {
-
+		if ( nameStudentFillter != null && nameSearch == null)
 			students = studentService.searchFillter(students, nameStudentFillter, villageStudentFillter,
 					emailStudentFillter, ageStudentFillter, valueAgeFillter);
+		else if (sort != null)
+			students = studentService.sortBy(students, sort, value);
+		else if (nameSearch != null) {
+
+			
+			students = studentService.searchByName(students, nameSearch, column);
 		} else
 			students = studentService.listStudent();
 		return students;
