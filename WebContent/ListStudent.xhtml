@@ -17,84 +17,108 @@
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
+
 	<h:form>
 
-			
-				<p:commandButton value="Search" type="button"
-					onclick="PF('dlg1').show();" />
-					<p:commandButton value="Search Fillter" type="button"
-					onclick="PF('dlg2').show();" />
-					
-					
-				<p:dialog header="Search" widgetVar="dlg1" minHeight="40">
-					<p:outputLabel for="txt1" value="Search" />
-					<p:inputText id="txt1" value="#{controllerStudent.nameSearch}"
-						required="true" label="nameSearch"></p:inputText>
+		<p:panelGrid columns="2">
+			<p:commandButton value="Search" type="button"
+				onclick="PF('dlg1').show();" />
+			<p:commandButton value="Search Fillter" type="button"
+				onclick="PF('dlg2').show();" />
+		</p:panelGrid>
 
-					<p:outputLabel for="onemenu4" value="Column Search" />
-					<p:selectOneMenu id="onemenu4" value="#{controllerStudent.column}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
-						<f:selectItem itemLabel="Village" itemValue="Village" />
-						<f:selectItem itemLabel="Email" itemValue="Email" />
-						<f:selectItem itemLabel="ALL" itemValue="ALL" />
-						<f:selectItem itemLabel="fillter" itemValue="fillter" />
-					</p:selectOneMenu>
+		<p:dialog header="Search" widgetVar="dlg1" minHeight="40">
+			<table>
+				<tr>
+					<td><p:outputLabel for="txt1" value="Search" /></td>
+					<td><p:inputText id="txt1"
+							value="#{controllerStudent.nameSearch}" required="true"
+							label="nameSearch"></p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:outputLabel for="onemenu4" value="Column Search" /></td>
+					<td><p:selectOneMenu id="onemenu4"
+							value="#{controllerStudent.column}">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
+							<f:selectItem itemLabel="Village" itemValue="Village" />
+							<f:selectItem itemLabel="Email" itemValue="Email" />
+							<f:selectItem itemLabel="ALL" itemValue="ALL" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><p:commandButton id="buttonSearch" value="Search start"
+							action="#{controllerStudent. getStudents()}" update="form">
+							<f:ajax execute="buttonSearch" render="outResult" />
+						</p:commandButton></td>
+					<td><p:commandButton value="Reset"
+							action="#{controllerStudent.Reset()}" update="form" /></td>
+				</tr>
+				<tr>
+					<td><h:outputText id="outResult"
+							value="Results : Found #{controllerStudent.students.size()}">
 
-					<p:commandButton id="buttonSearch" value="Search start"
-						action="#{controllerStudent. getStudents()}" update="form">
-						<f:ajax execute="buttonSearch" render="outResult" />
-					</p:commandButton>
-					<p:commandButton value="Reset"
-						action="#{controllerStudent.Reset()}" update="form" />
-					<h:outputText id="outResult"
-						value="Results : Found #{controllerStudent.students.size()}">
+						</h:outputText></td>
+				</tr>
+			</table>
+		</p:dialog>
 
-					</h:outputText>
-				</p:dialog>
-				
-				
+
 
 	</h:form>
 	<h:form id="searchFillter">
+
 		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40">
-								
-						<p:outputLabel for="onemenu8" value="Value Age" />
-					<p:selectOneMenu id="onemenu8" value="#{controllerStudent.valueAgeFillter}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItem itemLabel="+" itemValue="cong" />
-						<f:selectItem itemLabel="-" itemValue="tru" />
-					</p:selectOneMenu>
-					
-						<p:outputLabel for="txt4" value="Age" />
-					<p:inputText id="txt4" value="#{controllerStudent.ageStudentFillter}" 
-						required="true" label="Age Fillter"></p:inputText> 
-					
-						
-						<p:outputLabel for="txt5" value="Name" />
-					<p:inputText id="txt5" value="#{controllerStudent.nameStudentFillter}"
-						required="true" label="Name Fillter"></p:inputText>
-						
-						<p:outputLabel for="txt6" value="Village" />
-					<p:inputText id="txt6" value="#{controllerStudent.villageStudentFillter}"
-						required="true" label="Village Fillter"></p:inputText>
-						
-						<p:outputLabel for="txt7" value="Email" />
-					<p:inputText id="txt7" value="#{controllerStudent.emailStudentFillter}"
-						required="true" label="Email Fillter"></p:inputText>
+			<table>
+				<tr>
+					<td><p:outputLabel for="onemenu8" value="Value Age" /></td>
+					<td><p:selectOneMenu id="onemenu8"
+							value="#{controllerStudent.valueAgeFillter}">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="+" itemValue="cong" />
+							<f:selectItem itemLabel="-" itemValue="tru" />
+						</p:selectOneMenu></td>
 
-					<p:commandButton id="buttonSearch2" value="Search start"
-						action="#{controllerStudent. getStudents()}" update="form">
-						<f:ajax execute="buttonSearch2" render="outResult1" />
-					</p:commandButton>
-					<p:commandButton value="Reset"
-						action="#{controllerStudent.Reset()}" update="form" />
-					<h:outputText id="outResult1"
-						value="Results : Found #{controllerStudent.students.size()}">
+					<td><p:outputLabel for="txt4" value="Age" /></td>
+					<td><p:inputText id="txt4"
+							value="#{controllerStudent.ageStudentFillter}" required="true"
+							label="Age Fillter"></p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:outputLabel for="txt5" value="Name" /></td>
+					<td><p:inputText id="txt5"
+							value="#{controllerStudent.nameStudentFillter}" required="true"
+							label="Name Fillter"></p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:outputLabel for="txt6" value="Village" /></td>
+					<td><p:inputText id="txt6"
+							value="#{controllerStudent.villageStudentFillter}"
+							required="true" label="Village Fillter"></p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:outputLabel for="txt7" value="Email" /></td>
+					<td><p:inputText id="txt7"
+							value="#{controllerStudent.emailStudentFillter}" required="true"
+							label="Email Fillter"></p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:commandButton id="buttonSearch2" value="Search start"
+							action="#{controllerStudent. getStudents()}" update="form">
+							<f:ajax execute="buttonSearch2" render="outResult1" />
+						</p:commandButton></td>
+					<td><p:commandButton value="Reset"
+							action="#{controllerStudent.Reset()}" update="form" /></td>
+					<td><h:outputText id="outResult1"
+							value="Results : Found #{controllerStudent.students.size()}" /></td>
 
-					</h:outputText>
-				</p:dialog>
+				</tr>
+			</table>
+		</p:dialog>
+
 	</h:form>
+
+
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
@@ -108,8 +132,8 @@
 					action="#{controllerStudent.viewAddStudent()}" />
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
-				<f:selectItem itemLabel="Id" itemValue="Id" />
-					<f:selectItem itemLabel="Age" itemValue="Age" />				
+					<f:selectItem itemLabel="Id" itemValue="Id" />
+					<f:selectItem itemLabel="Age" itemValue="Age" />
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
 				</p:selectOneMenu>
 
@@ -128,10 +152,10 @@
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
-				<h:outputText value="#{list.id}" update="form"/>
+				<h:outputText value="#{list.id}" update="form" />
 			</p:column>
 
-			<p:column>	
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="nameStudent" />
 				</f:facet>
@@ -184,8 +208,9 @@
 				<f:facet name="header">
 					<h:outputText value="Birth Day" />
 				</f:facet>
-				<h:outputText value="#{list.birthDay}" >
-				<f:convertDateTime pattern="dd.MM.yyyy" /></h:outputText>
+				<h:outputText value="#{list.birthDay}">
+					<f:convertDateTime pattern="dd.MM.yyyy" />
+				</h:outputText>
 			</p:column>
 
 			<p:column>
@@ -194,16 +219,23 @@
 				</f:facet>
 				<h:outputText value="#{controllerStudent.pass_Failed()}" />
 			</p:column>
-			
+
 			<p:column>
-			<f:facet name="header">
+				<f:facet name="header">
 					<h:outputText value="Action" />
 				</f:facet>
-			<p:splitButton id="Detail" value="Detail" action="#{controllerStudent.DetailStudent(list.id)}"  icon="pi pi-save">
-            <p:menuitem  id="edit" value="Update" action="#{controllerStudent.viewEditStudent(list.id)}"  icon="pi pi-refresh" >
-            <f:ajax execute="edit" render="tbl" /></p:menuitem>
-            <p:menuitem value="Delete" action="#{controllerStudent.Delete(list.id)}" ajax="false" icon="pi pi-times" />
-        </p:splitButton> 
+				<p:splitButton id="Detail" value="Detail"
+					action="#{controllerStudent.DetailStudent(list.id)}"
+					icon="pi pi-save">
+					<p:menuitem id="edit" value="Update"
+						action="#{controllerStudent.viewEditStudent(list.id)}"
+						icon="pi pi-refresh">
+						<f:ajax execute="edit" render="tbl" />
+					</p:menuitem>
+					<p:menuitem value="Delete"
+						action="#{controllerStudent.Delete(list.id)}" ajax="false"
+						icon="pi pi-times" />
+				</p:splitButton>
 			</p:column>
 
 		</p:dataTable>
