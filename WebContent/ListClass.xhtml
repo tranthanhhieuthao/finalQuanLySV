@@ -31,7 +31,7 @@
 
 			<f:facet name="header">
 				<p:commandButton value="Add" style="margin-right:20px;" 
-					styleClass="ui-priority-primary"
+					styleClass="ui-priority-primary" icon="pi pi-plus"
 					action="#{controllerClass.viewAddClass()}" />
 			</f:facet>
 
@@ -55,7 +55,7 @@
 
 			<p:column>
 				<f:facet name="header">Student of Class</f:facet>
-				<p:commandButton value="Student learn Class"
+				<p:commandButton value="Student learn Class" icon="pi pi-user"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerClass.findClassStudentById(list.id)}" />
 			</p:column>
@@ -64,7 +64,7 @@
 
 			<p:column>
 				<f:facet name="header">Delete Class</f:facet>
-				<p:commandButton id="delete" value="Delete"
+				<p:commandButton id="delete" value="Delete" icon="pi pi-times-circle"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerClass.Delete(list.id)}">
 					<f:ajax execute="delete" render="tbl" />

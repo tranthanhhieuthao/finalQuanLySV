@@ -27,7 +27,7 @@
 			paginator="true" rows="20" style="margin-bottom:20px;">
 			
 				<f:facet name="header">
-				<p:commandButton value="Add " style="margin-right:20px;"
+				<p:commandButton value="Add " style="margin-right:20px;" icon="pi pi-user-plus"
 					styleClass="ui-priority-primary"
 					action="#{controllerScore.viewScoreForStudent}" />
 			</f:facet>
@@ -108,13 +108,13 @@
 				<f:facet name="header">Edit Score</f:facet>
 
 				<p:commandButton value="Edit Score" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
+					styleClass="ui-priority-primary" icon="pi pi-key"
 					action="#{controllerScore.viewEditScore(list.id)}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">Delete Score</f:facet>
-				<p:commandButton id="delete" value="Delete"
+				<p:commandButton id="delete" value="Delete"  icon="pi pi-times-circle"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerScore.DeleteScore(list.id)}">
 					<f:ajax execute="delete" render="tbl" />
