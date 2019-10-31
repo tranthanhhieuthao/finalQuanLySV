@@ -10,20 +10,33 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
- <div id="header" style="background-color: aqua;border-color: black;">
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header" style="background-color: aqua; border-color: black;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
+	</div>
 	<h2>List Class</h2>
 
 	<h:form id="form">
-		<p:dataTable id="tbl" var="list" value="#{controllerClass.listClassStudent}"
+
+
+
+		<p:dataTable id="tbl" var="list"
+			value="#{controllerClass.listClassStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-			paginator="true" rows="20" style="margin-bottom:20px">
+			paginator="true" rows="20" style="margin-bottom:20px;">
+
+
+			<f:facet name="header">
+
+				<p:commandButton value="Add" style="margin-right:20px;float:left;" 
+					styleClass="ui-priority-primary"
+					action="#{controllerClass.viewAddClass()}" />
+			</f:facet>
 
 
 
@@ -40,35 +53,23 @@
 				</f:facet>
 				<h:outputText value="#{list.note}" />
 			</p:column>
-			
-	<!-- 		<p:column>
-				<f:facet name="header">
-					<h:outputText value="Status Class" />
-				</f:facet>
-				<h:outputText value="#{controllerClass.statusClass(list.id)}" />
-			</p:column>
-			 -->
+
+
 
 			<p:column>
 				<f:facet name="header">Student of Class</f:facet>
-				<p:commandButton value="Student learn Class" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
+				<p:commandButton value="Student learn Class"
+					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerClass.findClassStudentById(list.id)}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Add Student</f:facet>
 
-				<p:commandButton value="Add" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerClass.viewAddStudent(list.id)}" />
-			</p:column>
 
 			<p:column>
 				<f:facet name="header">Delete Class</f:facet>
-				<p:commandButton id="delete" value="Delete" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerStudent.Delete(list.id)}">
+				<p:commandButton id="delete" value="Delete"
+					style="margin-right:20px;" styleClass="ui-priority-primary"
+					action="#{controllerClass.Delete(list.id)}">
 					<f:ajax execute="delete" render="tbl" />
 				</p:commandButton>
 			</p:column>

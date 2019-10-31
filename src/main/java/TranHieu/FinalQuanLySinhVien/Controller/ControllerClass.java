@@ -77,28 +77,28 @@ public class ControllerClass {
 		return classStudentBean;
 	}
 
-//	public String viewAddStudent(int id) {
-//		classStudentBean = classService.findClassStudentById(id);
-//		return "viewAddStudentOnClass";
-//	}
-
-//	public String addNowStudent(int id) {
-//		classStudentBean.getClassStudent().add(studentService.findStudentById(id));
-//		classService.update(classStudentBean);
-//		return "ListClass?faces-redirect=true";
-//	}
 
 	public String Delete(int id) {
 		classService.Delete(id);
 		return "ListClass";
 	}
 	
-//	public String statusClass(int id) {
-//		int quatity =0;
-//		classStudentBean = classService.findClassStudentById(id);
-//		quatity = classStudentBean.getClassStudent().size();
-//		if(quatity <50) return "Have"+" "+(50-quatity)+" "+"slot";
-//		return "Full_"+50;
-//	}
+	public String DeleteClass(int id) {
+		classService.Delete(id);
+		return "ListClass";
+	}
+	
+	public String viewAddClass() {
+		classStudentBean = new ClassStudent();
+		classStudentBean.setId(listClassStudent.size()+1);
+		return "AddClass";
+	}
+	
+	public String addClass() {
+		classService.save(classStudentBean);
+		classStudentBean = new ClassStudent();
+		return "ListClass";
+	}
+	
 
 }
