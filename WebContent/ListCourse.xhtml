@@ -10,7 +10,8 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
 	<div id="header" style="background-color: aqua; border-color: black;">
@@ -25,13 +26,14 @@
 			value="#{controllerCourse.listCourseStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			paginator="true" rows="20" style="margin-bottom:20px">
-			
-				<f:facet name="header">
+
+			<f:facet name="header">
 
 				<p:commandButton value="Add Course" style="margin-right:20px;"
 					styleClass="ui-priority-primary"
-					action="#{controllerCourse.viewAddCourse()}" /></f:facet>
-		
+					action="#{controllerCourse.viewAddCourse()}" />
+			</f:facet>
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="nameCourse" />
@@ -53,14 +55,12 @@
 				<h:outputText value="#{list.note}" />
 			</p:column>
 
-
 			<p:column>
 				<f:facet name="header">Student learn</f:facet>
 				<p:commandButton value="Student learn Course"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerCourse.findStudentLearnCourse(list.id)}" />
 			</p:column>
-
 
 			<p:column>
 				<f:facet name="header">Delete Course</f:facet>
@@ -71,7 +71,6 @@
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
-
 	</h:form>
 
 </h:body>

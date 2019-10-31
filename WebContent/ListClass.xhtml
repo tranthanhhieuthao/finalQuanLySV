@@ -21,8 +21,7 @@
 	</div>
 	<h2>List Class</h2>
 
-	<h:form id="form">
-
+	<h:form >
 
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerClass.listClassStudent}"
@@ -31,7 +30,7 @@
 
 
 			<f:facet name="header">
-				<p:commandButton value="Add" style="margin-right:20px;float:left;" 
+				<p:commandButton value="Add" style="margin-right:20px;" 
 					styleClass="ui-priority-primary"
 					action="#{controllerClass.viewAddClass()}" />
 			</f:facet>

@@ -121,6 +121,11 @@ public class ControllerScore {
 		return "ListScore";
 	}
 	
+	public String DeleteScore(int id) {
+		scoreService.Delete(id);
+		return "ListScore";
+	}
+	
 	
 	
 }

@@ -9,7 +9,8 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
 	<div id="header" style="background-color: aqua;">
@@ -33,17 +34,16 @@
 						value="#{controllerCourse.courseBean.nameCourse}" /></td>
 			</tr>
 
-
 			<tr>
 				<td><h3>Coefficient</h3></td>
-				<td><p:inputText value="#{controllerCourse.courseBean.coefficient}" /></td>
+				<td><p:inputText
+						value="#{controllerCourse.courseBean.coefficient}" /></td>
 			</tr>
-			
+
 			<tr>
 				<td><h3>Note</h3></td>
 				<td><p:inputText value="#{controllerCourse.courseBean.note}" /></td>
 			</tr>
-
 
 			<tr>
 				<td></td>

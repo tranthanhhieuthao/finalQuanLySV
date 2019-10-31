@@ -24,7 +24,7 @@
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerScore.listScoreStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-			paginator="true" rows="20" style="margin-bottom:20px">
+			paginator="true" rows="20" style="margin-bottom:20px;">
 			
 				<f:facet name="header">
 				<p:commandButton value="Add " style="margin-right:20px;"
@@ -116,7 +116,7 @@
 				<f:facet name="header">Delete Score</f:facet>
 				<p:commandButton id="delete" value="Delete"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
-					action="#{controllerStudent.Delete(list.id)}">
+					action="#{controllerScore.DeleteScore(list.id)}">
 					<f:ajax execute="delete" render="tbl" />
 				</p:commandButton>
 			</p:column>
