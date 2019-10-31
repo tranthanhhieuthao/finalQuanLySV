@@ -24,7 +24,6 @@
 	<h:form id="form">
 
 
-
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerClass.listClassStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
@@ -32,7 +31,6 @@
 
 
 			<f:facet name="header">
-
 				<p:commandButton value="Add" style="margin-right:20px;float:left;" 
 					styleClass="ui-priority-primary"
 					action="#{controllerClass.viewAddClass()}" />

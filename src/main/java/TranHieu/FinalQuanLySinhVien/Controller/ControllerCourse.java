@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Course;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
 
@@ -52,6 +53,25 @@ public class ControllerCourse {
 		courseBean = courseService.findCourseStudentById(id);
 		return "StudentLearnCourse?faces-redirect=true";
 	}
+	
+	
+	public String DeleteCourse(int id) {
+		courseService.Delete(id);
+		return "ListCourse";
+	}
+	
+	public String viewAddCourse() {
+		courseBean = new Course();
+		courseBean.setId(listCourseStudent.size()+1);
+		return "AddCourse";
+	}
+	
+	public String addCourse() {
+		courseService.save(courseBean);
+		courseBean = new Course();
+		return "ListCourse";
+	}
+	
 	
 
 }
