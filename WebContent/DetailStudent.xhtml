@@ -9,7 +9,7 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 </h:head>
 <h:body>
 	<div id="header" style="background-color: aqua;">
@@ -23,7 +23,7 @@
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}" />
 	</h:form>
 	<hr />
-	<p:panelGrid columns="3">
+	<p:panelGrid columns="2">
 		<h:form>
 			<ui:repeat var="list" value="#{controllerStudent.student}">
 				<p:panelGrid columns="2">
@@ -54,51 +54,68 @@
 		</h:form>
 
 
- 		<h:form>
-			<ui:repeat var="list" value="#{controllerStudent.student}">
-				<ui:repeat var="listClass" value="#{list.listScore.toArray()}">
-					<p:panelGrid columns="2">
+		<h:form>
+			<ui:repeat   var="list" value="#{controllerStudent.student}">			
+				<p:dataTable var="score" value="#{list.listScore.toArray()}">
+
+					<p:column>
 						<f:facet name="header">
-							<h:outputText value="Class" />
+							<h:outputText value="Name" />
 						</f:facet>
+						<h:outputText value="#{score.course.nameCourse}" />
+					</p:column>
 
-						<h:outputText value="Name Class" />
-						<h:outputText value="#{listClass.classStudent.nameClass}" />
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="coefficient" />
+						</f:facet>
+						<h:outputText value="#{score.course.coefficient}" />
+					</p:column>
 
-						<h:outputText value="Note" />
-						<h:outputText value="#{listClass.classStudent.note}" />
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Score" />
+						</f:facet>
+						<h:outputText value="#{score.scoreStudent}" />
+					</p:column>
 
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Name Class" />
+						</f:facet>
+						<h:outputText value="#{score.classStudent.nameClass}" />
+					</p:column>
 
-					</p:panelGrid>
-				</ui:repeat>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Day" />
+						</f:facet>
+						<h:outputText value="#{score.timeStart}">
+							<f:convertDateTime pattern="dd.MM.yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Time Start" />
+						</f:facet>
+						<h:outputText value="#{score.timeStart}">
+							<f:convertDateTime pattern="hh:mm:ss " />
+						</h:outputText>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Time End" />
+						</f:facet>
+						<h:outputText value="#{score.timeEnd}">
+							<f:convertDateTime pattern="hh:mm:ss " />
+						</h:outputText>
+					</p:column>
+				</p:dataTable>
 			</ui:repeat>
 		</h:form> 
-
-
-		<h:form>
-			<ui:repeat var="list" value="#{controllerStudent.student}">
-				<ui:repeat var="score" value="#{list.listScore.toArray()}">
-					<p:panelGrid columns="2">
-						<f:facet name="header">
-							<h:outputText value="Course" />
-						</f:facet>
-
-						<h:outputText value="Name" />
-						<h:outputText value="#{score.course.nameCourse}" />
-
-						<h:outputText value="coefficient" />
-						<h:outputText value="#{score.course.coefficient}" />
-
-						<h:outputText value="Score" />
-						<h:outputText value="#{score.scoreStudent}" />
-
-					</p:panelGrid>
-				</ui:repeat>
-			</ui:repeat>
-		</h:form>
 	</p:panelGrid>
-
-
 
 
 </h:body>

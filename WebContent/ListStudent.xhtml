@@ -10,6 +10,8 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	
 </h:head>
 <h:body>
 	<div id="header" style="background-color: aqua; border-color: black;">
@@ -21,9 +23,9 @@
 	<h:form>
 
 		<p:panelGrid columns="2">
-			<p:commandButton value="Search" type="button"
+			<p:commandButton value="Search" type="button" icon="pi pi-search"
 				onclick="PF('dlg1').show();" />
-			<p:commandButton value="Search Fillter" type="button"
+			<p:commandButton value="Search Fillter" type="button" icon="pi pi-search"
 				onclick="PF('dlg2').show();" />
 		</p:panelGrid>
 
@@ -126,7 +128,7 @@
 
 
 			<f:facet name="header">
-				<p:commandButton value="AddStudent"
+				<p:commandButton value="AddStudent"  icon="pi pi-user-plus"
 					style="margin-right:20px;float:left"
 					styleClass="ui-priority-primary"
 					action="#{controllerStudent.viewAddStudent()}" />

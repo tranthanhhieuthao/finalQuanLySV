@@ -10,6 +10,9 @@ import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @ManagedBean(name ="studentBean")
 @SessionScoped
@@ -23,8 +26,11 @@ public class Student {
 	private int id;
 
 	@Column(name = "nameStudent")
+	@NotNull
+	@Size(min=2,max=15)
 	private String nameStudent;
 
+	@Min(10)
 	@Column(name = "age")
 	private int age;
 
@@ -32,15 +38,18 @@ public class Student {
 	private String village;
 
 	@Column(name = "phone")
+	@NotNull
 	private int phone;
 
 	@Column(name = "email")
+	@NotNull
 	private String email;
 
 	@Column(name = "note")
 	private String note;
 
 	@Column(name = "birthDay")
+	@NotNull
 	private Date birthDay;
 	
 	@Column(name ="avgStudent")
