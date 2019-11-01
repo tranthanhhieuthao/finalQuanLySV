@@ -181,11 +181,11 @@ public class ControllerScore {
 		 return "addStudentSubject";
 	}
 	
-	public String addStudentSubject() {
+	public String addStudentSubject(int id) {
 		scoreBean.setScoreStudent(0);
-		scoreBean.setStudent(studentBean);
+		scoreBean.setStudent(studentService.findStudentById(id));
 		scoreService.save(scoreBean);
-		return "ScoreEditStudentAndDelete";
+		return null;
 	}
 
 	public String DeleteScore(int id) {
