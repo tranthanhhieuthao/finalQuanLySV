@@ -16,4 +16,6 @@ public interface ScoreInterface {
 	public void Delete(int id);
 	
 	public void update(Score scoreUpdate);
+	
+//	public List<Score> showAllNoDuplicate();
 }

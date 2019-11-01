@@ -41,16 +41,22 @@ public class ControllerScore {
 	List<Score> newListScore;
 
 	public List<Score> getNewListScore() {
-		 newListScore = scoreService.listScoreStudent();
+		newListScore = scoreService.listScoreStudent();
 		for (int i = 0; i < newListScore.size(); i++) {
+
 			for (int j = 1; j < newListScore.size(); j++) {
-				if (newListScore.get(i).getClassStudent() == newListScore.get(j).getClassStudent() &&
-						newListScore.get(i).getCourse() == newListScore.get(j).getCourse() &&
-						newListScore.get(i).getTimeStart() == newListScore.get(j).getTimeStart()) {
+
+				if (newListScore.get(i).getClassStudent().equals( newListScore.get(j).getClassStudent())
+						&& newListScore.get(i).getCourse().equals( newListScore.get(j).getCourse())
+						&& newListScore.get(i).getTimeStart().equals( newListScore.get(j).getTimeStart())) {
+
 					newListScore.remove(j);
+		
+
 				}
 			}
 		}
+
 		return newListScore;
 	}
 
@@ -129,10 +135,6 @@ public class ControllerScore {
 		return "viewMarkScoreForStudent";
 	}
 
-	public void RemoveDuplicate() {
-
-	}
-
 	public String MarkScoreForStudent() {
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
 		scoreBean.setScoreStudent(0);
@@ -144,7 +146,7 @@ public class ControllerScore {
 
 	public String DeleteScore(int id) {
 		scoreService.Delete(id);
-		return "ListScore";
+		return "ScoreEditStudentAndDelete";
 	}
 
 }

@@ -52,5 +52,9 @@ public class ScoreService implements ScoreInterface {
 		
 	}
 	
+//	public List<Score> showAllNoDuplicate(){
+//		return scoreDAO.showAllNoDuplicate();
+//	}
+	
 	
 }

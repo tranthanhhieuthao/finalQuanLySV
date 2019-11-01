@@ -92,4 +92,20 @@ public class ScoreDAO {
 			}
 			return listScoreStudent;
 		}
+		
+//		public List<Score> showAllNoDuplicate() {
+//			Session session = sessionFactory.openSession();
+//			List<Score> listScoreStudent = new ArrayList<Score>();
+//			try {
+//				session.beginTransaction();
+//				listScoreStudent = session.createQuery("SELECT DISTINCT classStudent_id FROM Score").list();
+//				session.getTransaction().commit();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				session.getTransaction().rollback();
+//			} finally {
+//				session.close();
+//			}
+//			return listScoreStudent;
+//		}
 }

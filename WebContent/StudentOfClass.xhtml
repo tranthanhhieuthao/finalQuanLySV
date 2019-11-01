@@ -10,24 +10,27 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Header</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <body>
-<div id="header" style="background-color: aqua;">
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header" style="background-color: aqua;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
+	</div>
 	<h2>Detail Student</h2>
 
 	<h:form>
-		<p:commandButton value="Back" action="ListClass"   icon="pi pi-angle-double-left" />
+		<p:commandButton value="Back" action="ListClass"
+			icon="pi pi-angle-double-left" />
 	</h:form>
 	<hr />
 	<h:form>
 
-		<p:dataTable id="tbl" var="list" value="#{controllerClass.classStudentBean.scoreStudent}"
-			rows="20" style="margin-bottom:20px">
+		<p:dataTable id="tbl" var="list"
+			value="#{controllerClass.classStudentBean.scoreStudent}" rows="20"
+			style="margin-bottom:20px">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name" />
@@ -62,15 +65,22 @@
 				</f:facet>
 				<h:outputText value="#{list.student.email}" />
 			</p:column>
+			<ui:repeat var="time" value="#{list.student.listScore}">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Start" />
+					</f:facet>
+					<h:outputText value="#{time.timeStart}" />
+				</p:column>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Note" />
-				</f:facet>
-				<h:outputText value="#{list.student.note}" />
-			</p:column>
-		
-			
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="End" />
+					</f:facet>
+					<h:outputText value="#{time.timeEnd}" />
+				</p:column>
+			</ui:repeat>
+
 		</p:dataTable>
 	</h:form>
 </body>
