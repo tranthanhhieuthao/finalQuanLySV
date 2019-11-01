@@ -51,10 +51,7 @@ public class ScoreService implements ScoreInterface {
 		scoreDAO.update(scoreUpdate);
 		
 	}
-	
-//	public List<Score> showAllNoDuplicate(){
-//		return scoreDAO.showAllNoDuplicate();
-//	}
+
 	
 	
 }

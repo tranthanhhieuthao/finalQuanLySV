@@ -17,5 +17,4 @@ public interface ScoreInterface {
 	
 	public void update(Score scoreUpdate);
 	
-//	public List<Score> showAllNoDuplicate();
 }

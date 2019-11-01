@@ -44,13 +44,14 @@ public class ControllerScore {
 		newListScore = scoreService.listScoreStudent();
 		for (int i = 0; i < newListScore.size(); i++) {
 
-			for (int j = 1; j < newListScore.size(); j++) {
+			for (int j = 0; j < newListScore.size(); j++) {
 
 				if (newListScore.get(i).getClassStudent().equals( newListScore.get(j).getClassStudent())
 						&& newListScore.get(i).getCourse().equals( newListScore.get(j).getCourse())
 						&& newListScore.get(i).getTimeStart().equals( newListScore.get(j).getTimeStart())) {
 
-					newListScore.remove(j);
+					if(i !=j) newListScore.remove(j);
+					
 		
 
 				}
