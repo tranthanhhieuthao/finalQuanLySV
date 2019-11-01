@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Course;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
 import TranHieu.FinalQuanLySinhVien.BO.Student;
@@ -29,12 +30,18 @@ public class ControllerScore {
 
 	@ManagedProperty(value = "#{courseBean}")
 	private Course courseBean;
+	
+	@ManagedProperty(value ="#{classtBean}")
+	private ClassStudent classBean;
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
 
 	@ManagedProperty(value = "#{courseService}")
 	private CourseService courseService;
+	
+	@ManagedProperty(value="#{classService}")
+	private ClassService classService;
 
 	private List<Score> listScoreStudent;
 
@@ -60,6 +67,23 @@ public class ControllerScore {
 
 		return newListScore;
 	}
+	
+	
+
+	public void setClassService(ClassService classService) {
+		this.classService = classService;
+	}
+
+
+
+	public ClassStudent getClassBean() {
+		return classBean;
+	}
+
+	public void setClassBean(ClassStudent classBean) {
+		this.classBean = classBean;
+	}
+
 
 	public void setNewListScore(List<Score> newListScore) {
 		this.newListScore = newListScore;
@@ -130,20 +154,26 @@ public class ControllerScore {
 		studentBean = studentService.findStudentById(id);
 		return null;
 	}
+	
+	public String addClass(int id) {
+		classBean = classService.findClassStudentById(id);
+		return null;
+	}
 
-//	public String viewScoreForStudent() {
-//		scoreBean = new Score();
-//		return "viewMarkScoreForStudent";
-//	}
-//
-//	public String MarkScoreForStudent() {
-//		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
-//		scoreBean.setScoreStudent(0);
-//		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
-//		scoreBean.setStudent(studentBean);
-//		scoreService.save(scoreBean);
-//		return "ListScore";
-//	}
+	public String viewScoreForStudent() {
+		scoreBean = new Score();
+		return "viewMarkScoreForStudent";
+	}
+
+	public String MarkScoreForStudent() {
+		scoreBean.setId(listScoreStudent.size()+1);
+		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+		scoreBean.setScoreStudent(0);
+		scoreBean.setStudent(studentService.findStudentById(0));// hien 1 list student roi pick theo id
+		scoreBean.setClassStudent(classBean);
+		scoreService.save(scoreBean);
+		return "ListScore";
+	}
 	
 	public String viewaddStudentSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);

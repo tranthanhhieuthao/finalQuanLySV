@@ -10,7 +10,8 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
 	<div id="header" style="background-color: aqua;">
@@ -18,127 +19,115 @@
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
-<p:commandButton value="Add Now" style="margin-right:20px;"
-								styleClass="ui-priority-primary"
-								action="#{controllerScore.MarkScoreForStudent}" />
+	<p:commandButton value="Add Now" style="margin-right:20px;"
+		styleClass="ui-priority-primary"
+		action="#{controllerScore.MarkScoreForStudent()}" />
 
-	<p:panelGrid  >
-		<p:row>
-			<p:column colspan="6">
-				<h:form id="form">
-					<p:dataTable id="tbl" var="list"
-						value="#{controllerStudent.students}"
-						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
-						paginator="true" rows="15" style="margin-bottom:20px">
+	<p:panelGrid>
+		<p:column colspan="6">
+			<h:form id="form">
 
+				<p:column>
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="nameStudent" />
-							</f:facet>
-							<h:outputText value="#{list.nameStudent}" />
-						</p:column>
+					<h:outputText value="Time Start" />
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Age" />
-							</f:facet>
-							<h:outputText value="#{list.age}" />
-						</p:column>
+					<p:calendar value="#{controllerScore.scoreBean.timeStart}">
+						<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+					</p:calendar>
+				</p:column>
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Village" />
-							</f:facet>
-							<h:outputText value="#{list.village}" />
-						</p:column>
+				<p:column>
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Phone" />
-							</f:facet>
-							<h:outputText value="#{list.phone}" />
-						</p:column>
+					<h:outputText value="Time End" />
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Email" />
-							</f:facet>
-							<h:outputText value=" #{list.email}" />
-						</p:column>
+					<p:calendar value="#{controllerScore.scoreBean.timeEnd}">
+						<f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+					</p:calendar>
+				</p:column>
+
+				<p:column>
+
+					<h:outputText value="Teacher" />
+
+					<h:inputText value="#{controllerScore.scoreBean.teacher}" />
+				</p:column>
+
+			</h:form>
+		</p:column>
 
 
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Birth Day" />
-							</f:facet>
-							<h:outputText value="#{list.birthDay}">
-								<f:convertDateTime pattern="dd.MM.yyyy" />
-							</h:outputText>
-						</p:column>
-						
-						<p:column>
-							<f:facet name="header">Add Course</f:facet>
+		<p:column colspan="6">
+			<h:form id="form1">
+				<p:dataTable id="tbl11" var="list"
+					value="#{controllerCourse.listCourseStudent}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+					paginator="true" rows="20" style="margin-bottom:20px">
 
-							<p:commandButton value="Add " style="margin-right:20px;"
-								styleClass="ui-priority-primary"
-								action="#{controllerScore.addStudent(list.id)}" />
-						</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="nameCourse" />
+						</f:facet>
+						<h:outputText value="#{list.nameCourse}" />
+					</p:column>
 
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="coefficient" />
+						</f:facet>
+						<h:outputText value="#{list.coefficient}" />
+					</p:column>
 
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Note" />
+						</f:facet>
+						<h:outputText value="#{list.note}" />
+					</p:column>
 
-					</p:dataTable>
+					<p:column>
+						<f:facet name="header">Add Course</f:facet>
 
-				</h:form>
-			</p:column>
-			<p:column colspan="6">
-				<h:form id="form1">
-					<p:dataTable id="tbl11" var="list"
-						value="#{controllerCourse.listCourseStudent}"
-						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
-						paginator="true" rows="20" style="margin-bottom:20px">
-
-
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="nameCourse" />
-							</f:facet>
-							<h:outputText value="#{list.nameCourse}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="coefficient" />
-							</f:facet>
-							<h:outputText value="#{list.coefficient}" />
-						</p:column>
-
-						<p:column>
-							<f:facet name="header">
-								<h:outputText value="Note" />
-							</f:facet>
-							<h:outputText value="#{list.note}" />
-						</p:column>
+						<p:commandButton value="Add Course" style="margin-right:20px;"
+							styleClass="ui-priority-primary"
+							action="#{controllerScore.addCourse(list.id)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:column>
 
 
-						<p:column>
-							<f:facet name="header">Add Course</f:facet>
+		<p:column colspan="6">
+			<h:form id="form2">
+				<p:dataTable id="tbl12" var="list"
+					value="#{controllerClass.listClassStudent}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+					paginator="true" rows="20" style="margin-bottom:20px">
 
-							<p:commandButton value="Add Course" style="margin-right:20px;"
-								styleClass="ui-priority-primary"
-								action="#{controllerScore.addCourse(list.id)}" />
-						</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="name Class" />
+						</f:facet>
+						<h:outputText value="#{list.nameClass}" />
+					</p:column>
 
-		
-					</p:dataTable>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Note" />
+						</f:facet>
+						<h:outputText value="#{list.note}" />
+					</p:column>
 
-				</h:form>
 
+					<p:column>
+						<f:facet name="header">Add Course</f:facet>
 
-			</p:column>
-		</p:row>
-
+						<p:commandButton value="Add Class" style="margin-right:20px;"
+							styleClass="ui-priority-primary"
+							action="#{controllerScore.addClass(list.id)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:column>
 
 
 	</p:panelGrid>
