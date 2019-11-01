@@ -131,18 +131,31 @@ public class ControllerScore {
 		return null;
 	}
 
-	public String viewScoreForStudent() {
-		scoreBean = new Score();
-		return "viewMarkScoreForStudent";
+//	public String viewScoreForStudent() {
+//		scoreBean = new Score();
+//		return "viewMarkScoreForStudent";
+//	}
+//
+//	public String MarkScoreForStudent() {
+//		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+//		scoreBean.setScoreStudent(0);
+//		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
+//		scoreBean.setStudent(studentBean);
+//		scoreService.save(scoreBean);
+//		return "ListScore";
+//	}
+	
+	public String viewaddStudentSubject(int id) {
+		scoreBean = scoreService.findScoreOfStudentById(id);
+	
+		 return "addStudentSubject";
 	}
-
-	public String MarkScoreForStudent() {
-		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+	
+	public String addStudentSubject() {
 		scoreBean.setScoreStudent(0);
-		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setStudent(studentBean);
 		scoreService.save(scoreBean);
-		return "ListScore";
+		return "ScoreEditStudentAndDelete";
 	}
 
 	public String DeleteScore(int id) {

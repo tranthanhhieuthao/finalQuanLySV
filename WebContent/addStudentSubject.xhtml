@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Quan ly Sinh Vien</title>
+	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+</h:head>
+<h:body>
+	<div id="header" style="background-color: aqua;">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
+		</ui:insert>
+	</div>
+
+<p:commandButton value="Add Now" style="margin-right:20px;"
+								styleClass="ui-priority-primary"
+								action="#{controllerScore.addStudentSubject}" />
+
+				<h:form id="form">
+					<p:dataTable id="tbl" var="list"
+						value="#{controllerStudent.students}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						paginator="true" rows="15" style="margin-bottom:20px">
+
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="nameStudent" />
+							</f:facet>
+							<h:outputText value="#{list.nameStudent}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Age" />
+							</f:facet>
+							<h:outputText value="#{list.age}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Village" />
+							</f:facet>
+							<h:outputText value="#{list.village}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Phone" />
+							</f:facet>
+							<h:outputText value="#{list.phone}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Email" />
+							</f:facet>
+							<h:outputText value=" #{list.email}" />
+						</p:column>
+
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Birth Day" />
+							</f:facet>
+							<h:outputText value="#{list.birthDay}">
+								<f:convertDateTime pattern="dd.MM.yyyy" />
+							</h:outputText>
+						</p:column>
+						
+						<p:column>
+							<f:facet name="header">Add Course</f:facet>
+
+							<p:commandButton value="Add " style="margin-right:20px;"
+								styleClass="ui-priority-primary"
+								action="#{controllerScore.addStudent(list.id)}" />
+						</p:column>
+
+					</p:dataTable>
+
+				</h:form>
+
+
+</h:body>
+</html>
