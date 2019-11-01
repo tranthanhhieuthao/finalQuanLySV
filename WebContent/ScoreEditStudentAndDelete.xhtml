@@ -22,12 +22,38 @@
 
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list"
-			value="#{controllerScore.newListScore}"
+			value="#{controllerScore.listScoreStudent}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
 			paginator="true" rows="20" style="margin-bottom:20px;">
 			
-				
 
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Name Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.nameStudent}" />
+			</p:column>
+			
+				<p:column>
+				<f:facet name="header">
+					<h:outputText value="age Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.age}" />
+			</p:column>
+			
+				<p:column>
+				<f:facet name="header">
+					<h:outputText value="Village Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.village}" />
+			</p:column>
+			
+				<p:column>
+				<f:facet name="header">
+					<h:outputText value="Email Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.email}" />
+			</p:column>
 
 			<p:column>
 				<f:facet name="header">
@@ -36,27 +62,13 @@
 				<h:outputText value="#{list.course.nameCourse}" />
 			</p:column>
 
-			
-			 <p:column>
-				<f:facet name="header">
-					<h:outputText value="Teacher" />
-				</f:facet>
-				<h:outputText value="#{list.teacher}" />
-			</p:column>
-			
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Time Start" />
+					<h:outputText value="Score" />
 				</f:facet>
-				<h:outputText value="#{list.timeStart}" />
+				<h:outputText value="#{list.scoreStudent}" />
 			</p:column>
 			
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Time End" />
-				</f:facet>
-				<h:outputText value="#{list.timeEnd}" />
-			</p:column> 
 			
 			<p:column>
 				<f:facet name="header">
@@ -68,15 +80,15 @@
 
 			
 			<p:column>
-				<f:facet name="header"> Add</f:facet>
-				<p:commandButton value="Add " style="margin-right:20px;" icon="pi pi-user-plus"
-					styleClass="ui-priority-primary"
-					action="#{controllerScore.viewScoreForStudent}" />
-			
+				<f:facet name="header">Edit Score</f:facet>
+
+				<p:commandButton value="Edit Score" style="margin-right:20px;"
+					styleClass="ui-priority-primary" icon="pi pi-key"
+					action="#{controllerScore.viewEditScore(list.id)}" />
 			</p:column>
 
 			<p:column>
-				<f:facet name="header">Delete Subject</f:facet>
+				<f:facet name="header">Delete Score</f:facet>
 				<p:commandButton id="delete" value="Delete"  icon="pi pi-times-circle"
 					style="margin-right:20px;" styleClass="ui-priority-primary"
 					action="#{controllerScore.DeleteScore(list.id)}">
