@@ -166,13 +166,13 @@ public class ControllerScore {
 	}
 
 	public String MarkScoreForStudent() {
-		scoreBean.setId(listScoreStudent.size()+1);
-		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
-		scoreBean.setScoreStudent(0);
-		scoreBean.setStudent(studentService.findStudentById(0));// hien 1 list student roi pick theo id
-		scoreBean.setClassStudent(classBean);
-		scoreService.save(scoreBean);
-		return "ListScore";
+//		scoreBean.setId(listScoreStudent.size()+1);
+//		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+//		scoreBean.setScoreStudent(0);
+//		scoreBean.setStudent(studentService.findStudentById(0));// hien 1 list student roi pick theo id
+//		scoreBean.setClassStudent(classBean);
+//		scoreService.save(scoreBean);
+		return "null";
 	}
 	
 	public String viewaddStudentSubject(int id) {
