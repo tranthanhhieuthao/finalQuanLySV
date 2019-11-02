@@ -1,5 +1,6 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -18,6 +19,12 @@ public class ControllerScore {
 	public ControllerScore() {
 
 	}
+	
+	private Date timeStart;
+	
+	private Date timeEnd;
+	
+	private String teacher;
 
 	@ManagedProperty(value = "#{scoreService}")
 	private ScoreService scoreService;
@@ -49,17 +56,14 @@ public class ControllerScore {
 
 	public List<Score> getNewListScore() {
 		newListScore = scoreService.listScoreStudent();
-		for (int i = 0; i < newListScore.size(); i++) {
+		for (int i = 0; i < newListScore.size()-1; i++) {
 
-			for (int j = 0; j < newListScore.size(); j++) {
+			for (int j = 0; j < newListScore.size()-1; j++) {
 
 				if (newListScore.get(i).getClassStudent().equals( newListScore.get(j).getClassStudent())
 						&& newListScore.get(i).getCourse().equals( newListScore.get(j).getCourse())
 						&& newListScore.get(i).getTimeStart().equals( newListScore.get(j).getTimeStart())) {
-
-					if(i !=j) newListScore.remove(j);
-					
-		
+					if(i !=j) newListScore.remove(j);						
 
 				}
 			}
@@ -68,13 +72,34 @@ public class ControllerScore {
 		return newListScore;
 	}
 	
-	
+
+	public Date getTimeStart() {
+		return timeStart;
+	}
+
+	public void setTimeStart(Date timeStart) {
+		this.timeStart = timeStart;
+	}
+
+	public Date getTimeEnd() {
+		return timeEnd;
+	}
+
+	public void setTimeEnd(Date timeEnd) {
+		this.timeEnd = timeEnd;
+	}
+
+	public String getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
 
 	public void setClassService(ClassService classService) {
 		this.classService = classService;
 	}
-
-
 
 	public ClassStudent getClassBean() {
 		return classBean;
@@ -161,23 +186,23 @@ public class ControllerScore {
 	}
 
 	public String viewScoreForStudent() {
-		scoreBean = new Score();
+		studentBean = studentService.findStudentById(1);
+		scoreBean.setId(scoreService.listScoreStudent().size()+1);
 		return "viewMarkScoreForStudent";
 	}
 
 	public String MarkScoreForStudent() {
-//		scoreBean.setId(listScoreStudent.size()+1);
-//		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
-//		scoreBean.setScoreStudent(0);
-//		scoreBean.setStudent(studentService.findStudentById(0));// hien 1 list student roi pick theo id
-//		scoreBean.setClassStudent(classBean);
-//		scoreService.save(scoreBean);
-		return "null";
+		
+		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+		scoreBean.setScoreStudent(0);
+		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
+		scoreBean.setClassStudent(classBean);
+		scoreService.save(scoreBean);
+		return "ListScore";
 	}
 	
 	public String viewaddStudentSubject(int id) {
-		scoreBean = scoreService.findScoreOfStudentById(id);
-	
+		scoreBean = scoreService.findScoreOfStudentById(id);	
 		 return "addStudentSubject";
 	}
 	

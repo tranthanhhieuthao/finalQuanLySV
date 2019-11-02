@@ -90,14 +90,7 @@
 			
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Delete Subject</f:facet>
-				<p:commandButton id="delete" value="Delete"  icon="pi pi-times-circle"
-					style="margin-right:20px;" styleClass="ui-priority-primary"
-					action="#{controllerScore.DeleteScore(list.id)}">
-					<f:ajax execute="delete" render="tbl" />
-				</p:commandButton>
-			</p:column>
+		
 		</p:dataTable>
 
 	</h:form>
