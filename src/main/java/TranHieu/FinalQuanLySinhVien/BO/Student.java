@@ -72,10 +72,6 @@ public class Student {
 		this.avgStudent = avgStudent;
 	}
 
-//	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinTable(name = "Student_Class", joinColumns = { @JoinColumn(name = "student_id") }, inverseJoinColumns = {
-//			@JoinColumn(name = "class_id") })
-//	private Set<ClassStudent> studentClass = new HashSet<ClassStudent>();
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
 	private Set<Score> listScore = new HashSet<Score>();

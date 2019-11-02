@@ -14,7 +14,7 @@
 	
 </h:head>
 <h:body>
-	<div id="header" style="background-color: aqua; border-color: black;">
+	<div id="header" >
 		<ui:insert name="header">
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
@@ -22,7 +22,7 @@
 
 	<h:form>
 
-		<p:panelGrid columns="2">
+		<p:panelGrid columns="2" style="margin-left:150px;margin-right:150px;">
 			<p:commandButton value="Search" type="button" icon="pi pi-search"
 				onclick="PF('dlg1').show();" />
 			<p:commandButton value="Search Fillter" type="button" icon="pi pi-search"
@@ -70,7 +70,7 @@
 	</h:form>
 	<h:form id="searchFillter">
 
-		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40">
+		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40" >
 			<table>
 				<tr>
 					<td><p:outputLabel for="onemenu8" value="Value Age" /></td>
@@ -124,7 +124,7 @@
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
-			paginator="true" rows="15" style="margin-bottom:20px">
+			paginator="true" rows="15" style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
 
 
 			<f:facet name="header">

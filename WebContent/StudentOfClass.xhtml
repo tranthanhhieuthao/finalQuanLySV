@@ -14,23 +14,22 @@
 		library="primefaces" />
 </h:head>
 <body>
-	<div id="header" style="background-color: aqua;">
+	<div id="header">
 		<ui:insert name="header">
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
-	<h2>Detail Student</h2>
 
-	<h:form>
+	<h:form style="margin-left:150px;margin-right:150px;">
 		<p:commandButton value="Back" action="ListClass"
 			icon="pi pi-angle-double-left" />
 	</h:form>
-	<hr />
+
 	<h:form>
 
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerClass.classStudentBean.scoreStudent}" rows="20"
-			style="margin-bottom:20px">
+			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name" />

@@ -188,11 +188,13 @@ public class ControllerScore {
 	public String viewScoreForStudent() {
 		studentBean = studentService.findStudentById(1);
 		scoreBean.setId(scoreService.listScoreStudent().size()+1);
-		return "viewMarkScoreForStudent";
+		return null;
 	}
 
 	public String MarkScoreForStudent() {
-		
+//		scoreBean.setTeacher(scoreBean.getTeacher());
+//		scoreBean.setTimeStart(scoreBean.getTimeStart());
+//		scoreBean.setTimeEnd(scoreBean.getTimeEnd());
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
