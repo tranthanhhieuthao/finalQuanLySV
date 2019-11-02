@@ -17,13 +17,12 @@
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
-	<h2>Detail Student</h2>
 
-	<h:form>
+	<h:form style="margin-left:150px;margin-right:150px;">
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" />
 	</h:form>
-	<hr />
-	<p:panelGrid columns="2">
+
+	<p:panelGrid columns="2" style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
 		<h:form>
 			<ui:repeat var="list" value="#{controllerStudent.student}">
 				<p:panelGrid columns="2">
