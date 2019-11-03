@@ -45,6 +45,20 @@ public class Score {
 	public Score() {
 		
 	}
+	
+	
+	
+
+	public Score(Date timeStart, Date timeEnd, String teacher, float scoreStudent) {
+
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.teacher = teacher;
+		this.scoreStudent = scoreStudent;
+	}
+
+
+
 
 	public Date getTimeStart() {
 		return timeStart;

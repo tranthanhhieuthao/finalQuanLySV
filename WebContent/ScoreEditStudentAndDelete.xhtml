@@ -14,14 +14,14 @@
 </h:head>
 <h:body>
 
-<!-- Class:#{controllerScore.classBean.nameClass}
+ Class:#{controllerScore.classBean.nameClass}
 Course:#{controllerScore.courseBean.nameCourse}
 #{controllerScore.studentBean.nameStudent}
 id:#{controllerScore.scoreBean.id}
 Score:#{controllerScore.scoreBean.scoreStudent}
 Start:#{controllerScore.scoreBean.timeStart}
 End:#{controllerScore.scoreBean.timeEnd}
-teacher:#{controllerScore.scoreBean.teacher} -->
+teacher:#{controllerScore.scoreBean.teacher} 
 
 	<div id="header">
 		<ui:insert name="header">
@@ -91,6 +91,7 @@ teacher:#{controllerScore.scoreBean.teacher} -->
 				</f:facet>
 				<h:outputText value="#{list.classStudent.nameClass}" />
 			</p:column>
+			
 
 
 			
@@ -120,26 +121,23 @@ teacher:#{controllerScore.scoreBean.teacher} -->
 	
 	<p:dialog header="Add Subject" widgetVar="dlg3" minHeight="40">
 
-	<p:panelGrid columns="2">
-		<ui:repeat id="tbl15" var="list" value="#{controllerScore.scoreBean}"
-			style="margin-bottom:20px">
-
 			<table>
 				<tr>
 					<td><h:outputText value="Time Start" /></td>
-					<td><p:calendar value="#{list.timeStart}" pattern="MM/dd/yyyy HH:mm:ss" />
+					<td><p:calendar value="#{controllerScore.scoreBean.timeStart}" pattern="MM/dd/yyyy HH:mm:ss" />
 					</td>
+					<td><h:outputText value="#{controllerScore.scoreBean.timeStart}" /></td>
 				</tr>
 
 				<tr>
 					<td><h:outputText value="Time End" /></td>
-					<td><p:calendar value="#{list.timeEnd}"
+					<td><p:calendar value="#{controllerScore.scoreBean.timeEnd}"
 							pattern="MM/dd/yyyy HH:mm:ss" /></td>
 
 				</tr>
 				<tr>
 					<td><h:outputText id="qw" value="Teacher" /></td>
-					<td><p:inputText value="#{list.teacher}" /></td>
+					<td><p:inputText value="#{controllerScore.scoreBean.teacher}" /></td>
 				</tr>
 				<tr>
 
@@ -156,12 +154,6 @@ teacher:#{controllerScore.scoreBean.teacher} -->
 							action="#{controllerScore.MarkScoreForStudent()}" /></td>
 				</tr>
 			</table>
-
-		</ui:repeat>
-	</p:panelGrid>
-
-
-
 
 
 

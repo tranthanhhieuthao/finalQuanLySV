@@ -10,10 +10,11 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
-	<div id="header" >
+	<div id="header">
 		<ui:insert name="header">
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
@@ -24,10 +25,11 @@
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerScore.newListScore}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-			paginator="true" rows="20" style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
-			
-			
-	<!-- 	<p:column>
+			paginator="true" rows="20"
+			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+
+
+			<!-- 	<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name Student" />
 				</f:facet>
@@ -40,7 +42,7 @@
 				</f:facet>
 				<h:outputText value="#{list.student.age}" />
 			</p:column>  -->
-				
+
 
 
 			<p:column>
@@ -50,28 +52,28 @@
 				<h:outputText value="#{list.course.nameCourse}" />
 			</p:column>
 
-			
-			 <p:column>
+
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Teacher" />
 				</f:facet>
 				<h:outputText value="#{list.teacher}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Time Start" />
 				</f:facet>
 				<h:outputText value="#{list.timeStart}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Time End" />
 				</f:facet>
 				<h:outputText value="#{list.timeEnd}" />
-			</p:column> 
-			
+			</p:column>
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Class Room" />
@@ -79,17 +81,24 @@
 				<h:outputText value="#{list.classStudent.nameClass}" />
 			</p:column>
 
-
-			
 			<p:column>
-				<f:facet name="header"> Add</f:facet>
-				<p:commandButton value="Add " style="margin-right:20px;" icon="pi pi-user-plus"
-					styleClass="ui-priority-primary"
-					action="#{controllerScore.viewaddStudentSubject(list.id)}" />
-			
+				<f:facet name="header">
+					<h:outputText value="Status Class" />
+				</f:facet>
+				<h:outputText value="#{controllerScore.statusClass(list.id)}" />
 			</p:column>
 
-		
+
+
+			<p:column>
+				<f:facet name="header"> Add</f:facet>
+				<p:commandButton value="Add " style="margin-right:20px;"
+					icon="pi pi-user-plus" styleClass="ui-priority-primary"
+					action="#{controllerScore.viewaddStudentSubject(list.id)}" />
+
+			</p:column>
+
+
 		</p:dataTable>
 
 	</h:form>

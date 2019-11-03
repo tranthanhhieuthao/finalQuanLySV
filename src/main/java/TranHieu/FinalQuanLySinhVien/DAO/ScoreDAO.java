@@ -35,7 +35,7 @@ public class ScoreDAO {
 			session.getTransaction().rollback();
 			e.printStackTrace();
 		} finally {
-			session.flush();
+		
 			session.close();
 		}
 	}

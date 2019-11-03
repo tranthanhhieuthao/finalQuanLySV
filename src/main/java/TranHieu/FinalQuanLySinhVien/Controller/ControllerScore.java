@@ -25,12 +25,14 @@ public class ControllerScore {
 	private Date timeEnd;
 	
 	private String teacher;
+	
+//	private int quatityScoreOfStudent =1;
 
 	@ManagedProperty(value = "#{scoreService}")
 	private ScoreService scoreService;
 
 	@ManagedProperty(value = "#{scoreBean}")
-	private Score scoreBean;
+	private Score scoreBean = new Score();
 
 	@ManagedProperty(value = "#{studentBean}")
 	private Student studentBean;
@@ -56,14 +58,17 @@ public class ControllerScore {
 
 	public List<Score> getNewListScore() {
 		newListScore = scoreService.listScoreStudent();
-		for (int i = 0; i < newListScore.size()-1; i++) {
+		for (int i = 0; i < newListScore.size(); i++) {
 
-			for (int j = 0; j < newListScore.size()-1; j++) {
+			for (int j = 0; j < newListScore.size(); j++) {
 
 				if (newListScore.get(i).getClassStudent().equals( newListScore.get(j).getClassStudent())
 						&& newListScore.get(i).getCourse().equals( newListScore.get(j).getCourse())
 						&& newListScore.get(i).getTimeStart().equals( newListScore.get(j).getTimeStart())) {
-					if(i !=j) newListScore.remove(j);						
+					if(i !=j) {
+						newListScore.remove(j);	
+						i=0;
+					}
 
 				}
 			}
@@ -72,6 +77,23 @@ public class ControllerScore {
 		return newListScore;
 	}
 	
+	
+	
+
+//	public int getQuatityScoreOfStudent() {
+//		
+//		return quatityScoreOfStudent;
+//	}
+//
+//
+//
+//
+//	public void setQuatityScoreOfStudent(int quatityScoreOfStudent) {
+//		this.quatityScoreOfStudent = quatityScoreOfStudent;
+//	}
+
+
+
 
 	public Date getTimeStart() {
 		return timeStart;
@@ -147,6 +169,7 @@ public class ControllerScore {
 	}
 
 	public Score getScoreBean() {
+
 		return scoreBean;
 	}
 
@@ -186,21 +209,37 @@ public class ControllerScore {
 	}
 
 	public String viewScoreForStudent() {
+		scoreBean = new Score();
 		studentBean = studentService.findStudentById(1);
 		scoreBean.setId(scoreService.listScoreStudent().size()+1);
 		return null;
 	}
 
 	public String MarkScoreForStudent() {
-//		scoreBean.setTeacher(scoreBean.getTeacher());
-//		scoreBean.setTimeStart(scoreBean.getTimeStart());
-//		scoreBean.setTimeEnd(scoreBean.getTimeEnd());
+		if(quatityScoreOfStudent <=50) {
+//		scoreBean.setTeacher("");
+//		scoreBean.setTimeStart(new Date());
+//		scoreBean.setTimeEnd(new Date());
+		studentBean = studentService.findStudentById(1);
+		scoreBean.setId(scoreService.listScoreStudent().size()+1);
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
-		scoreService.save(scoreBean);
+		 scoreService.save(scoreBean); 
+		}
 		return "ListScore";
+	}
+	
+	public String statusClass(int id) {
+		int quatityScoreOfStudent =0;
+		for(Score sc: scoreService.listScoreStudent()) {
+			if (sc.getClass().equals(scoreService.findScoreOfStudentById(id).getClass())) quatityScoreOfStudent++;
+		}
+		if(quatityScoreOfStudent <50) {
+			return "remain"+" "+(50-quatityScoreOfStudent)+" "+"slot";
+		}
+		return "Full can't add more Student";
 	}
 	
 	public String viewaddStudentSubject(int id) {
