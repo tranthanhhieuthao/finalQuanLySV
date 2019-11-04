@@ -39,7 +39,7 @@ public class ControllerCourse {
 	private List<Course> listCourseStudent;
 
 	public List<Course> getListCourseStudent() {
-		listCourseStudent = courseService.listCourseStudent();
+	listCourseStudent = courseService.listCourseStudent();
 		return listCourseStudent;
 	}
 

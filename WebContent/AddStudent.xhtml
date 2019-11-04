@@ -9,74 +9,45 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
-	<div id="header" >
-		<ui:insert name="header">
-			<ui:include src="/Header.xhtml" />
-		</ui:insert>
-	</div>
 
-	<h2>Add Student</h2>
-	<h:form>
-		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" />
-	</h:form>
-	<hr />
-
-	<h:form>
-		<table>
-
-			<tr>
-				<td><h3>Name</h3></td>
-				<td><p:inputText
-						value="#{controllerStudent.student.nameStudent}" /></td>
-			</tr>
+	<p:dialog header="Add Subject" widgetVar="dlg5" minHeight="40"
+		style="margin-bottom:20px;margin-left:700px;margin-right:600px;">
 
 
-			<tr>
-				<td><h3>Age</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.age}" /></td>
-			</tr>
+		<p:panelGrid columns="2">
 
+			<h:outputText value="Name" />
+			<p:inputText value="#{controllerStudent.student.nameStudent}" />
 
-			<tr>
-				<td><h3>Village</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.village}" /></td>
-			</tr>
+			<h:outputText value="Age" />
+			<p:inputText value="#{controllerStudent.student.age}" />
 
+			<h:outputText value="Village" />
+			<p:inputText value="#{controllerStudent.student.village}" />
 
-			<tr>
-				<td><h3>Phone</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
-			</tr>
+			<h:outputText value="Phone" />
+			<p:inputText value="#{controllerStudent.student.phone}" />
 
+			<h:outputText value="Email" />
+			<p:inputText value="#{controllerStudent.student.email}" />
 
-			<tr>
-				<td><h3>Email</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.email}" />
-				</td>
-			</tr>
+			<h:outputText value="Note" />
+			<p:inputText value="#{controllerStudent.student.note}" />
 
-			<tr>
-				<td><h3>Note</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.note}" /></td>
-			</tr>
-			
-			<tr>
-				<td><h3>Birth Day</h3></td>
-				<td><p:calendar value="#{controllerStudent.student.birthDay}" ></p:calendar> </td>
-			</tr>
+			<h:outputText value="BirthDay" />
+			<p:calendar value="#{controllerStudent.student.birthDay}" />
 
-			<tr>
-				<td></td>
-				<td><p:commandButton value="Add Student"
-						action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" /></td>
-			</tr>
-		</table>
-	</h:form>
-	
-	
+			<p:commandButton value="Add Student"
+				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="form"/>
+
+		</p:panelGrid>
+
+	</p:dialog>
+
 
 </h:body>
 </html>

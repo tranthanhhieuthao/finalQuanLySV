@@ -144,7 +144,7 @@ public class Controller implements Serializable {
 		}
 		else if (nameSearch != null || column !=null ) {		
 			students = studentService.searchByName(students, nameSearch, column);
-		} else
+		} else if(students == null)
 			students = studentService.listStudent();
 		return students;
 	}
@@ -168,12 +168,12 @@ public class Controller implements Serializable {
 
 	public String DetailStudent(int id) {
 		student = studentService.findStudentById(id);
-		return "DetailStudent";
+		return "DetailStudent?faces-redirect=true";
 	}
 
 	public String Back() {
 		student = new Student();
-		return "ListStudent?faces-redirect=true";
+		return "ListStudent";
 	}
 
 	public String EditStudent() {
@@ -191,15 +191,12 @@ public class Controller implements Serializable {
 	}
 
 	public String AddStudent() {
+		
+		student.setId(students.size() + 1);
+		student.setAvgStudent(0);
 		studentService.SaveStudent(student);
 		student = new Student();
-		return "ListStudent";
-	}
-
-	public String viewAddStudent() {
-		student = new Student();
-		student.setId(students.size() + 1);
-		return "AddStudent";
+		return null;
 	}
 
 	public String Reset() {

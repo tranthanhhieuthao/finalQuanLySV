@@ -24,25 +24,9 @@
 
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerScore.newListScore}"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
 			paginator="true" rows="20"
 			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
-
-
-			<!-- 	<p:column>
-				<f:facet name="header">
-					<h:outputText value="Name Student" />
-				</f:facet>
-				<h:outputText value="#{list.student.nameStudent}" />
-			</p:column>
-			
-				<p:column>
-				<f:facet name="header">
-					<h:outputText value="age Student" />
-				</f:facet>
-				<h:outputText value="#{list.student.age}" />
-			</p:column>  -->
-
 
 
 			<p:column>

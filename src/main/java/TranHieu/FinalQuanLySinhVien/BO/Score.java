@@ -47,8 +47,6 @@ public class Score {
 	}
 	
 	
-	
-
 	public Score(Date timeStart, Date timeEnd, String teacher, float scoreStudent) {
 
 		this.timeStart = timeStart;
@@ -56,8 +54,6 @@ public class Score {
 		this.teacher = teacher;
 		this.scoreStudent = scoreStudent;
 	}
-
-
 
 
 	public Date getTimeStart() {
@@ -68,31 +64,21 @@ public class Score {
 		this.timeStart = timeStart;
 	}
 
-
-
 	public Date getTimeEnd() {
 		return timeEnd;
 	}
-
-
 
 	public void setTimeEnd(Date timeEnd) {
 		this.timeEnd = timeEnd;
 	}
 
-
-
 	public String getTeacher() {
 		return teacher;
 	}
 
-
-
 	public void setTeacher(String teacher) {
 		this.teacher = teacher;
 	}
-
-
 
 	public int getId() {
 		return id;
