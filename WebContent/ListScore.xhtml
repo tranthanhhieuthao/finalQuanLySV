@@ -71,6 +71,14 @@
 				</f:facet>
 				<h:outputText value="#{controllerScore.statusClass(list.id)}" />
 			</p:column>
+			
+			<p:column>
+				<f:facet name="header"> Detail</f:facet>
+				<p:commandButton value="Detail " style="margin-right:20px;"
+					icon="pi pi-info" styleClass="ui-priority-primary" 
+					action="#{controllerScore.detailSubject(list.id)}" />
+
+			</p:column>
 
 
 

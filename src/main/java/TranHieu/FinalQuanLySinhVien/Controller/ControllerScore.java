@@ -1,5 +1,6 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,12 +22,6 @@ public class ControllerScore {
 	public ControllerScore() {
 
 	}
-
-	private Date timeStart;
-
-	private Date timeEnd;
-
-	private String teacher;
 
 	@ManagedProperty(value = "#{scoreService}")
 	private ScoreService scoreService;
@@ -54,7 +49,9 @@ public class ControllerScore {
 
 	private List<Score> listScoreStudent;
 
-	List<Score> newListScore;
+	private List<Score> newListScore;
+	
+	private List<Score> detailScore =new ArrayList<Score>();
 
 	public List<Score> getNewListScore() {
 		newListScore = scoreService.listScoreStudent();
@@ -65,40 +62,26 @@ public class ControllerScore {
 						&& newListScore.get(i).getTimeStart().equals(newListScore.get(j).getTimeStart())) {
 					if (i != j) {
 						newListScore.remove(j);
-						i = 0;
+//						i = 0;
 					}
 
 				}
 			}
 		}
-
+		
 		return newListScore;
 	}
-
-
-	public Date getTimeStart() {
-		return timeStart;
+	
+	
+	public List<Score> getDetailScore() {
+		return detailScore;
 	}
 
-	public void setTimeStart(Date timeStart) {
-		this.timeStart = timeStart;
+
+	public void setDetailScore(List<Score> detailScore) {
+		this.detailScore = detailScore;
 	}
 
-	public Date getTimeEnd() {
-		return timeEnd;
-	}
-
-	public void setTimeEnd(Date timeEnd) {
-		this.timeEnd = timeEnd;
-	}
-
-	public String getTeacher() {
-		return teacher;
-	}
-
-	public void setTeacher(String teacher) {
-		this.teacher = teacher;
-	}
 
 	public void setClassService(ClassService classService) {
 		this.classService = classService;
@@ -189,17 +172,14 @@ public class ControllerScore {
 		return null;
 	}
 
-	public String viewScoreForStudent() {
-		scoreBean = new Score();
-		studentBean = studentService.findStudentById(1);
-		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
-		return null;
-	}
+//	public String viewScoreForStudent() {
+//		scoreBean = new Score();
+//		studentBean = studentService.findStudentById(1);
+//		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
+//		return null;
+//	}
 
 	public String MarkScoreForStudent() {
-//		scoreBean.setTeacher("");
-//		scoreBean.setTimeStart(new Date());
-//		scoreBean.setTimeEnd(new Date());
 		studentBean = studentService.findStudentById(1);
 		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
@@ -207,7 +187,7 @@ public class ControllerScore {
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
 		scoreService.save(scoreBean);
-		return "ScoreEditStudentAndDelete";
+		return "ListScore";
 	}
 
 	public String statusClass(int id) {
@@ -235,6 +215,7 @@ public class ControllerScore {
 	public String addStudentSubject(int id) {
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentService.findStudentById(id));
+//		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreService.save(scoreBean);
 		return null;
 	}
@@ -242,6 +223,22 @@ public class ControllerScore {
 	public String DeleteScore(int id) {
 		scoreService.Delete(id);
 		return "ScoreEditStudentAndDelete";
+	}
+	
+	public String detailSubject(int id) {
+//		int i=0;
+//		 detailScore = new ArrayList<Score>();
+		for (Score sc : scoreService.listScoreStudent()) {
+			if (sc.getClassStudent().getNameClass()
+					.equals(scoreService.findScoreOfStudentById(id).getClassStudent().getNameClass())
+					&& sc.getCourse().getNameCourse()
+							.equals(scoreService.findScoreOfStudentById(id).getCourse().getNameCourse())
+					&& sc.getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart())) {
+				detailScore.add(sc);
+//				i++;
+			}
+		}
+		return "DetailScore";
 	}
 
 }

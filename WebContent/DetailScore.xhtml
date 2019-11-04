@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Header</title>
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
+</h:head>
+<body>
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
+		</ui:insert>
+	</div>
+
+	<h:form style="margin-left:150px;margin-right:150px;">
+		<p:commandButton value="Back" action="ListScore"
+			icon="pi pi-angle-double-left" />
+	</h:form>
+
+	<h:form>
+
+		<p:dataTable id="tbl" var="list"
+			value="#{controllerScore.detailScore}" rows="20"
+			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
+				</f:facet>
+				<h:outputText value="#{list.student.nameStudent}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Age" />
+				</f:facet>
+				<h:outputText value="#{list.student.age}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Village" />
+				</f:facet>
+				<h:outputText value="#{list.student.village}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Phone" />
+				</f:facet>
+				<h:outputText value="#{list.student.phone}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Email" />
+				</f:facet>
+				<h:outputText value="#{list.student.email}" />
+			</p:column>
+	
+
+		</p:dataTable>
+	</h:form>
+</body>
+</html>
