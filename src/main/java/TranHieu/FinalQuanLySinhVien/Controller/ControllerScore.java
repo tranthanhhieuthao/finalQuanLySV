@@ -26,7 +26,7 @@ public class ControllerScore {
 	
 	private String teacher;
 	
-//	private int quatityScoreOfStudent =1;
+//	private int quatityScoreOfStudent =0;
 
 	@ManagedProperty(value = "#{scoreService}")
 	private ScoreService scoreService;
@@ -216,7 +216,6 @@ public class ControllerScore {
 	}
 
 	public String MarkScoreForStudent() {
-		if(quatityScoreOfStudent <=50) {
 //		scoreBean.setTeacher("");
 //		scoreBean.setTimeStart(new Date());
 //		scoreBean.setTimeEnd(new Date());
@@ -227,14 +226,18 @@ public class ControllerScore {
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
 		 scoreService.save(scoreBean); 
-		}
 		return "ListScore";
 	}
 	
 	public String statusClass(int id) {
 		int quatityScoreOfStudent =0;
 		for(Score sc: scoreService.listScoreStudent()) {
-			if (sc.getClass().equals(scoreService.findScoreOfStudentById(id).getClass())) quatityScoreOfStudent++;
+			if (sc.getClassStudent().getNameClass().equals(scoreService.findScoreOfStudentById(id).getClassStudent().getNameClass()) &&
+					sc.getCourse().getNameCourse().equals(scoreService.findScoreOfStudentById(id).getCourse().getNameCourse()) &&
+							sc.getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart()) 
+					) {
+				quatityScoreOfStudent++;
+			}
 		}
 		if(quatityScoreOfStudent <50) {
 			return "remain"+" "+(50-quatityScoreOfStudent)+" "+"slot";
