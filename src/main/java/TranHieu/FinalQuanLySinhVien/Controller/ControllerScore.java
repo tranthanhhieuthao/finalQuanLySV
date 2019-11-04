@@ -62,7 +62,7 @@ public class ControllerScore {
 						&& newListScore.get(i).getTimeStart().equals(newListScore.get(j).getTimeStart())) {
 					if (i != j) {
 						newListScore.remove(j);
-//						i = 0;
+						i = 0;
 					}
 
 				}
@@ -215,7 +215,7 @@ public class ControllerScore {
 	public String addStudentSubject(int id) {
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentService.findStudentById(id));
-//		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
+		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreService.save(scoreBean);
 		return null;
 	}
@@ -227,15 +227,22 @@ public class ControllerScore {
 	
 	public String detailSubject(int id) {
 //		int i=0;
-//		 detailScore = new ArrayList<Score>();
-		for (Score sc : scoreService.listScoreStudent()) {
-			if (sc.getClassStudent().getNameClass()
+		 detailScore = scoreService.listScoreStudent();
+		 int size =scoreService.listScoreStudent().size();
+		 
+		for (int i =0;i<size;i++) {
+			if (scoreService.listScoreStudent().get(i).getClassStudent().getNameClass()
 					.equals(scoreService.findScoreOfStudentById(id).getClassStudent().getNameClass())
-					&& sc.getCourse().getNameCourse()
+					&& scoreService.listScoreStudent().get(i).getCourse().getNameCourse()
 							.equals(scoreService.findScoreOfStudentById(id).getCourse().getNameCourse())
-					&& sc.getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart())) {
-				detailScore.add(sc);
+					&& scoreService.listScoreStudent().get(i).getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart())) {
+				System.out.println("da vao day roi oh yeah!!");
+				System.out.println(detailScore.size());
+				detailScore.remove(i);
+				size--;
 //				i++;
+
+				System.out.println(detailScore.size());
 			}
 		}
 		return "DetailScore";
