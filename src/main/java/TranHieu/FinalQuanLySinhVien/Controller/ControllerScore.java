@@ -59,9 +59,7 @@ public class ControllerScore {
 	public List<Score> getNewListScore() {
 		newListScore = scoreService.listScoreStudent();
 		for (int i = 0; i < newListScore.size(); i++) {
-
 			for (int j = 0; j < newListScore.size(); j++) {
-
 				if (newListScore.get(i).getClassStudent().equals(newListScore.get(j).getClassStudent())
 						&& newListScore.get(i).getCourse().equals(newListScore.get(j).getCourse())
 						&& newListScore.get(i).getTimeStart().equals(newListScore.get(j).getTimeStart())) {
@@ -209,7 +207,7 @@ public class ControllerScore {
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
 		scoreService.save(scoreBean);
-		return "ListScore";
+		return "ScoreEditStudentAndDelete";
 	}
 
 	public String statusClass(int id) {

@@ -123,7 +123,13 @@
 
 	</h:form>
 
-
+	<p:commandButton value="AddStudent" icon="pi pi-user-plus"
+		style="margin-left:150px;margin-right:150px;"
+		styleClass="ui-priority-primary" onclick="PF('dlg5').show();" />
+	<ui:insert name="AddStudent">
+		<ui:include src="/AddStudent.xhtml" />
+	</ui:insert>
+	
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
@@ -132,13 +138,6 @@
 
 
 			<f:facet name="header">
-				<p:commandButton value="AddStudent" icon="pi pi-user-plus"
-					style="margin-right:20px;float:left"
-					styleClass="ui-priority-primary" onclick="PF('dlg5').show();" />
-				<ui:insert name="AddStudent">
-					<ui:include src="/AddStudent.xhtml" />
-				</ui:insert>
-
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
 					<f:selectItem itemLabel="Id" itemValue="Id" />

@@ -173,30 +173,27 @@ public class Controller implements Serializable {
 
 	public String Back() {
 		student = new Student();
-		return "ListStudent";
+		return "ListStudent?faces-redirect=true";
 	}
 
 	public String EditStudent() {
-		System.out.println("da chay vao day");
 		studentService.EditStudent(student);
-		System.out.println("da edit oke");
-		return "ListStudent";
+		return "ListStudent?faces-redirect=true";
 
 	}
 
 	public String viewEditStudent(int id) {
 		student = studentService.findStudentById(id);
-		return "EditStudent";
+		return "EditStudent?faces-redirect=true";
 
 	}
 
-	public String AddStudent() {
-		
+	public String AddStudent() {		
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);
 		student = new Student();
-		return null;
+		return "ListStudent?faces-redirect=true";
 	}
 
 	public String Reset() {
@@ -204,7 +201,7 @@ public class Controller implements Serializable {
 		nameStudentFillter = null;
 		column = null;
 		students = studentService.listStudent();
-		return "ListStudent";
+		return "ListStudent?faces-redirect=true";
 	}
 
 	public float Avg(int id) {
