@@ -1,6 +1,7 @@
 package TranHieu.FinalQuanLySinhVien.DAO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -9,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.type.DateType;
 
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
@@ -85,6 +87,26 @@ public class ScoreDAO {
 				listScoreStudent = session.createQuery("FROM Score").list();
 				session.getTransaction().commit();
 			} catch (Exception e) {
+				e.printStackTrace();
+				session.getTransaction().rollback();
+			} finally {
+				session.close();
+			}
+			return listScoreStudent;
+		}
+		
+		public List<Score> detailSubject(int classStudent,Date timeStartStudent,int courseId) {
+			Session session = sessionFactory.openSession();
+			List<Score> listScoreStudent = new ArrayList<Score>();
+			try {
+				session.beginTransaction();
+				listScoreStudent = session.createQuery("FROM Score WHERE classStudent_id = :classStudent AND  timeStart =:timeStartStudent AND course1_id =:courseId").
+						setParameter("classStudent", classStudent).
+						setParameter("courseId",  courseId).
+						setParameter("timeStartStudent", timeStartStudent,DateType.INSTANCE)					
+						.list();
+				session.getTransaction().commit();
+			}catch (Exception e) {
 				e.printStackTrace();
 				session.getTransaction().rollback();
 			} finally {

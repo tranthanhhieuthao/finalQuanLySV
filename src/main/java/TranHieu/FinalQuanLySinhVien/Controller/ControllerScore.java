@@ -16,7 +16,6 @@ import TranHieu.FinalQuanLySinhVien.BO.Student;
 
 @ManagedBean(name = "controllerScore")
 @SessionScoped
-@ViewScoped
 public class ControllerScore {
 
 	public ControllerScore() {
@@ -67,14 +66,13 @@ public class ControllerScore {
 
 				}
 			}
-		}
-		
+		}	
 		return newListScore;
 	}
 	
 	
 	public List<Score> getDetailScore() {
-		return detailScore;
+		return this.detailScore;
 	}
 
 
@@ -172,12 +170,6 @@ public class ControllerScore {
 		return null;
 	}
 
-//	public String viewScoreForStudent() {
-//		scoreBean = new Score();
-//		studentBean = studentService.findStudentById(1);
-//		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
-//		return null;
-//	}
 
 	public String MarkScoreForStudent() {
 		studentBean = studentService.findStudentById(1);
@@ -225,26 +217,11 @@ public class ControllerScore {
 		return "ScoreEditStudentAndDelete";
 	}
 	
-	public String detailSubject(int id) {
-//		int i=0;
-		 detailScore = scoreService.listScoreStudent();
-		 int size =scoreService.listScoreStudent().size();
-		 
-		for (int i =0;i<size;i++) {
-			if (scoreService.listScoreStudent().get(i).getClassStudent().getNameClass()
-					.equals(scoreService.findScoreOfStudentById(id).getClassStudent().getNameClass())
-					&& scoreService.listScoreStudent().get(i).getCourse().getNameCourse()
-							.equals(scoreService.findScoreOfStudentById(id).getCourse().getNameCourse())
-					&& scoreService.listScoreStudent().get(i).getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart())) {
-				System.out.println("da vao day roi oh yeah!!");
-				System.out.println(detailScore.size());
-				detailScore.remove(i);
-				size--;
-//				i++;
 
-				System.out.println(detailScore.size());
-			}
-		}
+	
+	public String detailSubject(int id) {
+		scoreBean = scoreService.findScoreOfStudentById(id);
+		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());		
 		return "DetailScore";
 	}
 

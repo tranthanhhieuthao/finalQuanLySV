@@ -1,5 +1,6 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 import TranHieu.FinalQuanLySinhVien.BO.Score;
@@ -16,5 +17,7 @@ public interface ScoreInterface {
 	public void Delete(int id);
 	
 	public void update(Score scoreUpdate);
+	
+	public List<Score> detailSubject(int classStudent,Date timeStartStudent,int courseId);
 	
 }

@@ -1,5 +1,6 @@
 package TranHieu.FinalQuanLySinhVien.Controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -50,6 +51,10 @@ public class ScoreService implements ScoreInterface {
 	public void update(Score scoreUpdate) {
 		scoreDAO.update(scoreUpdate);
 		
+	}
+	
+	public List<Score> detailSubject(int classStudent,Date timeStartStudent,int courseId){
+		return scoreDAO.detailSubject(classStudent,timeStartStudent,courseId);
 	}
 
 	
