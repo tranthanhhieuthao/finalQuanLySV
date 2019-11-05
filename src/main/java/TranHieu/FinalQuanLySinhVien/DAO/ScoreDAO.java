@@ -103,7 +103,7 @@ public class ScoreDAO {
 				listScoreStudent = session.createQuery("FROM Score WHERE classStudent_id = :classStudent AND  timeStart =:timeStartStudent AND course1_id =:courseId").
 						setParameter("classStudent", classStudent).
 						setParameter("courseId",  courseId).
-						setParameter("timeStartStudent", timeStartStudent,DateType.INSTANCE)					
+						setParameter("timeStartStudent", timeStartStudent)					
 						.list();
 				session.getTransaction().commit();
 			}catch (Exception e) {

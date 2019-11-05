@@ -221,7 +221,12 @@ public class ControllerScore {
 	
 	public String detailSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());		
+		System.out.println("da vaof chua????");
+		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());	
+		System.out.println(scoreBean.getClassStudent().getId());
+		System.out.println(scoreBean.getCourse().getId());
+		System.out.println(scoreBean.getTimeStart());
+		System.out.println(detailScore.size());
 		return "DetailScore";
 	}
 

@@ -23,7 +23,7 @@
 								styleClass="ui-priority-primary"
 								action="ScoreEditStudentAndDelete" />
 
-				<h:form id="form">
+				<h:form id="addSubject">
 					<p:dataTable id="tbl" var="list"
 						value="#{controllerStudent.students}"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
@@ -79,7 +79,7 @@
 							<f:facet name="header">Add Course</f:facet>
 
 							<p:commandButton value="Add " style="margin-right:20px;"
-								styleClass="ui-priority-primary" update="form"
+								styleClass="ui-priority-primary" update="addSubject"
 								action="#{controllerScore.addStudentSubject(list.id)}" />
 						</p:column>
 
