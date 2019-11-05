@@ -25,7 +25,7 @@ public class Controller implements Serializable {
 	}
 	
 	@ManagedProperty(value = "#{studentBean}")
-	private Student student = new Student();
+	private Student student ;
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
@@ -188,7 +188,7 @@ public class Controller implements Serializable {
 
 	}
 
-	public String AddStudent() {		
+	public String AddStudent() {
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);

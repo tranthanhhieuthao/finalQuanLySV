@@ -13,7 +13,7 @@
 		library="primefaces" />
 </h:head>
 <h:body>
-
+<h:form id="addStudent">
 	<p:dialog header="Add Subject" widgetVar="dlg5" minHeight="40"
 		style="margin-bottom:20px;margin-left:600px;margin-right:600px;">
 
@@ -42,12 +42,12 @@
 			<p:calendar value="#{controllerStudent.student.birthDay}" />
 
 			<p:commandButton value="Add Student"
-				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="form"/>
+				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="addStudent"/>
 
 		</p:panelGrid>
 
 	</p:dialog>
-
+</h:form>
 
 </h:body>
 </html>
