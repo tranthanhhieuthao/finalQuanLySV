@@ -135,7 +135,7 @@ public class ControllerScore {
 	}
 
 	public List<Score> getListScoreStudent() {
-		if(listScoreStudent == null) listScoreStudent = scoreService.listScoreStudent();
+		listScoreStudent = scoreService.listScoreStudent();
 		return listScoreStudent;
 	}
 
@@ -145,7 +145,7 @@ public class ControllerScore {
 
 	public String EditScore() {
 		scoreService.update(scoreBean);
-		return "ListScore";
+		return "ScoreEditStudentAndDelete";
 
 	}
 
