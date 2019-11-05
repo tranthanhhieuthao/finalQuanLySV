@@ -30,32 +30,19 @@
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerScore.detailScore}" rows="20"
 			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+
+
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Name" />	
+					<h:outputText value="ID Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.idStudent}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Name" />
 				</f:facet>
 				<h:outputText value="#{list.student.nameStudent}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Age" />
-				</f:facet>
-				<h:outputText value="#{list.student.age}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Village" />
-				</f:facet>
-				<h:outputText value="#{list.student.village}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Phone" />
-				</f:facet>
-				<h:outputText value="#{list.student.phone}"  />
 			</p:column>
 
 			<p:column>
@@ -64,7 +51,7 @@
 				</f:facet>
 				<h:outputText value="#{list.student.email}" />
 			</p:column>
-	
+
 
 		</p:dataTable>
 	</h:form>

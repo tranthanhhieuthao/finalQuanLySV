@@ -43,7 +43,7 @@ public class Controller implements Serializable {
 	private String villageStudentFillter;
 	private String emailStudentFillter;
 	private String valueAgeFillter;
-	private int ageStudentFillter;
+	
 
 	public String getNameStudentFillter() {
 		return nameStudentFillter;
@@ -77,13 +77,6 @@ public class Controller implements Serializable {
 		this.valueAgeFillter = valueAgeFillter;
 	}
 
-	public int getAgeStudentFillter() {
-		return ageStudentFillter;
-	}
-
-	public void setAgeStudentFillter(int ageStudentFillter) {
-		this.ageStudentFillter = ageStudentFillter;
-	}
 
 	public float getAvg() {
 		return avg;
@@ -137,7 +130,7 @@ public class Controller implements Serializable {
 	public List<Student> getStudents() {
 		if ( nameStudentFillter != null && nameSearch == null)
 			students = studentService.searchFillter(students, nameStudentFillter, villageStudentFillter,
-					emailStudentFillter, ageStudentFillter, valueAgeFillter);
+					emailStudentFillter, valueAgeFillter);
 		else if (sort != null && nameSearch == null ) {
 			students = studentService.sortBy(students, sort, value);
 		
@@ -189,6 +182,7 @@ public class Controller implements Serializable {
 	}
 
 	public String AddStudent() {
+		student.setIdStudent("2019M04"+students.size()+1);
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);

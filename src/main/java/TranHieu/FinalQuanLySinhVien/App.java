@@ -30,18 +30,18 @@ public class App
         String[] note = {"haha","khong co gi","dang chan doi","dang yeu đoi","fall in love"};
         Date[] birthDay = {new Date(1992, 06, 15),new Date(1993, 12, 21),new Date(1988, 02, 15),new Date(1996, 04, 15),new Date(1997, 04, 14),new Date(1995, 06, 15),new Date(1998, 07, 15)
         		,new Date(1996, 05, 15)};
+        String idStudent ="2019M04";
         String user ="user";
         String password="123";
         for(int i=1;i<=100;i++) {
       	
-        	   Student student = new Student(nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],
-        			age[(int)Math.round(Math.random()*(age.length-1))],
+        	   Student student = new Student(idStudent +i,nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],     		
         			provide[(int)Math.round(Math.random()*(provide.length-1))],
         			phone[(int)Math.round(Math.random()*(phone.length-1))],
         			email[(int)Math.round(Math.random()*(email.length-1))],      			       	        			
         			note[(int)Math.round(Math.random()*(note.length-1))],
         			birthDay[(int)Math.round(Math.random()*(birthDay.length-1))],
-        			agv[(int)Math.round(Math.random()*(agv.length-1))]
+        			0
         			);
         	studentDAO.save(student);
 

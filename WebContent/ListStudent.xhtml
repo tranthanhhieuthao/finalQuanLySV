@@ -21,20 +21,16 @@
 		</ui:insert>
 	</div>
 
-
-
-		<p:panelGrid columns="2" style="margin-left:150px;margin-right:150px;">
-			<p:commandButton value="Search" type="button" icon="pi pi-search"
-				onclick="PF('dlg1').show();" />
-			<p:commandButton value="Search Fillter" type="button"
-				icon="pi pi-search" onclick="PF('dlg2').show();" />
-		</p:panelGrid>
+	<p:panelGrid columns="2" style="margin-left:150px;margin-right:150px;">
+		<p:commandButton value="Search" type="button" icon="pi pi-search"
+			onclick="PF('dlg1').show();" />
+		<p:commandButton value="Search Fillter" type="button"
+			icon="pi pi-search" onclick="PF('dlg2').show();" />
+	</p:panelGrid>
 
 	<ui:insert name="header">
-			<ui:include src="/viewSearch.xhtml" />
-		</ui:insert>
-
-
+		<ui:include src="/viewSearch.xhtml" />
+	</ui:insert>
 
 	<p:commandButton value="AddStudent" icon="pi pi-user-plus"
 		style="margin-left:150px;margin-right:150px;"
@@ -49,12 +45,10 @@
 			paginator="true" rows="15"
 			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
 
-
 			<f:facet name="header">
 				<p:outputLabel for="onemenu" value="Sort By" />
 				<p:selectOneMenu id="onemenu" value="#{controllerStudent.sort}">
 					<f:selectItem itemLabel="Id" itemValue="Id" />
-					<f:selectItem itemLabel="Age" itemValue="Age" />
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
 				</p:selectOneMenu>
 
@@ -66,14 +60,13 @@
 				<p:commandButton action="#{controllerStudent. getStudents()}"
 					icon="pi pi-list" value="Sort start" update="form">
 				</p:commandButton>
-
 			</f:facet>
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Id" />
+					<h:outputText value="Id Student" />
 				</f:facet>
-				<h:outputText value="#{list.id}" update="form" />
+				<h:outputText value="#{list.idStudent}" update="form" />
 			</p:column>
 
 			<p:column>
@@ -84,13 +77,6 @@
 			</p:column>
 
 			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Age" />
-				</f:facet>
-				<h:outputText value="#{list.age}" />
-			</p:column>
-
-			<p:column >
 				<f:facet name="header">
 					<h:outputText value="Village" />
 				</f:facet>
@@ -172,7 +158,6 @@
 					</p:menuitem>
 				</p:splitButton>
 			</p:column>
-
 		</p:dataTable>
 
 	</h:form>

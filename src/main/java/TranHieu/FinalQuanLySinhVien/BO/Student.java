@@ -24,15 +24,15 @@ public class Student {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name ="idStudent")
+	@NotNull
+	private String idStudent;
 
 	@Column(name = "nameStudent")
 	@NotNull
 	@Size(min=2,max=15)
 	private String nameStudent;
-
-	@Min(10)
-	@Column(name = "age")
-	private int age;
 
 	@Column(name = "village")
 	private String village;
@@ -60,16 +60,16 @@ public class Student {
 		
 	}
 			
-	public Student( String nameStudent, int age, String village, int phone, String email, String note,
+	public Student(String idStudent, String nameStudent, String village, int phone, String email, String note,
 			Date birthDay, float avgStudent) {
 		this.nameStudent = nameStudent;
-		this.age = age;
 		this.village = village;
 		this.phone = phone;
 		this.email = email;
 		this.note = note;
 		this.birthDay = birthDay;
 		this.avgStudent = avgStudent;
+		this.idStudent = idStudent;
 	}
 
 
@@ -99,14 +99,6 @@ public class Student {
 
 	public void setNameStudent(String nameStudent) {
 		this.nameStudent = nameStudent;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public String getVillage() {
@@ -165,5 +157,15 @@ public class Student {
 	public void setAvgStudent(float avgStudent) {
 		this.avgStudent = avgStudent;
 	}
+
+	public String getIdStudent() {
+		return idStudent;
+	}
+
+	public void setIdStudent(String idStudent) {
+		this.idStudent = idStudent;
+	}
+	
+	
 
 }

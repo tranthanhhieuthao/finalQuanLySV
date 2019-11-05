@@ -123,19 +123,15 @@ public class StudentDAO {
 		return list;
 	}
 	
-	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,int ageStudent,String valueAge) {
+	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,String valueAge) {
 		Session session = sessionFactory.openSession();
-		String hql ="FROM Student WHERE nameStudent LIKE:nameStudent AND village LIKE:villageStudent  AND email LIKE :emailStudent  AND ";
+		String hql ="FROM Student WHERE nameStudent LIKE:nameStudent AND village LIKE:villageStudent  AND email LIKE :emailStudent ";
 		try {
 			session.beginTransaction();
-		 if (valueAge.equals("cong"))
-			hql = hql+ "age >= :ageStudent";
-		 else if( valueAge.equals("tru"))
-			 hql = hql+ "age <= :ageStudent";
 			Query query = session.createQuery(hql).setParameter("nameStudent", "%" + nameStudent + "%")
 													.setParameter("villageStudent", "%" + villageStudent + "%")
-													.setParameter("emailStudent", "%" + emailStudent + "%")
-													.setParameter("ageStudent",  ageStudent );
+													.setParameter("emailStudent", "%" + emailStudent + "%");
+													
 			list = query.list();
 			session.getTransaction().commit();
 			for (Student customer : list) {
