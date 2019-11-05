@@ -34,14 +34,14 @@
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 			paginator="true" rows="11">
 
-			<p:column >
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name Student" />
 				</f:facet>
 				<h:outputText value="#{list.student.nameStudent}" />
 			</p:column>
 
-			<p:column >
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="age Student" />
 				</f:facet>
@@ -62,28 +62,28 @@
 				<h:outputText value="#{list.student.email}" />
 			</p:column>
 
-			<p:column >
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name Course" />
 				</f:facet>
 				<h:outputText value="#{list.course.nameCourse}" />
 			</p:column>
 
-			<p:column >
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Score" />
 				</f:facet>
 				<h:outputText value="#{list.scoreStudent}" />
 			</p:column>
 
-			<p:column >
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Class Room" />
 				</f:facet>
 				<h:outputText value="#{list.classStudent.nameClass}" />
 			</p:column>
-			
-				<p:column >
+
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Teacher" />
 				</f:facet>
@@ -100,12 +100,22 @@
 
 			<p:column>
 				<f:facet name="header">Delete Subject</f:facet>
-				<p:commandButton id="delete" value="Delete"
-					icon="pi pi-times-circle" style="margin-right:20px;"
-					styleClass="ui-priority-primary"
-					action="#{controllerScore.DeleteScore(list.id)}">
-					<f:ajax execute="delete" render="tbl" />
+
+				<p:growl id="message" showDetail="true" />
+				<p:commandButton value="Delete" icon="pi pi-times"
+					action="#{controllerScore.DeleteScore(list.id)}" update="message">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="pi pi-exclamation-triangle" />
 				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check">
+						<f:ajax execute="delete" render="tbl" />
+					</p:commandButton>
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+				</p:confirmDialog>
 			</p:column>
 
 		</p:dataTable>
@@ -113,40 +123,41 @@
 
 
 	<p:dialog header="Add Subject" widgetVar="dlg3" minHeight="40">
-<h:form id="formNow">
-		<table>
-			<tr>
-				<td><h:outputText value="Time Start" /></td>
-				<td><p:calendar value="#{controllerScore.scoreBean.timeStart}"
-						pattern="MM/dd/yyyy HH:mm:ss" /></td>
-				<td><h:outputText
-						value="#{controllerScore.scoreBean.timeStart}" /></td>
-			</tr>
+		<h:form id="formNow">
+			<table>
+				<tr>
+					<td><h:outputText value="Time Start" /></td>
+					<td><p:calendar value="#{controllerScore.scoreBean.timeStart}"
+							pattern="MM/dd/yyyy HH:mm:ss" /></td>
+					<td><h:outputText
+							value="#{controllerScore.scoreBean.timeStart}" /></td>
+				</tr>
 
-			<tr>
-				<td><h:outputText value="Time End" /></td>
-				<td><p:calendar value="#{controllerScore.scoreBean.timeEnd}"
-						pattern="MM/dd/yyyy HH:mm:ss" /></td>
+				<tr>
+					<td><h:outputText value="Time End" /></td>
+					<td><p:calendar value="#{controllerScore.scoreBean.timeEnd}"
+							pattern="MM/dd/yyyy HH:mm:ss" /></td>
 
-			</tr>
-			<tr>
-				<td><h:outputText id="qw" value="Teacher" /></td>
-				<td><p:inputText value="#{controllerScore.scoreBean.teacher}" /></td>
-			</tr>
-			<tr>
+				</tr>
+				<tr>
+					<td><h:outputText id="qw" value="Teacher" /></td>
+					<td><p:inputText value="#{controllerScore.scoreBean.teacher}" /></td>
+				</tr>
+				<tr>
 
-				<td><p:commandButton value="Name Course" type="button"
-						icon="pi pi-plus" onclick="PF('dlg1').show();" /></td>
-				<td><p:commandButton value="Class Room" type="button"
-						icon="pi pi-plus" onclick="PF('dlg2').show();" /></td>
-			</tr>
-			<tr>
-				<td><p:commandButton value="Add Now" icon="pi pi-upload" update="formNow"
-						style="margin-right:20px;" styleClass="ui-priority-primary"
-						action="#{controllerScore.MarkScoreForStudent()}" /></td>
-			</tr>
-		</table>
-</h:form>
+					<td><p:commandButton value="Name Course" type="button"
+							icon="pi pi-plus" onclick="PF('dlg1').show();" /></td>
+					<td><p:commandButton value="Class Room" type="button"
+							icon="pi pi-plus" onclick="PF('dlg2').show();" /></td>
+				</tr>
+				<tr>
+					<td><p:commandButton value="Add Now" icon="pi pi-upload"
+							update="formNow" style="margin-right:20px;"
+							styleClass="ui-priority-primary"
+							action="#{controllerScore.MarkScoreForStudent()}" /></td>
+				</tr>
+			</table>
+		</h:form>
 
 
 		<p:dialog header="Name Course" widgetVar="dlg1" minHeight="40"

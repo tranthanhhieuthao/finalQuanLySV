@@ -129,7 +129,7 @@
 	<ui:insert name="AddStudent">
 		<ui:include src="/AddStudent.xhtml" />
 	</ui:insert>
-	
+
 	<h:form id="form">
 		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
@@ -240,9 +240,23 @@
 						icon="pi pi-refresh">
 						<f:ajax execute="edit" render="tbl" />
 					</p:menuitem>
-					<p:menuitem value="Delete"
-						action="#{controllerStudent.Delete(list.id)}" ajax="false"
-						icon="pi pi-times" />
+					<p:menuitem>
+						<p:growl id="message" showDetail="true" />
+
+						<p:commandButton value="Delete" icon="pi pi-times"
+							action="#{controllerStudent.Delete(list.id)}" update="message">
+							<p:confirm header="Confirmation" message="Are you sure?"
+								icon="pi pi-exclamation-triangle" />
+						</p:commandButton>
+
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Yes" type="button"
+								styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+						</p:confirmDialog>
+
+					</p:menuitem>
 				</p:splitButton>
 			</p:column>
 
