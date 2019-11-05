@@ -33,7 +33,7 @@ public class App
         String idStudent ="2019M04";
         String user ="user";
         String password="123";
-        for(int i=1;i<=100;i++) {
+        for(int i=1;i<=50;i++) {
       	
         	   Student student = new Student(idStudent +i,nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],     		
         			provide[(int)Math.round(Math.random()*(provide.length-1))],
