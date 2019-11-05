@@ -21,7 +21,7 @@
 		</ui:insert>
 	</div>
 
-	<h:form>
+
 
 		<p:panelGrid columns="2" style="margin-left:150px;margin-right:150px;">
 			<p:commandButton value="Search" type="button" icon="pi pi-search"
@@ -30,98 +30,11 @@
 				icon="pi pi-search" onclick="PF('dlg2').show();" />
 		</p:panelGrid>
 
-		<p:dialog header="Search" widgetVar="dlg1" minHeight="40">
-			<table>
-				<tr>
-					<td><p:outputLabel for="txt1" value="Search" /></td>
-					<td><p:inputText id="txt1"
-							value="#{controllerStudent.nameSearch}" required="true"
-							label="nameSearch"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="onemenu4" value="Column Search" /></td>
-					<td><p:selectOneMenu id="onemenu4"
-							value="#{controllerStudent.column}">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
-							<f:selectItem itemLabel="Village" itemValue="Village" />
-							<f:selectItem itemLabel="Email" itemValue="Email" />
-							<f:selectItem itemLabel="ALL" itemValue="ALL" />
-						</p:selectOneMenu></td>
-				</tr>
-				<tr>
-					<td><p:commandButton id="buttonSearch" value="Search start"
-							icon="pi pi-caret-up"
-							action="#{controllerStudent. getStudents()}" update="form">
-							<f:ajax execute="buttonSearch" render="outResult" />
-						</p:commandButton></td>
-					<td><p:commandButton value="Reset" icon="pi pi-replay"
-							action="#{controllerStudent.Reset()}" update="form" /></td>
-				</tr>
-				<tr>
-					<td><h:outputText id="outResult"
-							value="Results : Found #{controllerStudent.students.size()}">
-
-						</h:outputText></td>
-				</tr>
-			</table>
-		</p:dialog>
+	<ui:insert name="header">
+			<ui:include src="/viewSearch.xhtml" />
+		</ui:insert>
 
 
-
-	</h:form>
-	<h:form id="searchFillter">
-
-		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40">
-			<table>
-				<tr>
-					<td><p:outputLabel for="onemenu8" value="Value Age" /></td>
-					<td><p:selectOneMenu id="onemenu8"
-							value="#{controllerStudent.valueAgeFillter}">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="+" itemValue="cong" />
-							<f:selectItem itemLabel="-" itemValue="tru" />
-						</p:selectOneMenu></td>
-
-					<td><p:outputLabel for="txt4" value="Age" /></td>
-					<td><p:inputText id="txt4"
-							value="#{controllerStudent.ageStudentFillter}" required="true"
-							label="Age Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="txt5" value="Name" /></td>
-					<td><p:inputText id="txt5"
-							value="#{controllerStudent.nameStudentFillter}" required="true"
-							label="Name Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="txt6" value="Village" /></td>
-					<td><p:inputText id="txt6"
-							value="#{controllerStudent.villageStudentFillter}"
-							required="true" label="Village Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="txt7" value="Email" /></td>
-					<td><p:inputText id="txt7"
-							value="#{controllerStudent.emailStudentFillter}" required="true"
-							label="Email Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:commandButton id="buttonSearch2" value="Search start"
-							icon="pi pi-caret-up"
-							action="#{controllerStudent. getStudents()}" update="form">
-							<f:ajax execute="buttonSearch2" render="outResult1" />
-						</p:commandButton></td>
-					<td><p:commandButton value="Reset" icon="pi pi-replay"
-							action="#{controllerStudent.Reset()}" update="form" /></td>
-					<td><h:outputText id="outResult1"
-							value="Results : Found #{controllerStudent.students.size()}" /></td>
-
-				</tr>
-			</table>
-		</p:dialog>
-
-	</h:form>
 
 	<p:commandButton value="AddStudent" icon="pi pi-user-plus"
 		style="margin-left:150px;margin-right:150px;"
@@ -156,28 +69,28 @@
 
 			</f:facet>
 
-			<p:column sortBy="#{list.id}">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Id" />
 				</f:facet>
 				<h:outputText value="#{list.id}" update="form" />
 			</p:column>
 
-			<p:column sortBy="#{list.nameStudent}">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="nameStudent" />
 				</f:facet>
 				<h:outputText value="#{list.nameStudent}" />
 			</p:column>
 
-			<p:column sortBy="#{list.age}">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Age" />
 				</f:facet>
 				<h:outputText value="#{list.age}" />
 			</p:column>
 
-			<p:column sortBy="#{list.village}">
+			<p:column >
 				<f:facet name="header">
 					<h:outputText value="Village" />
 				</f:facet>
@@ -205,7 +118,7 @@
 				<h:outputText value="#{list.note}" />
 			</p:column>
 
-			<p:column sortBy="#{controllerStudent.Avg(list.id)}">
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Agv" />
 				</f:facet>

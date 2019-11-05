@@ -138,14 +138,14 @@ public class Controller implements Serializable {
 		if ( nameStudentFillter != null && nameSearch == null)
 			students = studentService.searchFillter(students, nameStudentFillter, villageStudentFillter,
 					emailStudentFillter, ageStudentFillter, valueAgeFillter);
-		else if (sort != null ) {
+		else if (sort != null && nameSearch == null ) {
 			students = studentService.sortBy(students, sort, value);
 		
 		}
 		else if (nameSearch != null || column !=null ) {		
 			students = studentService.searchByName(students, nameSearch, column);
-		} else if(students == null)
-			students = studentService.listStudent();
+		} 
+		else students = studentService.listStudent();
 		return students;
 	}
 
@@ -213,7 +213,9 @@ public class Controller implements Serializable {
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
 		avg = ((float) sum / sumCoefficient);
+	
 		student.setAvgStudent((float) avg);
+		
 		return avg;
 	}
 
