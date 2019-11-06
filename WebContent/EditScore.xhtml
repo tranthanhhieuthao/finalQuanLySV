@@ -9,37 +9,26 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
- <div id="header" >
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
-		</ui:insert>
-	    </div>
-<h2>Edit Student</h2>
-<h:form>
-		<p:commandButton value="Back" action="ScoreEditStudentAndDelete?faces-redirect=true" icon="pi pi-angle-double-left" />
-	</h:form>
-	<hr />
-
 	<h:form id="editStudent">
 		<table>
-		
-		<tr>
-			<td><h3>Score</h3></td>
-			<td><p:inputText value="#{controllerScore.scoreBean.scoreStudent}" /></td>
-		</tr>
-
-	
+			<tr>
+				<td><h3>Score</h3></td>
+				<td><p:inputText
+						value="#{controllerScore.scoreBean.scoreStudent}" /></td>
+			</tr>
 
 			<tr>
 				<td></td>
-				<td><p:commandButton value="Edit Score"  icon="pi pi-key"
-						action="#{controllerScore.EditScore()}" update="editStudent" /></td>
+				<td><p:commandButton value="Edit Score" icon="pi pi-key"
+						action="#{controllerScore.EditScore()}" update="form" /></td>
 			</tr>
 		</table>
 	</h:form>
 
+
 </h:body>
-</html> 
+</html>

@@ -149,9 +149,9 @@ public class ControllerScore {
 
 	}
 
-	public String viewEditScore(int id) {
+	public Score viewEditScore(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		return "EditScore";
+		return scoreBean ;
 
 	}
 

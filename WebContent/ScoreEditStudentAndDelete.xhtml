@@ -85,10 +85,12 @@
 
 			<p:column>
 				<f:facet name="header">Edit Score</f:facet>
+				<p:commandButton value="Edit Score " icon="pi pi-search"
+					onclick="PF('dlg6').show();"
+					action="#{controllerScore.viewEditScore(list.id)}"
+					update="editScore" oncomplete="PF('dlg6').show();" />
 
-				<p:commandButton value="Edit Score" style="margin-right:20px;"
-					styleClass="ui-priority-primary" icon="pi pi-key"
-					action="#{controllerScore.viewEditScore(list.id)}" />
+
 			</p:column>
 
 			<p:column>
@@ -230,6 +232,13 @@
 			</p:column>
 		</p:dialog>
 
+	</p:dialog>
+
+	<p:dialog id="editScore" header="Edit Score" widgetVar="dlg6"
+		minHeight="40">
+		<ui:insert name="Edit">
+			<ui:include src="/EditScore.xhtml" />
+		</ui:insert>
 	</p:dialog>
 
 </h:body>
