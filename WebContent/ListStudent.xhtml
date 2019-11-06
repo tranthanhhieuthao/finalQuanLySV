@@ -21,7 +21,10 @@
 		</ui:insert>
 	</div>
 
-	<p:panelGrid columns="2" style="margin-left:150px;margin-right:150px;">
+	<p:panelGrid columns="3" style="margin-left:150px;margin-right:150px;">
+		<p:commandButton value="AddStudent" icon="pi pi-user-plus"
+			style="color:blue;" styleClass="ui-priority-primary"
+			onclick="PF('dlg5').show();" />
 		<p:commandButton value="Search" type="button" icon="pi pi-search"
 			onclick="PF('dlg1').show();" />
 		<p:commandButton value="Search Fillter" type="button"
@@ -32,9 +35,7 @@
 		<ui:include src="/viewSearch.xhtml" />
 	</ui:insert>
 
-	<p:commandButton value="AddStudent" icon="pi pi-user-plus"
-		style="margin-left:150px;margin-right:150px;"
-		styleClass="ui-priority-primary" onclick="PF('dlg5').show();" />
+
 	<ui:insert name="AddStudent">
 		<ui:include src="/AddStudent.xhtml" />
 	</ui:insert>
@@ -52,10 +53,10 @@
 					<f:selectItem itemLabel="nameStudent" itemValue="nameStudent" />
 				</p:selectOneMenu>
 
-				<p:outputLabel for="onemenu1" value="increase/reduction" />
+				<p:outputLabel for="onemenu1" />
 				<p:selectOneMenu id="onemenu1" value="#{controllerStudent.value}">
-					<f:selectItem itemLabel="ASC" itemValue="ASC" />
-					<f:selectItem itemLabel="DESC" itemValue="DESC" />
+					<f:selectItem itemLabel="Increase" itemValue="ASC" />
+					<f:selectItem itemLabel="Reduction" itemValue="DESC" />
 				</p:selectOneMenu>
 				<p:commandButton action="#{controllerStudent. getStudents()}"
 					icon="pi pi-list" value="Sort start" update="form">
@@ -71,7 +72,7 @@
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="nameStudent" />
+					<h:outputText value="Name Student" />
 				</f:facet>
 				<h:outputText value="#{list.nameStudent}" />
 			</p:column>
@@ -99,9 +100,11 @@
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Note" />
+					<h:outputText value="Birth Day" />
 				</f:facet>
-				<h:outputText value="#{list.note}" />
+				<h:outputText value="#{list.birthDay}">
+					<f:convertDateTime pattern="dd.MM.yyyy" />
+				</h:outputText>
 			</p:column>
 
 			<p:column>
@@ -113,16 +116,7 @@
 
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="Birth Day" />
-				</f:facet>
-				<h:outputText value="#{list.birthDay}">
-					<f:convertDateTime pattern="dd.MM.yyyy" />
-				</h:outputText>
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Pass/Failed" />
+					<h:outputText value="Evaluate" />
 				</f:facet>
 				<h:outputText value="#{controllerStudent.pass_Failed()}" />
 			</p:column>
@@ -143,15 +137,17 @@
 						<p:growl id="message" showDetail="true" />
 
 						<p:commandButton value="Delete" icon="pi pi-times"
-							action="#{controllerStudent.Delete(list.id)}" update="message">
+							style="color:red;" action="#{controllerStudent.Delete(list.id)}"
+							update="message">
 							<p:confirm header="Confirmation" message="Are you sure?"
 								icon="pi pi-exclamation-triangle" />
 						</p:commandButton>
 
-						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-							<p:commandButton value="Yes" type="button"
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+							style="background:yellow;">
+							<p:commandButton value="Yes" type="button" style="color:red;"
 								styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-							<p:commandButton value="No" type="button"
+							<p:commandButton value="No" type="button" style="color:blue;"
 								styleClass="ui-confirmdialog-no" icon="pi pi-times" />
 						</p:confirmDialog>
 

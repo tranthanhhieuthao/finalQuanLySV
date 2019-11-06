@@ -10,35 +10,39 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Header</title>
-	<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <body>
-<div id="header" >
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
+	<div id="header">
+		<ui:insert name="header">
+			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	    </div>
+	</div>
 
 	<h:form style="margin-left:150px;margin-right:150px;">
-		<p:commandButton value="Back" action="ListCourse?faces-redirect=true" icon="pi pi-angle-double-left" />
+		<p:commandButton value="Back" action="ListCourse?faces-redirect=true"
+			icon="pi pi-angle-double-left" />
 	</h:form>
 
 	<h:form>
 
-		<p:dataTable id="tbl" var="list" value="#{controllerCourse.courseBean.listScore}"
-			rows="20" style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+		<p:dataTable id="tbl" var="list"
+			value="#{controllerCourse.courseBean.listScore}" rows="20"
+			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Id Student" />
+				</f:facet>
+				<h:outputText value="#{list.student.idStudent}" />
+			</p:column>
+
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Name" />
 				</f:facet>
 				<h:outputText value="#{list.student.nameStudent}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Age" />
-				</f:facet>
-				<h:outputText value="#{list.student.age}" />
 			</p:column>
 
 			<p:column>
@@ -67,8 +71,8 @@
 					<h:outputText value="Note" />
 				</f:facet>
 				<h:outputText value="#{list.student.note}" />
-			</p:column>	
-			
+			</p:column>
+
 		</p:dataTable>
 	</h:form>
 </body>

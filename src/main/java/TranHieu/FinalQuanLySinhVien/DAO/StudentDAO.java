@@ -168,10 +168,7 @@ public class StudentDAO {
 				hql = hql + "ASC";
 
 			listStudent = session.createQuery(hql).list();
-//			for (Student customer : listStudent) {
-//				System.out.println(customer.getNameStudent());
-//
-//			}
+
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

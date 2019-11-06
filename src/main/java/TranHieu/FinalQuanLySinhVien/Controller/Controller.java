@@ -209,7 +209,7 @@ public class Controller implements Serializable {
 		avg = ((float) sum / sumCoefficient);
 	
 		student.setAvgStudent((float) avg);
-		
+		studentService.EditStudent(student);		
 		return avg;
 	}
 
