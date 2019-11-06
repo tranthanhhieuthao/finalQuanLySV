@@ -199,9 +199,9 @@ public class ControllerScore {
 		return "Full can't add more Student";
 	}
 
-	public String viewaddStudentSubject(int id) {
+	public Score viewaddStudentSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		return "addStudentSubject";
+		return scoreBean;
 	}
 
 	public String addStudentSubject(int id) {
@@ -221,12 +221,7 @@ public class ControllerScore {
 	
 	public String detailSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		System.out.println("da vaof chua????");
 		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());	
-		System.out.println(scoreBean.getClassStudent().getId());
-		System.out.println(scoreBean.getCourse().getId());
-		System.out.println(scoreBean.getTimeStart());
-		System.out.println(detailScore.size());
 		return "DetailScore";
 	}
 

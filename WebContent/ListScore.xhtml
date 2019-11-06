@@ -71,27 +71,41 @@
 				</f:facet>
 				<h:outputText value="#{controllerScore.statusClass(list.id)}" />
 			</p:column>
-			
+
 			<p:column>
 				<f:facet name="header"> Detail</f:facet>
 				<p:commandButton value="Detail " style="margin-right:20px;"
-					icon="pi pi-info" styleClass="ui-priority-primary" 
-					action="#{controllerScore.detailSubject(list.id)}" 
-					update=""/>
+					icon="pi pi-info" styleClass="ui-priority-primary"
+					action="#{controllerScore.detailSubject(list.id)}" />
+
 
 			</p:column>
 
 			<p:column>
 				<f:facet name="header"> Add</f:facet>
-				<p:commandButton value="Add " style="margin-right:20px;"
+				<!-- <p:commandButton value="Add " style="margin-right:20px;"
 					icon="pi pi-user-plus" styleClass="ui-priority-primary"
-					action="#{controllerScore.viewaddStudentSubject(list.id)}" />
+					action="#{controllerScore.viewaddStudentSubject(list.id)}" /> -->
+
+				<p:commandButton value="Add" type="button"
+					action="#{controllerScore.viewaddStudentSubject(list.id)}" 
+					update="addSubject" icon="pi pi-plus" onclick="PF('dlg7').show();"
+					oncomplete="PF('dlg7').show();" />
 
 			</p:column>
 		</p:dataTable>
-		
-	
+
+
 	</h:form>
+
+	<p:dialog header="Add" widgetVar="dlg7" minHeight="40" id="addSubject"
+		style="margin-bottom:20px;margin-left:260px;margin-right:260px;">
+
+		<ui:insert name="header">
+			<ui:include src="/addStudentSubject.xhtml" />
+		</ui:insert>
+
+	</p:dialog>
 
 </h:body>
 </html>
