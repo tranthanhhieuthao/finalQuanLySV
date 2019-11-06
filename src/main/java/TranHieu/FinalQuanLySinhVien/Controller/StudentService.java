@@ -55,13 +55,11 @@ public class StudentService implements StudentInterface {
 		return studentDAO.sortBy(listStudent, sortBy,value);
 	}
 	
-	public List<Student> searchByName(List<Student> list,String name,String column) {
-		list =studentDAO.searchByName(list, name,column);
-		return list;
-	}
-
-	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,String valueAge){
-		return studentDAO.searchFillter(list, nameStudent, villageStudent, emailStudent, valueAge);
+	
+	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
+			String villageStudent, String emailStudent, String tickId, String tickName,
+			String tickVillage, String tickEmail){
+		return studentDAO.SearchFillterStudent(list, idStudent, nameStudent, villageStudent, emailStudent, tickId, tickName, tickVillage, tickEmail);
 	}
 
 

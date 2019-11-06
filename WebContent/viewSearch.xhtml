@@ -14,83 +14,45 @@
 		library="primefaces" />
 </h:head>
 <h:body>
-<h:form>
-	<p:dialog header="Search" widgetVar="dlg1" minHeight="40">
-		<table>
-			<tr>
-				<td><p:outputLabel for="txt1" value="Search" /></td>
-				<td><p:inputText id="txt1"
-						value="#{controllerStudent.nameSearch}" required="true"
-						label="nameSearch"></p:inputText></td>
-			</tr>
-			<tr>
-				<td><p:outputLabel for="onemenu4" value="Column Search" /></td>
-				<td><p:selectOneMenu id="onemenu4"
-						value="#{controllerStudent.column}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItem itemLabel="NameStudent" itemValue="NameStudent" />
-						<f:selectItem itemLabel="Village" itemValue="Village" />
-						<f:selectItem itemLabel="Email" itemValue="Email" />
-						<f:selectItem itemLabel="ALL" itemValue="ALL" />
-					</p:selectOneMenu></td>
-			</tr>
-			<tr>
-				<td><p:commandButton id="buttonSearch" value="Search start"
-						icon="pi pi-caret-up" action="#{controllerStudent. getStudents()}"
-						update="form">
-						<f:ajax execute="buttonSearch" render="outResult" />
-					</p:commandButton></td>
-				<td><p:commandButton value="Reset" icon="pi pi-replay"
-						action="#{controllerStudent.Reset()}" update="form" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText id="outResult"
-						value="Results : Found #{controllerStudent.students.size()}">
-
-					</h:outputText></td>
-			</tr>
-		</table>
-	</p:dialog>
-
-
-
-	</h:form>
 	<h:form id="searchFillter">
 
 		<p:dialog header="Search Fillter" widgetVar="dlg2" minHeight="40">
-			<table>
 
-				<tr>
-					<td><p:outputLabel for="txt5" value="Name" /></td>
-					<td><p:inputText id="txt5"
-							value="#{controllerStudent.nameStudentFillter}" required="true"
-							label="Name Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="txt6" value="Village" /></td>
-					<td><p:inputText id="txt6"
-							value="#{controllerStudent.villageStudentFillter}"
-							required="true" label="Village Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:outputLabel for="txt7" value="Email" /></td>
-					<td><p:inputText id="txt7"
-							value="#{controllerStudent.emailStudentFillter}" required="true"
-							label="Email Fillter"></p:inputText></td>
-				</tr>
-				<tr>
-					<td><p:commandButton id="buttonSearch2" value="Search start"
-							icon="pi pi-caret-up"
-							action="#{controllerStudent. getStudents()}" update="form">
-							<f:ajax execute="buttonSearch2" render="outResult1" />
-						</p:commandButton></td>
-					<td><p:commandButton value="Reset" icon="pi pi-replay"
-							action="#{controllerStudent.Reset()}" update="form" /></td>
-					<td><h:outputText id="outResult1"
-							value="Results : Found #{controllerStudent.students.size()}" /></td>
 
-				</tr>
-			</table>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+			 	<p:selectOneRadio id="console1" value="#{controllerStudent.tickId}"
+					unselectable="true">
+					<f:selectItem itemLabel="Id Student" itemValue="idStudent" />
+				</p:selectOneRadio> 
+			 	<p:inputText value="#{controllerStudent.idStudent}"/> 
+				<p:selectOneRadio id="console2" value="#{controllerStudent.tickName}"
+					unselectable="true">
+					<f:selectItem itemLabel="Name Student" itemValue="nameStudent" />
+				</p:selectOneRadio>
+				<p:inputText value="#{controllerStudent.nameStudent}" />
+				<p:selectOneRadio id="console3" value="#{controllerStudent.tickVillage}"
+					unselectable="true">
+					<f:selectItem itemLabel="Village Student"
+						itemValue="villageStudent" />
+				</p:selectOneRadio>
+				<p:inputText value="#{controllerStudent.villageStudent}"/>
+				<p:selectOneRadio id="console4" value="#{controllerStudent.tickEmail}"
+					unselectable="true">
+					<f:selectItem itemLabel="Email Student" itemValue="emailStudent" />
+				</p:selectOneRadio>
+				<p:inputText value="#{controllerStudent.emailStudent}" />
+
+				<p:commandButton id="buttonSearch2" value="Search start"
+					icon="pi pi-caret-up" action="#{controllerStudent. getStudents()}"
+					update="form">
+					<f:ajax execute="buttonSearch2" render="outResult1" />
+				</p:commandButton>
+				<p:commandButton value="Reset" icon="pi pi-replay"
+					action="#{controllerStudent.Reset()}" update="form" />
+				<h:outputText id="outResult1"
+					value="Results : Found #{controllerStudent.students.size()}" />
+			</h:panelGrid>
 		</p:dialog>
 	</h:form>
 </h:body>

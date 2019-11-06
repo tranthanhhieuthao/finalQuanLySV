@@ -23,9 +23,9 @@ public class Controller implements Serializable {
 	public Controller() {
 
 	}
-	
+
 	@ManagedProperty(value = "#{studentBean}")
-	private Student student ;
+	private Student student;
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
@@ -37,46 +37,6 @@ public class Controller implements Serializable {
 	private String value;
 	private String column;
 	private float avg = 0;
-	private String nameSearch;
-
-	private String nameStudentFillter;
-	private String villageStudentFillter;
-	private String emailStudentFillter;
-	private String valueAgeFillter;
-	
-
-	public String getNameStudentFillter() {
-		return nameStudentFillter;
-	}
-
-	public void setNameStudentFillter(String nameStudentFillter) {
-		this.nameStudentFillter = nameStudentFillter;
-	}
-
-	public String getVillageStudentFillter() {
-		return villageStudentFillter;
-	}
-
-	public void setVillageStudentFillter(String villageStudentFillter) {
-		this.villageStudentFillter = villageStudentFillter;
-	}
-
-	public String getEmailStudentFillter() {
-		return emailStudentFillter;
-	}
-
-	public void setEmailStudentFillter(String emailStudentFillter) {
-		this.emailStudentFillter = emailStudentFillter;
-	}
-
-	public String getValueAgeFillter() {
-		return valueAgeFillter;
-	}
-
-	public void setValueAgeFillter(String valueAgeFillter) {
-		this.valueAgeFillter = valueAgeFillter;
-	}
-
 
 	public float getAvg() {
 		return avg;
@@ -92,14 +52,6 @@ public class Controller implements Serializable {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	public String getNameSearch() {
-		return nameSearch;
-	}
-
-	public void setNameSearch(String nameSearch) {
-		this.nameSearch = nameSearch;
 	}
 
 	public String getSort() {
@@ -126,19 +78,87 @@ public class Controller implements Serializable {
 		this.listClass = listClass;
 	}
 
+	private String idStudent;
+	private String nameStudent;
+	private String villageStudent;
+	private String emailStudent;
+	private String tickId;
+	private String tickName;
+	private String tickVillage;
+	private String tickEmail;
+
+	public String getIdStudent() {
+		return idStudent;
+	}
+
+	public void setIdStudent(String idStudent) {
+		this.idStudent = idStudent;
+	}
+
+	public String getNameStudent() {
+		return nameStudent;
+	}
+
+	public void setNameStudent(String nameStudent) {
+		this.nameStudent = nameStudent;
+	}
+
+	public String getVillageStudent() {
+		return villageStudent;
+	}
+
+	public void setVillageStudent(String villageStudent) {
+		this.villageStudent = villageStudent;
+	}
+
+	public String getEmailStudent() {
+		return emailStudent;
+	}
+
+	public void setEmailStudent(String emailStudent) {
+		this.emailStudent = emailStudent;
+	}
+
+	public String getTickId() {
+		return tickId;
+	}
+
+	public void setTickId(String tickId) {
+		this.tickId = tickId;
+	}
+
+	public String getTickName() {
+		return tickName;
+	}
+
+	public void setTickName(String tickName) {
+		this.tickName = tickName;
+	}
+
+	public String getTickVillage() {
+		return tickVillage;
+	}
+
+	public void setTickVillage(String tickVillage) {
+		this.tickVillage = tickVillage;
+	}
+
+	public String getTickEmail() {
+		return tickEmail;
+	}
+
+	public void setTickEmail(String tickEmail) {
+		this.tickEmail = tickEmail;
+	}
 
 	public List<Student> getStudents() {
-		if ( nameStudentFillter != null && nameSearch == null)
-			students = studentService.searchFillter(students, nameStudentFillter, villageStudentFillter,
-					emailStudentFillter, valueAgeFillter);
-		else if (sort != null && nameSearch == null ) {
+		if (tickId != null || tickName != null || tickVillage != null || tickEmail != null)
+			students = studentService.SearchFillterStudent(students, idStudent, nameStudent, villageStudent,
+					emailStudent, tickId, tickName, tickVillage, tickEmail);
+		else if (sort != null && tickId == null) {
 			students = studentService.sortBy(students, sort, value);
-		
-		}
-		else if (nameSearch != null || column !=null ) {		
-			students = studentService.searchByName(students, nameSearch, column);
-		} 
-		else students = studentService.listStudent();
+		} else
+			students = studentService.listStudent();
 		return students;
 	}
 
@@ -182,7 +202,7 @@ public class Controller implements Serializable {
 	}
 
 	public String AddStudent() {
-		student.setIdStudent("2019M04"+students.size()+1);
+		student.setIdStudent("2019M04" + students.size() + 1);
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);
@@ -191,8 +211,14 @@ public class Controller implements Serializable {
 	}
 
 	public String Reset() {
-		nameSearch = null;
-		nameStudentFillter = null;
+		idStudent = null;
+		nameStudent = null;
+		villageStudent = null;
+		emailStudent = null;
+		tickId = null;
+		tickName = null;
+		tickVillage = null;
+		tickEmail = null;
 		column = null;
 		students = studentService.listStudent();
 		return "ListStudent?faces-redirect=true";
@@ -207,9 +233,9 @@ public class Controller implements Serializable {
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
 		avg = ((float) sum / sumCoefficient);
-	
+
 		student.setAvgStudent((float) avg);
-		studentService.EditStudent(student);		
+		studentService.EditStudent(student);
 		return avg;
 	}
 

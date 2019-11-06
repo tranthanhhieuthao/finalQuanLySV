@@ -20,9 +20,9 @@ public interface StudentInterface {
 	
 	public List<Student> sortBy(List<Student> listStudent,String sortBy,String value);
 	
-	public List<Student> searchByName(List<Student> list,String name,String column);
-	
-	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,String valueAge);
+	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
+			String villageStudent, String emailStudent, String tickId, String tickName,
+			String tickVillage, String tickEmail);
 
 
 }

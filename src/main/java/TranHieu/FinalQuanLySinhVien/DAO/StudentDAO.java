@@ -1,6 +1,7 @@
 package TranHieu.FinalQuanLySinhVien.DAO;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -91,63 +92,40 @@ public class StudentDAO {
 		}
 	}
 
-	public List<Student> searchByName(List<Student> list, String name, String column) {
 
+	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
+			String villageStudent, String emailStudent, String tickId, String tickName,
+			String tickVillage, String tickEmail) {
 		Session session = sessionFactory.openSession();
+		int count =0;
+		String hql = "FROM Student WHERE" + " ";				
+		String[] valueTick= {tickId,tickName,tickVillage,tickEmail};
+		String[] queryText = {"idStudent LIKE :idStudent ","nameStudent LIKE :nameStudent ","village LIKE :villageStudent ","email LIKE :emailStudent "};
+		
 		try {
 			session.beginTransaction();
-			if (column.equals("ALL"))
-				column = " nameStudent LIKE :name OR village LIKE :name OR note LIKE :name OR email ";
-			else if (column.equals("NameStudent"))
-				column = " nameStudent";
-			else if (column.equals("Village"))
-				column = " village";
-			else if (column.equals("Email"))
-				column = " email";
-
-			String hql = "FROM Student WHERE" + column + " " + "LIKE :name";
-			Query query = session.createQuery(hql).setParameter("name", "%" + name + "%");
-			list = query.list();
-
-			session.getTransaction().commit();
-			for (Student customer : list) {
-				System.out.println(customer.getNameStudent());
-
+			for(int i=0;i<valueTick.length;i++) {
+				if(valueTick[i] != null) {
+					if (count == 0 )hql += queryText[i];
+					else hql += "AND "+queryText[i];
+					count++;
+				}
 			}
+			Query query = session.createQuery(hql).setParameter("idStudent", "%"+idStudent+"%")
+					                               .setParameter("nameStudent", "%"+nameStudent+"%")
+					                               .setParameter("villageStudent","%"+villageStudent+"%")
+					                               .setParameter("emailStudent", "%"+emailStudent+"%");
+			list = query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.getTransaction().rollback();
 		} finally {
 			session.close();
 		}
+
 		return list;
 	}
-	
-	public List<Student> searchFillter(List<Student> list, String nameStudent, String villageStudent,String emailStudent,String valueAge) {
-		Session session = sessionFactory.openSession();
-		String hql ="FROM Student WHERE nameStudent LIKE:nameStudent AND village LIKE:villageStudent  AND email LIKE :emailStudent ";
-		try {
-			session.beginTransaction();
-			Query query = session.createQuery(hql).setParameter("nameStudent", "%" + nameStudent + "%")
-													.setParameter("villageStudent", "%" + villageStudent + "%")
-													.setParameter("emailStudent", "%" + emailStudent + "%");
-													
-			list = query.list();
-			session.getTransaction().commit();
-			for (Student customer : list) {
-				System.out.println(customer.getNameStudent());
 
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		} finally {
-			session.close();
-		}
-			
-		return list;	
-	}
-	
 
 	public List<Student> sortBy(List<Student> listStudent, String sortBy, String value) {
 		Session session = sessionFactory.openSession();
