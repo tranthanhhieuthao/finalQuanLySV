@@ -219,10 +219,10 @@ public class ControllerScore {
 	
 
 	
-	public String detailSubject(int id) {
+	public List<Score> detailSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
 		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());	
-		return "DetailScore?faces-redirect=true";
+		return detailScore;
 	}
 
 }
