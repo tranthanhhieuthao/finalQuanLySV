@@ -85,8 +85,7 @@
 
 			<p:column>
 				<f:facet name="header">Edit Score</f:facet>
-				<p:commandButton value="Edit Score " icon="pi pi-cog"
-					onclick="PF('dlg6').show();"
+				<p:commandButton value="Edit Score " icon="pi pi-cog"			
 					action="#{controllerScore.viewEditScore(list.id)}"
 					update="editScore" oncomplete="PF('dlg6').show();" />
 
