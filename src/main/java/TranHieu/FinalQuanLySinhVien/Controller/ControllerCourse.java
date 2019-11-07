@@ -57,16 +57,16 @@ public class ControllerCourse {
 		return "ListCourse";
 	}
 
-	public String viewAddCourse() {
+	public Course viewAddCourse() {
 		courseBean = new Course();
 		courseBean.setId(listCourseStudent.size() + 1);
-		return "AddCourse";
+		return courseBean;
 	}
 
 	public String addCourse() {
 		courseService.save(courseBean);
 		courseBean = new Course();
-		return "ListCourse";
+		return "ListCourse?faces-redirect=true";
 	}
 
 }
