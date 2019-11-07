@@ -200,6 +200,7 @@ public class ControllerScore {
 	}
 
 	public Score viewaddStudentSubject(int id) {
+		scoreBean = new Score();
 		scoreBean = scoreService.findScoreOfStudentById(id);
 		return scoreBean;
 	}
