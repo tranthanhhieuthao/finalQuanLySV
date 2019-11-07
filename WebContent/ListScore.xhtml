@@ -75,7 +75,7 @@
 			<p:column>
 				<f:facet name="header"> Detail</f:facet>
 				<p:commandButton value="Detail " style="margin-right:20px;"
-					icon="pi pi-info" styleClass="ui-priority-primary" 
+					icon="pi pi-info" styleClass="ui-priority-primary"  
 					oncomplete="PF('dlg9').show();" update="detailScore"
 					action="#{controllerScore.detailSubject(list.id)}" />
 
@@ -87,7 +87,7 @@
 
 				<p:commandButton value="Add" type="button"
 					action="#{controllerScore.viewaddStudentSubject(list.id)}"
-					update="addSubject" icon="pi pi-plus" onclick="PF('dlg7').show();"
+					update="addSubject" icon="pi pi-plus" onclick="PF('dlg7').show();" onchange="PF('dlg7').show();"
 					oncomplete="PF('dlg7').show();" />
 
 			</p:column>
@@ -102,7 +102,6 @@
 		<ui:insert name="header">
 			<ui:include src="/addStudentSubject.xhtml" />
 		</ui:insert>
-
 	</p:dialog>
 	
 		<p:dialog header="Detail" widgetVar="dlg9" minHeight="40" id="detailScore"
