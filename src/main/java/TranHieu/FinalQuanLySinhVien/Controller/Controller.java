@@ -232,6 +232,7 @@ public class Controller implements Serializable {
 			sum += list.getScoreStudent() * list.getCourse().getCoefficient();
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
+		if(sum == 0)sumCoefficient =1;
 		avg = ((float) sum / sumCoefficient);
 
 		student.setAvgStudent((float) avg);
