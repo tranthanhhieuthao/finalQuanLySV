@@ -195,9 +195,9 @@ public class Controller implements Serializable {
 
 	}
 
-	public String viewEditStudent(int id) {
+	public Student viewEditStudent(int id) {
 		student = studentService.findStudentById(id);
-		return "EditStudent?faces-redirect=true";
+		return student;
 
 	}
 

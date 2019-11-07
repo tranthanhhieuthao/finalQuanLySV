@@ -126,7 +126,8 @@
 				<p:splitButton id="Detail" value="Detail"
 					action="#{controllerStudent.DetailStudent(list.id)}"
 					icon="pi pi-save">
-					<p:menuitem id="edit" value="Update"
+					<p:menuitem id="edit" value="Update" onclick="PF('dlg8').show();"
+						oncomplete="PF('dlg8').show();" update="editNow"
 						action="#{controllerStudent.viewEditStudent(list.id)}"
 						icon="pi pi-refresh">
 						<f:ajax execute="edit" render="tbl" />
@@ -155,6 +156,13 @@
 		</p:dataTable>
 
 	</h:form>
+
+	<p:dialog header="Edit" widgetVar="dlg8" minHeight="40" id="editNow"
+		style="margin-bottom:20px;margin-left:260px;margin-right:260px;">
+		<ui:insert name="header">
+			<ui:include src="/EditStudent.xhtml" />
+		</ui:insert>
+	</p:dialog>
 
 </h:body>
 </html>

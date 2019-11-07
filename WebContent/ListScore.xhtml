@@ -83,12 +83,9 @@
 
 			<p:column>
 				<f:facet name="header"> Add</f:facet>
-				<!-- <p:commandButton value="Add " style="margin-right:20px;"
-					icon="pi pi-user-plus" styleClass="ui-priority-primary"
-					action="#{controllerScore.viewaddStudentSubject(list.id)}" /> -->
 
 				<p:commandButton value="Add" type="button"
-					action="#{controllerScore.viewaddStudentSubject(list.id)}" 
+					action="#{controllerScore.viewaddStudentSubject(list.id)}"
 					update="addSubject" icon="pi pi-plus" onclick="PF('dlg7').show();"
 					oncomplete="PF('dlg7').show();" />
 
@@ -106,6 +103,7 @@
 		</ui:insert>
 
 	</p:dialog>
+
 
 </h:body>
 </html>

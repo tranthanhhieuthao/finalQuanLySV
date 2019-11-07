@@ -9,62 +9,57 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
- <div id="header" >
-		<ui:insert name="header" >
-		  <ui:include src="/Header.xhtml" />
-		</ui:insert>
-	    </div>
-<h2>Edit Student</h2>
-<h:form>
-		<p:commandButton value="Back" action="#{controllerStudent.Back()}" icon="pi pi-angle-double-left" />
-	</h:form>
-	<hr />
 
 	<h:form id="editStudent">
 		<table>
-		
+
 
 			<tr>
-			<td><h3>Name</h3></td>
-			<td><p:inputText
-					value="#{controllerStudent.student.nameStudent}" /></td>
-		</tr>
+				<td><h3>Name</h3></td>
+				<td><p:inputText
+						value="#{controllerStudent.student.nameStudent}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Village</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.village}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Village</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.village}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Phone</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
-		</tr>
+			<tr>
+				<td><h3>Phone</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
+			</tr>
 
 
-		<tr>
-			<td><h3>Email</h3></td>
-			<td><p:inputText value="#{controllerStudent.student.email}" />
-			</td>
-		</tr>
-		
-		<tr>
-			<td><h3>Birth Day</h3></td>
-			<td><p:calendar value="#{controllerStudent.student.birthDay}"> </p:calendar></td>
-		</tr>
-		
+			<tr>
+				<td><h3>Email</h3></td>
+				<td><p:inputText value="#{controllerStudent.student.email}" />
+				</td>
+			</tr>
+
+			<tr>
+				<td><h3>Birth Day</h3></td>
+				<td><p:calendar value="#{controllerStudent.student.birthDay}">
+					</p:calendar></td>
+			</tr>
+
 
 			<tr>
 				<td></td>
 				<td><p:commandButton value="Edit Student"
-						action="#{controllerStudent.EditStudent()}" update="editStudent"  icon="pi pi-pencil" /></td>
+						action="#{controllerStudent.EditStudent()}" update="editStudent"
+						icon="pi pi-pencil" /></td>
 			</tr>
 		</table>
 	</h:form>
 
+
+
 </h:body>
-</html> 
+</html>
