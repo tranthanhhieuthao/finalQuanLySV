@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @ManagedBean(name="courseBean")
 @SessionScoped
@@ -21,9 +23,12 @@ public class Course {
 	private int id;
 
 	@Column(name = "nameCourse")
+	@NotNull
+	@Size(min=2,max=15)
 	private String nameCourse;
 
 	@Column(name = "coefficient")
+	@NotNull
 	private float coefficient;
 
 	@Column(name = "note")
@@ -40,7 +45,7 @@ public class Course {
 	}
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "course")
-	private List<Score> listScore = new ArrayList<Score>();
+	private Set<Score> listScore = new HashSet<Score>();
 
 	
 
@@ -72,11 +77,11 @@ public class Course {
 		return note;
 	}
 
-	public List<Score> getListScore() {
+	public Set<Score> getListScore() {
 		return listScore;
 	}
 
-	public void setListScore(List<Score> listScore) {
+	public void setListScore(Set<Score> listScore) {
 		this.listScore = listScore;
 	}
 

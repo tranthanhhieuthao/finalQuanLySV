@@ -5,6 +5,10 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @ManagedBean(name ="scoreBean")
 @SessionScoped
@@ -18,15 +22,22 @@ public class Score {
 	private int id;
 	
 	@Column(name="timeStart")
+	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date timeStart;
 	
 	@Column(name="timeEnd")
+	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date timeEnd;
 	
 	@Column(name="teacher")
+	@NotNull
+	@Size(min=2,max=15)
 	private String teacher;
 	
 	@Column(name="scoreStudent")
+	@NotNull
 	private float scoreStudent;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

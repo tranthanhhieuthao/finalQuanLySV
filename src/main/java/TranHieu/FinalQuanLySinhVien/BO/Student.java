@@ -14,6 +14,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @ManagedBean(name ="studentBean")
 @SessionScoped
 @Entity
@@ -50,6 +52,7 @@ public class Student {
 
 	@Column(name = "birthDay")
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date birthDay;
 	
 	@Column(name ="avgStudent")

@@ -9,6 +9,8 @@ import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @ManagedBean(name="classBean")
 @SessionScoped
@@ -23,6 +25,7 @@ public class ClassStudent {
 
 
 	@Column(name = "nameClass")
+	@NotNull
 	private String nameClass;
 
 	@Column(name = "note")
