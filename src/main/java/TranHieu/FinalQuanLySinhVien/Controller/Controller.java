@@ -29,14 +29,19 @@ public class Controller implements Serializable {
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
+	
 
 	private List<Student> students;
 	private List<Class> listClass;
+
+	
 
 	private String sort;
 	private String value;
 	private String column;
 	private float avg = 0;
+
+	
 
 	public float getAvg() {
 		return avg;
@@ -228,7 +233,7 @@ public class Controller implements Serializable {
 		float sum = 0;
 		float sumCoefficient = 0;
 		student = studentService.findStudentById(id);
-		for (Score list : student.getListScore()) {
+		for (Score list : this.maxPointStudent(id)) {
 			sum += list.getScoreStudent() * list.getCourse().getCoefficient();
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
@@ -247,5 +252,21 @@ public class Controller implements Serializable {
 			return "Failed";
 
 	}
+	
+	public List<Score> maxPointStudent(int id) {
+		student = studentService.findStudentById(id);
+		List<Score> scMax = student.getListScore();
+	for(int i=0;i<student.getListScore().size();i++) {
+		for(int j=0;j<student.getListScore().size();j++) {
+		if(student.getListScore().get(i).getCourse().getNameCourse().equals(student.getListScore().get(j).getCourse().getNameCourse())) {
+			if(student.getListScore().get(i).getScoreStudent() > student.getListScore().get(j).getScoreStudent()) {
+				scMax.remove(j);
+			}
+		}
+		}
+	}
+		return scMax;
+	}
+
 
 }

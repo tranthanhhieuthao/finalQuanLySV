@@ -77,18 +77,18 @@ public class Student {
 
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
-	private Set<Score> listScore = new HashSet<Score>();
+	private List<Score> listScore = new ArrayList<Score>();
 
 
 	public int getId() {
 		return id;
 	}
 
-	public Set<Score> getListScore() {
+	public List<Score> getListScore() {
 		return listScore;
 	}
 
-	public void setListScore(Set<Score> listScore) {
+	public void setListScore(List<Score> listScore) {
 		this.listScore = listScore;
 	}
 

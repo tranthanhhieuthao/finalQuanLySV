@@ -28,12 +28,12 @@ public class App
         int[] age = {25,18,16,20,23,21,24,28,34,35,26,28,27,35,31,36,14,16,19,18,17,15,11,10,32,24,25,26,25};
         int[] phone = {0234,0125,0236,01223,0145,0235,01256,2856};
         String[] note = {"haha","khong co gi","dang chan doi","dang yeu đoi","fall in love"};
-        Date[] birthDay = {new Date(1992, 06, 15),new Date(1993, 12, 21),new Date(1988, 02, 15),new Date(1996, 04, 15),new Date(1997, 04, 14),new Date(1995, 06, 15),new Date(1998, 07, 15)
-        		,new Date(1996, 05, 15)};
+        Date[] birthDay = {new Date(92, 06, 15),new Date(93, 12, 21),new Date(88, 02, 15),new Date(96, 04, 15),new Date(97, 04, 14),new Date(95, 06, 15),new Date(98, 07, 15)
+        		,new Date(96, 05, 15)};
         String idStudent ="2019M04";
         String user ="user";
         String password="123";
-        for(int i=1;i<=50;i++) {
+        for(int i=1;i<=100;i++) {
       	
         	   Student student = new Student(idStudent +i,nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],     		
         			provide[(int)Math.round(Math.random()*(provide.length-1))],
