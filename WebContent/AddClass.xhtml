@@ -12,19 +12,8 @@
 <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 </h:head>
 <h:body>
-	<div id="header" >
-		<ui:insert name="header">
-			<ui:include src="/Header.xhtml" />
-		</ui:insert>
-	</div>
 
-	<h2>Add Student</h2>
-	<h:form>
-		<p:commandButton value="Back" action="ListClass" icon="pi pi-angle-double-left" />
-	</h:form>
-	<hr />
 
-	<h:form>
 		<table>
 
 			<tr>
@@ -42,11 +31,11 @@
 
 			<tr>
 				<td></td>
-				<td><p:commandButton value="Add Class" icon="pi pi-plus"
+				<td><p:commandButton value="Add Class" icon="pi pi-plus" 
 						action="#{controllerClass.addClass()}" /></td>
 			</tr>
 		</table>
-	</h:form>
+
 
 </h:body>
 </html>

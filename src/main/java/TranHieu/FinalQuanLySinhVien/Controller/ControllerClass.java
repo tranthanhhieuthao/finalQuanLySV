@@ -88,16 +88,16 @@ public class ControllerClass {
 		return "ListClass";
 	}
 	
-	public String viewAddClass() {
+	public ClassStudent viewAddClass() {
 		classStudentBean = new ClassStudent();
 		classStudentBean.setId(listClassStudent.size()+1);
-		return "AddClass";
+		return classStudentBean;
 	}
 	
 	public String addClass() {
 		classService.save(classStudentBean);
 		classStudentBean = new ClassStudent();
-		return "ListClass";
+		return "ListClass?faces-redirect=true";
 	}
 	
 
