@@ -22,7 +22,7 @@
 		</ui:insert>
 	</div>
 
-	<p:commandButton value="Add "
+	<p:commandButton value="Add Subject"
 		style="margin-left:150px;margin-right:150px;"
 		styleClass="ui-priority-primary" icon="pi pi-plus"
 		onclick="PF('dlg3').show();" />
@@ -85,7 +85,7 @@
 
 			<p:column>
 				<f:facet name="header">Edit Score</f:facet>
-				<p:commandButton value="Edit Score " icon="pi pi-search"
+				<p:commandButton value="Edit Score " icon="pi pi-cog"
 					onclick="PF('dlg6').show();"
 					action="#{controllerScore.viewEditScore(list.id)}"
 					update="editScore" oncomplete="PF('dlg6').show();" />
