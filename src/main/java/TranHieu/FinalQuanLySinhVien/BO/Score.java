@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,16 +25,18 @@ public class Score {
 	@Column(name="timeStart")
 	@NotNull
 	@Temporal(TemporalType.DATE)
+	@Future(message = "can't set time in the past")
 	private Date timeStart;
 	
 	@Column(name="timeEnd")
 	@NotNull
 	@Temporal(TemporalType.DATE)
+	@Future(message="can't set time in the past")
 	private Date timeEnd;
 	
 	@Column(name="teacher")
 	@NotNull
-	@Size(min=2,max=15)
+	@Size(min=2,max=15,message = "Name teacher should be than two")
 	private String teacher;
 	
 	@Column(name="scoreStudent")

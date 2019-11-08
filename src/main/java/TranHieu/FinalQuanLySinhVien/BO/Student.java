@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -59,6 +60,7 @@ public class Student {
 	@Column(name = "birthDay")
 	@NotNull(message = "BirthDay can't be empty")
 	@Temporal(TemporalType.DATE)
+	@Past(message = "birthDay can't be in the future ")
 	private Date birthDay;
 	
 	@Column(name ="avgStudent")

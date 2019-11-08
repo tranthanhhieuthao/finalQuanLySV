@@ -13,10 +13,10 @@
 		library="primefaces" />
 </h:head>
 <h:body>
-<h:form id="addStudent">
+
 	<p:dialog header="Add Subject" widgetVar="dlg5" minHeight="40" 
 		style="margin-bottom:20px;margin-left:600px;margin-right:600px;">
-
+<h:form id="addStudent">
 
 		<p:panelGrid columns="2">
 		
@@ -28,11 +28,13 @@
 
 			<h:outputText value="Village" />
 			<p:inputText id="village" value="#{controllerStudent.student.village}" >
-			<p:messages for="village" style="color:red"/>
+			<p:messages for="village" style="color:red" />
 			</p:inputText>
 
 			<h:outputText value="Phone" />
-			<p:inputText value="#{controllerStudent.student.phone}" />
+			<p:inputText id="phone" value="#{controllerStudent.student.phone}" >
+			<p:messages for="phone" style="color:red" />
+			</p:inputText>
 
 			<h:outputText value="Email" />
 			<p:inputText id="email" value="#{controllerStudent.student.email}" >
@@ -43,15 +45,17 @@
 			<p:inputText value="#{controllerStudent.student.note}" />
 
 			<h:outputText value="BirthDay" />
-			<p:calendar value="#{controllerStudent.student.birthDay}" />
+			<p:calendar id="birth" value="#{controllerStudent.student.birthDay}" >
+			<p:messages for="birth" style="color:red" />
+			</p:calendar>
 
 			<p:commandButton id="add" value="Add Student"
 				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="addStudent" />
 
 		</p:panelGrid>
-
-	</p:dialog>
 </h:form>
+	</p:dialog>
+
 
 </h:body>
 </html>

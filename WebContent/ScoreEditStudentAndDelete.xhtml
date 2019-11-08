@@ -121,21 +121,25 @@
 			<table>
 				<tr>
 					<td><h:outputText value="Time Start" /></td>
-					<td><p:calendar value="#{controllerScore.scoreBean.timeStart}"
-							pattern="MM/dd/yyyy HH:mm:ss" /></td>
-					<td><h:outputText
-							value="#{controllerScore.scoreBean.timeStart}" /></td>
+					<td><p:calendar id="timeStart" value="#{controllerScore.scoreBean.timeStart}"
+							pattern="MM/dd/yyyy HH:mm:ss" >
+							<p:messages for="timeStart" style="color:red" />
+							</p:calendar></td>
 				</tr>
 
 				<tr>
 					<td><h:outputText value="Time End" /></td>
-					<td><p:calendar value="#{controllerScore.scoreBean.timeEnd}"
-							pattern="MM/dd/yyyy HH:mm:ss" /></td>
+					<td><p:calendar id="timeEnd" value="#{controllerScore.scoreBean.timeEnd}"
+							pattern="MM/dd/yyyy HH:mm:ss" >
+							<p:messages for="timeEnd" style="Color:red" />
+							</p:calendar></td>
 
 				</tr>
 				<tr>
-					<td><h:outputText id="qw" value="Teacher" /></td>
-					<td><p:inputText value="#{controllerScore.scoreBean.teacher}" /></td>
+					<td><h:outputText value="Teacher" /></td>
+					<td><p:inputText id="teacher" value="#{controllerScore.scoreBean.teacher}" >
+					<p:messages for="teacher" style="Color:red" />
+					</p:inputText></td>
 				</tr>
 				<tr>
 

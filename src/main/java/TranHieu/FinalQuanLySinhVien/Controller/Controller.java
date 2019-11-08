@@ -208,7 +208,7 @@ public class Controller implements Serializable {
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Add Succsess!!"));
+//		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Add Succsess!!"));
 		student = new Student();
 		return "ListStudent?faces-redirect=true";
 	}
