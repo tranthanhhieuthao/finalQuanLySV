@@ -37,7 +37,7 @@
 			</p:inputText>
 
 			<h:outputText value="Email" />
-			<p:inputText id="email" value="#{controllerStudent.student.email}" >
+			<p:inputText id="email" value="#{controllerStudent.student.email}" validator="#{controllerStudent.validateEmailNoDuplicate}" >
 			<p:messages for="email" style="color:red" />
 			</p:inputText>
 

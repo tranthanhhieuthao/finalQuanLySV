@@ -11,7 +11,9 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
@@ -267,6 +269,18 @@ public class Controller implements Serializable {
 			}
 		}
 		return scMax;
+	}
+	
+	public void validateEmailNoDuplicate(FacesContext context,UIComponent comp ,Object value) throws ValidatorException
+	{ 
+		FacesMessage message = new FacesMessage();
+		String email =(String) value;
+		for(Student st: students) {
+			if(email.equals(st.getEmail())) { message = new FacesMessage(
+					"can't add Student due to duplicate email");
+			}
+		}
+		throw new ValidatorException( message);		
 	}
 
 }
