@@ -87,10 +87,10 @@ public class Controller implements Serializable {
 	private String nameStudent;
 	private String villageStudent;
 	private String emailStudent;
-	private String tickId;
-	private String tickName;
-	private String tickVillage;
-	private String tickEmail;
+	private boolean tickId;
+	private boolean tickName;
+	private boolean tickVillage;
+	private boolean tickEmail;
 
 	public String getIdStudent() {
 		return idStudent;
@@ -124,43 +124,47 @@ public class Controller implements Serializable {
 		this.emailStudent = emailStudent;
 	}
 
-	public String getTickId() {
+
+
+	public boolean isTickId() {
 		return tickId;
 	}
 
-	public void setTickId(String tickId) {
+	public void setTickId(boolean tickId) {
 		this.tickId = tickId;
 	}
 
-	public String getTickName() {
+	public boolean isTickName() {
 		return tickName;
 	}
 
-	public void setTickName(String tickName) {
+	public void setTickName(boolean tickName) {
 		this.tickName = tickName;
 	}
 
-	public String getTickVillage() {
+	public boolean isTickVillage() {
 		return tickVillage;
 	}
 
-	public void setTickVillage(String tickVillage) {
+	public void setTickVillage(boolean tickVillage) {
 		this.tickVillage = tickVillage;
 	}
 
-	public String getTickEmail() {
+	public boolean isTickEmail() {
 		return tickEmail;
 	}
 
-	public void setTickEmail(String tickEmail) {
+	public void setTickEmail(boolean tickEmail) {
 		this.tickEmail = tickEmail;
 	}
 
 	public List<Student> getStudents() {
-		if (tickId != null || tickName != null || tickVillage != null || tickEmail != null)
+		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {
 			students = studentService.SearchFillterStudent(students, idStudent, nameStudent, villageStudent,
 					emailStudent, tickId, tickName, tickVillage, tickEmail);
-		else if (sort != null && tickId == null) {
+			System.out.println(idStudent);
+		}
+		else if (sort != null && tickId == false) {
 			students = studentService.sortBy(students, sort, value);
 		} else
 			students = studentService.listStudent();
@@ -221,10 +225,10 @@ public class Controller implements Serializable {
 		nameStudent = null;
 		villageStudent = null;
 		emailStudent = null;
-		tickId = null;
-		tickName = null;
-		tickVillage = null;
-		tickEmail = null;
+		tickId = false;
+		tickName = false;
+		tickVillage = false;
+		tickEmail = false;
 		column = null;
 		students = studentService.listStudent();
 		return "ListStudent?faces-redirect=true";

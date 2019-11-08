@@ -94,23 +94,26 @@ public class StudentDAO {
 
 
 	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
-			String villageStudent, String emailStudent, String tickId, String tickName,
-			String tickVillage, String tickEmail) {
+			String villageStudent, String emailStudent, boolean tickId, boolean tickName,
+			boolean tickVillage, boolean tickEmail) {
 		Session session = sessionFactory.openSession();
 		int count =0;
 		String hql = "FROM Student WHERE" + " ";				
-		String[] valueTick= {tickId,tickName,tickVillage,tickEmail};
+		boolean[] valueTick= {tickId,tickName,tickVillage,tickEmail};
 		String[] queryText = {"idStudent LIKE :idStudent ","nameStudent LIKE :nameStudent ","village LIKE :villageStudent ","email LIKE :emailStudent "};
 		
 		try {
 			session.beginTransaction();
 			for(int i=0;i<valueTick.length;i++) {
-				if(valueTick[i] != null) {
+				if(valueTick[i] == true) {
 					if (count == 0 )hql += queryText[i];
 					else hql += "AND "+queryText[i];
 					count++;
+					System.out.println(hql);
 				}
+				else System.out.println("id:" +tickId+" "+"name:"+" "+tickName+"village:"+" "+tickVillage+"email:"+" "+tickEmail);
 			}
+	
 			Query query = session.createQuery(hql).setParameter("idStudent", "%"+idStudent+"%")
 					                               .setParameter("nameStudent", "%"+nameStudent+"%")
 					                               .setParameter("villageStudent","%"+villageStudent+"%")

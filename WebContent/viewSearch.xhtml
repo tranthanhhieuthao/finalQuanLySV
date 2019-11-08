@@ -14,33 +14,20 @@
 		library="primefaces" />
 </h:head>
 <h:body>
-	<h:form id="searchFillter">
+	
 
 		<p:dialog  header="Search Fillter"  widgetVar="dlg2" minHeight="40">
-
+<h:form id="searchFillter">
 
 			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-			 	<p:selectOneRadio id="console1" value="#{controllerStudent.tickId}"
-					unselectable="true">
-					<f:selectItem itemLabel="Id Student" itemValue="idStudent" />
-				</p:selectOneRadio> 
+				<p:selectBooleanCheckbox value="#{controllerStudent.tickId}" itemLabel="Id"/> 
 			 	<p:inputText value="#{controllerStudent.idStudent}"/> 
-				<p:selectOneRadio id="console2" value="#{controllerStudent.tickName}"
-					unselectable="true">
-					<f:selectItem itemLabel="Name Student" itemValue="nameStudent" />
-				</p:selectOneRadio>
+				<p:selectBooleanCheckbox value="#{controllerStudent.tickName}" itemLabel="Name"/> 
 				<p:inputText value="#{controllerStudent.nameStudent}" />
-				<p:selectOneRadio id="console3" value="#{controllerStudent.tickVillage}"
-					unselectable="true">
-					<f:selectItem itemLabel="Village Student"
-						itemValue="villageStudent" />
-				</p:selectOneRadio>
+				<p:selectBooleanCheckbox value="#{controllerStudent.tickVillage}" itemLabel="Village"/> 
 				<p:inputText value="#{controllerStudent.villageStudent}"/>
-				<p:selectOneRadio id="console4" value="#{controllerStudent.tickEmail}"
-					unselectable="true">
-					<f:selectItem itemLabel="Email Student" itemValue="emailStudent" />
-				</p:selectOneRadio>
+				<p:selectBooleanCheckbox value="#{controllerStudent.tickEmail}" itemLabel="Email"/> 
 				<p:inputText value="#{controllerStudent.emailStudent}" />
 
 				<p:commandButton id="buttonSearch2" value="Search start"
@@ -53,7 +40,8 @@
 				<h:outputText id="outResult1"
 					value="Results : Found #{controllerStudent.students.size()}" />
 			</h:panelGrid>
+			</h:form>
 		</p:dialog>
-	</h:form>
+	
 </h:body>
 </html>

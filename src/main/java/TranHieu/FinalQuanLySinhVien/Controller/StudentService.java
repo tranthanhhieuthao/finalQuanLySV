@@ -57,8 +57,8 @@ public class StudentService implements StudentInterface {
 	
 	
 	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
-			String villageStudent, String emailStudent, String tickId, String tickName,
-			String tickVillage, String tickEmail){
+			String villageStudent, String emailStudent, boolean tickId, boolean tickName,
+			boolean tickVillage, boolean tickEmail){
 		return studentDAO.SearchFillterStudent(list, idStudent, nameStudent, villageStudent, emailStudent, tickId, tickName, tickVillage, tickEmail);
 	}
 
