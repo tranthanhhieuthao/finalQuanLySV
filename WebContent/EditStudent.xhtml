@@ -20,32 +20,41 @@
 
 			<tr>
 				<td><h3>Name</h3></td>
-				<td><p:inputText
-						value="#{controllerStudent.student.nameStudent}" /></td>
+				<td><p:inputText id="name"
+						value="#{controllerStudent.student.nameStudent}" >
+						<p:messages for="name" style="color:red" />
+						</p:inputText></td>
 			</tr>
 
 
 			<tr>
 				<td><h3>Village</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.village}" /></td>
+				<td><p:inputText id="village" value="#{controllerStudent.student.village}" >
+				<p:messages for="village" style="color:red" />
+				</p:inputText></td>
 			</tr>
 
 
 			<tr>
 				<td><h3>Phone</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.phone}" /></td>
+				<td><p:inputText id="phone" value="#{controllerStudent.student.phone}" >
+				<p:messages for="phone" style="color:red" />
+				</p:inputText></td>
 			</tr>
 
 
 			<tr>
 				<td><h3>Email</h3></td>
-				<td><p:inputText value="#{controllerStudent.student.email}" />
+				<td><p:inputText id="email" value="#{controllerStudent.student.email}" >
+				<p:messages for="email" style="color:red" />
+				</p:inputText>
 				</td>
 			</tr>
 
 			<tr>
 				<td><h3>Birth Day</h3></td>
-				<td><p:calendar value="#{controllerStudent.student.birthDay}">
+				<td><p:calendar id="birthday" value="#{controllerStudent.student.birthDay}">
+					<p:messages for="birthday" style="color:red" />
 					</p:calendar></td>
 			</tr>
 

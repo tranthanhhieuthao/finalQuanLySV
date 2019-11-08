@@ -17,8 +17,10 @@
 		<table>
 			<tr>
 				<td><h3>Score</h3></td>
-				<td><p:inputText
-						value="#{controllerScore.scoreBean.scoreStudent}" /></td>
+				<td><p:inputText id="score"
+						value="#{controllerScore.scoreBean.scoreStudent}" >
+						<p:messages for="score" style="color:red" />
+						</p:inputText></td>
 			</tr>
 
 			<tr>

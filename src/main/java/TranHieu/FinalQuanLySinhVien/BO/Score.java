@@ -23,24 +23,24 @@ public class Score {
 	private int id;
 	
 	@Column(name="timeStart")
-	@NotNull
+	@NotNull(message = "Time Start can't be empty")
 	@Temporal(TemporalType.DATE)
 	@Future(message = "can't set time in the past")
 	private Date timeStart;
 	
 	@Column(name="timeEnd")
-	@NotNull
+	@NotNull(message = "Time End can't be empty")
 	@Temporal(TemporalType.DATE)
 	@Future(message="can't set time in the past")
 	private Date timeEnd;
 	
 	@Column(name="teacher")
-	@NotNull
+	@NotNull(message = "Name teacher can't be empty")
 	@Size(min=2,max=15,message = "Name teacher should be than two")
 	private String teacher;
 	
 	@Column(name="scoreStudent")
-	@NotNull
+	@NotNull(message = "Score can't be empty")
 	private float scoreStudent;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
