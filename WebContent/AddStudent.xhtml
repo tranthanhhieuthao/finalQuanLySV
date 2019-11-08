@@ -19,18 +19,25 @@
 
 
 		<p:panelGrid columns="2">
+		
 
 			<h:outputText value="Name" />
-			<p:inputText value="#{controllerStudent.student.nameStudent}" />
+			<p:inputText id="nameStudent" value="#{controllerStudent.student.nameStudent}" >	
+			<p:messages for="nameStudent" style="color:red" />
+			</p:inputText>
 
 			<h:outputText value="Village" />
-			<p:inputText value="#{controllerStudent.student.village}" />
+			<p:inputText id="village" value="#{controllerStudent.student.village}" >
+			<p:messages for="village" style="color:red"/>
+			</p:inputText>
 
 			<h:outputText value="Phone" />
 			<p:inputText value="#{controllerStudent.student.phone}" />
 
 			<h:outputText value="Email" />
-			<p:inputText value="#{controllerStudent.student.email}" />
+			<p:inputText id="email" value="#{controllerStudent.student.email}" >
+			<p:messages for="email" style="color:red" />
+			</p:inputText>
 
 			<h:outputText value="Note" />
 			<p:inputText value="#{controllerStudent.student.note}" />
@@ -38,8 +45,8 @@
 			<h:outputText value="BirthDay" />
 			<p:calendar value="#{controllerStudent.student.birthDay}" />
 
-			<p:commandButton value="Add Student"
-				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="addStudent"/>
+			<p:commandButton id="add" value="Add Student"
+				action="#{controllerStudent.AddStudent()}" icon="pi pi-user-plus" update="addStudent" />
 
 		</p:panelGrid>
 

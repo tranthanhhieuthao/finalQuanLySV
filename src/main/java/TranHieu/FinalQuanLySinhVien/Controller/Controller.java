@@ -6,10 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
@@ -29,19 +31,14 @@ public class Controller implements Serializable {
 
 	@ManagedProperty(value = "#{studentService}")
 	private StudentService studentService;
-	
 
 	private List<Student> students;
 	private List<Class> listClass;
-
-	
 
 	private String sort;
 	private String value;
 	private String column;
 	private float avg = 0;
-
-	
 
 	public float getAvg() {
 		return avg;
@@ -211,6 +208,7 @@ public class Controller implements Serializable {
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
 		studentService.SaveStudent(student);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Add Succsess!!"));
 		student = new Student();
 		return "ListStudent?faces-redirect=true";
 	}
@@ -237,7 +235,8 @@ public class Controller implements Serializable {
 			sum += list.getScoreStudent() * list.getCourse().getCoefficient();
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
-		if(sum == 0)sumCoefficient =1;
+		if (sum == 0)
+			sumCoefficient = 1;
 		avg = ((float) sum / sumCoefficient);
 
 		student.setAvgStudent((float) avg);
@@ -252,21 +251,22 @@ public class Controller implements Serializable {
 			return "Failed";
 
 	}
-	
+
 	public List<Score> maxPointStudent(int id) {
 		student = studentService.findStudentById(id);
 		List<Score> scMax = student.getListScore();
-	for(int i=0;i<student.getListScore().size();i++) {
-		for(int j=0;j<student.getListScore().size();j++) {
-		if(student.getListScore().get(i).getCourse().getNameCourse().equals(student.getListScore().get(j).getCourse().getNameCourse())) {
-			if(student.getListScore().get(i).getScoreStudent() > student.getListScore().get(j).getScoreStudent()) {
-				scMax.remove(j);
+		for (int i = 0; i < student.getListScore().size(); i++) {
+			for (int j = 0; j < student.getListScore().size(); j++) {
+				if (student.getListScore().get(i).getCourse().getNameCourse()
+						.equals(student.getListScore().get(j).getCourse().getNameCourse())) {
+					if (student.getListScore().get(i).getScoreStudent() > student.getListScore().get(j)
+							.getScoreStudent()) {
+						scMax.remove(j);
+					}
+				}
 			}
 		}
-		}
-	}
 		return scMax;
 	}
-
 
 }

@@ -10,8 +10,10 @@ import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,30 +30,34 @@ public class Student {
 	private int id;
 	
 	@Column(name ="idStudent")
-	@NotNull
+	@NotNull(message = "idStudent can't be empty")
 	private String idStudent;
 
 	@Column(name = "nameStudent")
-	@NotNull
-	@Size(min=2,max=15)
+	@NotNull(message = "Name Student can't be empty")
+	@Size(min=2,message = "length must than 2")
 	private String nameStudent;
 
 	@Column(name = "village")
+	@NotNull(message = "Village can't be empty")
 	private String village;
 
 	@Column(name = "phone")
-	@NotNull
+	@NotNull(message = "Phone can't be empty")
 	private int phone;
 
 	@Column(name = "email")
-	@NotNull
+	@NotNull(message = "Email can't be empty")
+	@Pattern(regexp = "^[-a-z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-z0-9~!$%^&*_=+}{\\'?]+)*@([a-z0-9_][-a-z0-9_]"
+			+ "*(\\.[-a-z0-9_]+)*\\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}"
+			+ "\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$",message = "No matcher format of Email")
 	private String email;
 
 	@Column(name = "note")
 	private String note;
 
 	@Column(name = "birthDay")
-	@NotNull
+	@NotNull(message = "BirthDay can't be empty")
 	@Temporal(TemporalType.DATE)
 	private Date birthDay;
 	
