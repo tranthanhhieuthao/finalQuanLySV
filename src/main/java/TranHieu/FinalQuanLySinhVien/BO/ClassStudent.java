@@ -25,7 +25,7 @@ public class ClassStudent {
 
 
 	@Column(name = "nameClass")
-	@NotNull
+	@NotNull(message = "can't be empty")
 	private String nameClass;
 
 	@Column(name = "note")

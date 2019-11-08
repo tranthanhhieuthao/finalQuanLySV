@@ -13,13 +13,15 @@
 </h:head>
 <h:body>
 
-
+<h:form>
 		<table>
 
 			<tr>
 				<td><h3>Name</h3></td>
-				<td><p:inputText
-						value="#{controllerClass.classStudentBean.nameClass}" /></td>
+				<td><p:inputText id="nameClass"
+						value="#{controllerClass.classStudentBean.nameClass}" >
+						<p:messages for="nameClass" style="color:red" />
+						</p:inputText></td>
 			</tr>
 
 
@@ -31,11 +33,11 @@
 
 			<tr>
 				<td></td>
-				<td><p:commandButton value="Add Class" icon="pi pi-plus" 
+				<td><p:commandButton value="Add Class" icon="pi pi-plus" update="@form"
 						action="#{controllerClass.addClass()}" /></td>
 			</tr>
 		</table>
-
+</h:form>
 
 </h:body>
 </html>

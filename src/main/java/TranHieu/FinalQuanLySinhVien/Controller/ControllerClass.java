@@ -66,7 +66,7 @@ public class ControllerClass {
 
 	public String findClassStudentById(int id) {
 		classStudentBean = classService.findClassStudentById(id);
-		return "StudentOfClass";
+		return "StudentOfClass?faces-redirect=true";
 	}
 
 	public void setClassStudentBean(ClassStudent classStudentBean) {

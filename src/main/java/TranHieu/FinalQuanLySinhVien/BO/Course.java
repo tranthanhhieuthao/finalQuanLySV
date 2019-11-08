@@ -23,12 +23,12 @@ public class Course {
 	private int id;
 
 	@Column(name = "nameCourse")
-	@NotNull
-	@Size(min=2,max=15)
+	@NotNull(message = "Name Course can't be empty")
+	@Size(min=2,max=15,message = "must be than 2")
 	private String nameCourse;
 
 	@Column(name = "coefficient")
-	@NotNull
+	@NotNull(message = "coefficient can't be empty")
 	private float coefficient;
 
 	@Column(name = "note")
