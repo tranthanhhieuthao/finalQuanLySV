@@ -92,32 +92,36 @@ public class StudentDAO {
 		}
 	}
 
-
 	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
-			String villageStudent, String emailStudent, boolean tickId, boolean tickName,
-			boolean tickVillage, boolean tickEmail) {
+			String villageStudent, String emailStudent, boolean tickId, boolean tickName, boolean tickVillage,
+			boolean tickEmail) {
 		Session session = sessionFactory.openSession();
-		int count =0;
-		String hql = "FROM Student WHERE" + " ";				
-		boolean[] valueTick= {tickId,tickName,tickVillage,tickEmail};
-		String[] queryText = {"idStudent LIKE :idStudent ","nameStudent LIKE :nameStudent ","village LIKE :villageStudent ","email LIKE :emailStudent "};
-		
+		int count = 0;
+		String hql = "FROM Student WHERE" + " ";
+		boolean[] valueTick = { tickId, tickName, tickVillage, tickEmail };
+		String[] queryText = { "idStudent LIKE :idStudent ", "nameStudent LIKE :nameStudent ",
+				"village LIKE :villageStudent ", "email LIKE :emailStudent " };
 		try {
 			session.beginTransaction();
-			for(int i=0;i<valueTick.length;i++) {
-				if(valueTick[i] == true) {
-					if (count == 0 )hql += queryText[i];
-					else hql += "AND "+queryText[i];
+			for (int i = 0; i < valueTick.length; i++) {
+				if (valueTick[i]) {
+					if (count == 0) {
+						hql += queryText[i];
+
+					} else
+						hql += "AND " + queryText[i];
 					count++;
-					System.out.println(hql);
 				}
-				else System.out.println("id:" +tickId+" "+"name:"+" "+tickName+"village:"+" "+tickVillage+"email:"+" "+tickEmail);
 			}
-	
-			Query query = session.createQuery(hql).setParameter("idStudent", "%"+idStudent+"%")
-					                               .setParameter("nameStudent", "%"+nameStudent+"%")
-					                               .setParameter("villageStudent","%"+villageStudent+"%")
-					                               .setParameter("emailStudent", "%"+emailStudent+"%");
+			Query query = session.createQuery(hql);
+			if (tickId)
+				query = query.setParameter("idStudent", "%" + idStudent + "%");
+			if (tickName)
+				query = query.setParameter("nameStudent", "%" + nameStudent + "%");
+			if (tickVillage)
+				query = query.setParameter("villageStudent", "%" + villageStudent + "%");
+			if (tickEmail)
+				query = query.setParameter("emailStudent", "%" + emailStudent + "%");
 			list = query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,7 +132,6 @@ public class StudentDAO {
 
 		return list;
 	}
-
 
 	public List<Student> sortBy(List<Student> listStudent, String sortBy, String value) {
 		Session session = sessionFactory.openSession();

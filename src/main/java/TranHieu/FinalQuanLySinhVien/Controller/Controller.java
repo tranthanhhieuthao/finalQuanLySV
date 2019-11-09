@@ -100,7 +100,7 @@ public class Controller implements Serializable {
 		this.idStudent = idStudent;
 	}
 
-	public String getNameStudent() {
+	public String getNameStudent() {	
 		return nameStudent;
 	}
 
@@ -108,7 +108,7 @@ public class Controller implements Serializable {
 		this.nameStudent = nameStudent;
 	}
 
-	public String getVillageStudent() {
+	public String getVillageStudent() {	
 		return villageStudent;
 	}
 
@@ -116,7 +116,7 @@ public class Controller implements Serializable {
 		this.villageStudent = villageStudent;
 	}
 
-	public String getEmailStudent() {
+	public String getEmailStudent() {	
 		return emailStudent;
 	}
 
@@ -159,10 +159,10 @@ public class Controller implements Serializable {
 	}
 
 	public List<Student> getStudents() {
-		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {
+		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {		
 			students = studentService.SearchFillterStudent(students, idStudent, nameStudent, villageStudent,
 					emailStudent, tickId, tickName, tickVillage, tickEmail);
-			System.out.println(idStudent);
+			
 		}
 		else if (sort != null && tickId == false) {
 			students = studentService.sortBy(students, sort, value);
