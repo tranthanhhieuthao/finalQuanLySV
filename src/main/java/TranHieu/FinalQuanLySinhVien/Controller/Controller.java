@@ -201,7 +201,6 @@ public class Controller implements Serializable {
 	public String EditStudent() {
 		studentService.EditStudent(student);
 		return "ListStudent?faces-redirect=true";
-
 	}
 
 	public Student viewEditStudent(int id) {
