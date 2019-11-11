@@ -19,5 +19,6 @@
 		<mapping class="TranHieu.FinalQuanLySinhVien.BO.ClassStudent" />
 		<mapping class="TranHieu.FinalQuanLySinhVien.BO.Course" />
 		<mapping class="TranHieu.FinalQuanLySinhVien.BO.Score" />
+		<mapping class="TranHieu.FinalQuanLySinhVien.BO.User" />
 	</session-factory>
 </hibernate-configuration>

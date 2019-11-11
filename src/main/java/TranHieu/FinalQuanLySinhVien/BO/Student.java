@@ -65,6 +65,7 @@ public class Student {
 	
 	@Column(name ="avgStudent")
 	private float avgStudent;
+	
 
 	//nen them contructor khong tham so de khoi tao Entity
 	public Student() {
@@ -144,13 +145,6 @@ public class Student {
 		this.note = note;
 	}
 
-//	public Set<ClassStudent> getStudentClass() {
-//		return studentClass;
-//	}
-//
-//	public void setStudentClass(Set<ClassStudent> studentClass) {
-//		this.studentClass = studentClass;
-//	}
 
 	public Date getBirthDay() {
 		return birthDay;

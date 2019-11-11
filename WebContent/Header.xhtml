@@ -42,9 +42,10 @@
 					action="ScoreEditStudentAndDelete?faces-redirect=true"></p:menuitem>
 
 				<f:facet name="options">
-					<p:commandButton type="button" title="Save" icon="pi pi-save" />
-					<p:commandButton type="button" title="Delete" icon="pi pi-trash" />
-					<p:commandButton type="button" title="Print" icon="pi pi-print" />
+		
+						Welcome : #{loginBean.userBean.user} 
+						<p:commandButton action="#{loginBean.logout()}" value="Logout" update="form"  />
+				
 				</f:facet>
 			</p:menubar>
 		</h:form>

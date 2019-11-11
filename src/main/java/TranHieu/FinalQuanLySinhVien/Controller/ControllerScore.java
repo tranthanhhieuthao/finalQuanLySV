@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Course;
@@ -178,9 +182,16 @@ public class ControllerScore {
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
+		for(Score sc: listScoreStudent) {
+		if(scoreBean.getClassStudent().getNameClass().equals(sc.getClassStudent().getNameClass()) 
+				&& scoreBean.getTimeStart().equals(sc.getTimeStart())) {
+			return null;
+		}
+		}
 		scoreService.save(scoreBean);
-		return "ListScore";
+		return "ListScore?faces-redirect=true";
 	}
+	
 
 	public String statusClass(int id) {
 		int quatityScoreOfStudent = 0;
@@ -225,5 +236,7 @@ public class ControllerScore {
 		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());	
 		return detailScore;
 	}
+	
+
 
 }
