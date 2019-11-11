@@ -42,8 +42,9 @@
 					action="ScoreEditStudentAndDelete?faces-redirect=true"></p:menuitem>
 
 				<f:facet name="options">
-		
+	
 						Welcome : #{loginBean.studentBean.nameStudent} 
+					
 						<p:commandButton action="#{loginBean.logout()}" value="Logout" update="headerLogin"  />
 				
 				</f:facet>

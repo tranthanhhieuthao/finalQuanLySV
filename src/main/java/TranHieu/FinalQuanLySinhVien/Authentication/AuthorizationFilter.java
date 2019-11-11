@@ -38,7 +38,6 @@ public class AuthorizationFilter implements Filter {
 				chain.doFilter(request, response);
 			}
 			else {
-				System.out.println("da vao day");
 				resp.sendRedirect(reqt.getContextPath() +"/Login.xhtml");
 			}
 		} catch(Exception e) {

@@ -32,11 +32,7 @@ public class LoginDAO {
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("FROM Student WHERE email =:user AND password =:password").setParameter("user", user ).setParameter("password", password);
-			studentLogin = query.list();
-			System.out.println(studentLogin+"123");
-			System.out.println(user);
-			System.out.println(password);
-			System.out.println(studentLogin != null);
+			 studentLogin = query.list();
 			if(studentLogin != null) {
 				return true;
 			}		
@@ -48,6 +44,7 @@ public class LoginDAO {
 		}
 		return false;
 	}
+	
 	
 
 }

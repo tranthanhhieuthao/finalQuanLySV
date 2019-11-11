@@ -28,6 +28,11 @@ public class SessionUtils {
 		if(session != null) return (String) session.getAttribute("userId");
 		else return null;
 	}
+	
+	public static String getPermission() {
+		HttpSession session = getSession();
+		return session.getAttribute("permission").toString();
+	}
 
 
 }
