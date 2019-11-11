@@ -14,9 +14,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.Authentication.SessionUtils;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
 
@@ -181,6 +183,8 @@ public class Controller implements Serializable {
 	}
 
 	public Student getStudent() {
+//		HttpSession session = SessionUtils.getSession();
+//		student = (Student)session;
 		return student;
 	}
 

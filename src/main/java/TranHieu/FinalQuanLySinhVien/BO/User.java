@@ -1,5 +1,8 @@
 package TranHieu.FinalQuanLySinhVien.BO;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
@@ -15,25 +18,31 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
-	@Column(name="password")
-	private String pwd;
 	
-	@Column(name="user")
-	private String user;
+	@Column(name="permission")
+	private String permission;
+
 	
-	@Column(name="massage")
-	private String msg;
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+	private Set<Student> listStudentLogin = new HashSet<Student>();
 	
-	public User(String pwd,String user) {
-		this.user = user;
-		this.pwd = pwd;
-	}
 
 	public User() {
 		
 	}
 	
+	public User(String permission) {
+		this.permission = permission;
+	}
 	
+
+	public Set<Student> getListStudentLogin() {
+		return listStudentLogin;
+	}
+
+	public void setListStudentLogin(Set<Student> listStudentLogin) {
+		this.listStudentLogin = listStudentLogin;
+	}
 
 	public int getId() {
 		return Id;
@@ -43,28 +52,18 @@ public class User {
 		Id = id;
 	}
 
-	public String getPwd() {
-		return pwd;
+
+
+	public String getPermission() {
+		return permission;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
-	public String getUser() {
-		return user;
-	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
 
 }

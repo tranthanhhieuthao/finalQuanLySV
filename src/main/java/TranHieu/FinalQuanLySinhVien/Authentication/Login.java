@@ -25,29 +25,17 @@ public class Login implements Serializable {
 	@ManagedProperty(value ="#{loginDAO}")
 	private LoginDAO loginDAO;
 	
-	@ManagedProperty(value ="#{userBean}")
-	private User userBean = new User();
-	
-	private List<User> listUser;
-	
-	
-	public List<User> getListUser() {
-		listUser = loginDAO.showAll();
-		return listUser;
-	}
-
-	public void setListUser(List<User> listUser) {
-		this.listUser = listUser;
-	}
-
-	public void setUserBean(User userBean) {
-		this.userBean = userBean;
-	}
-	
+	@ManagedProperty(value ="#{studentBean}")
+	private Student studentBean ;
 	
 
-	public User getUserBean() {
-		return userBean;
+
+	public Student getStudentBean() {
+		return studentBean;
+	}
+
+	public void setStudentBean(Student studentBean) {
+		this.studentBean = studentBean;
 	}
 
 	public void setLoginDAO(LoginDAO loginDAO) {
@@ -61,11 +49,12 @@ public class Login implements Serializable {
 
 	
 	public String validateUserNamePassword() {
-		boolean valid =loginDAO.validate(userBean.getUser(), userBean.getPwd());
+		boolean valid =loginDAO.validate(studentBean.getEmail(), studentBean.getPassword());
+		System.out.println(studentBean.getEmail());
+		System.out.println(valid);
 		if(valid) {
 			HttpSession session =SessionUtils.getSession();
-			session.setAttribute("user",userBean.getUser());
-			System.out.println(SessionUtils.getUserId());
+			session.setAttribute("user",studentBean.getEmail());
 			return "ListStudent?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Incorrect Username and Passowrd","Please enter correct username and Password"));

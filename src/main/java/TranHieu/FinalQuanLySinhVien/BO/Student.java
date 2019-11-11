@@ -66,6 +66,9 @@ public class Student {
 	@Column(name ="avgStudent")
 	private float avgStudent;
 	
+	@Column(name ="password")
+	private String password;
+	
 
 	//nen them contructor khong tham so de khoi tao Entity
 	public Student() {
@@ -73,7 +76,7 @@ public class Student {
 	}
 			
 	public Student(String idStudent, String nameStudent, String village, int phone, String email, String note,
-			Date birthDay, float avgStudent) {
+			Date birthDay, float avgStudent,String password) {
 		this.nameStudent = nameStudent;
 		this.village = village;
 		this.phone = phone;
@@ -82,12 +85,33 @@ public class Student {
 		this.birthDay = birthDay;
 		this.avgStudent = avgStudent;
 		this.idStudent = idStudent;
+		this.password = password;
 	}
 
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "student")
 	private List<Score> listScore = new ArrayList<Score>();
+	
+	@ManyToOne
+	private User user = new User();
 
+
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public User getListUser() {
+		return user;
+	}
+
+	public void setListUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;

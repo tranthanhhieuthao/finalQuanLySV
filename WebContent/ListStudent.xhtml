@@ -39,7 +39,7 @@
 	</ui:insert>
 
 	<h:form id="form">
-		<p:dataTable id="tbl" var="list" value="#{controllerStudent.students}"
+		<p:dataTable id="tbl12" var="list" value="#{controllerStudent.students}"
 			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
 			paginator="true" rows="15"
 			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
@@ -57,7 +57,7 @@
 					<f:selectItem itemLabel="Reduction" itemValue="DESC" />
 				</p:selectOneMenu>
 				<p:commandButton action="#{controllerStudent. getStudents()}"
-					icon="pi pi-list" value="Sort start" update="form">
+					icon="pi pi-list" value="Sort start" update="tbl12">
 				</p:commandButton>
 			</f:facet>
 
@@ -65,7 +65,7 @@
 				<f:facet name="header">
 					<h:outputText value="Id Student" />
 				</f:facet>
-				<h:outputText value="#{list.idStudent}" update="form" />
+				<h:outputText value="#{list.idStudent}"  />
 			</p:column>
 
 			<p:column>
@@ -130,7 +130,7 @@
 						oncomplete="PF('dlg8').show();" update="editNow"
 						action="#{controllerStudent.viewEditStudent(list.id)}"
 						icon="pi pi-refresh">
-						<f:ajax execute="edit" render="tbl" />
+						<f:ajax execute="edit" render="tbl12" />
 					</p:menuitem>
 					<p:menuitem>
 						<p:growl id="message" showDetail="true" />

@@ -31,9 +31,12 @@ public class LoginDAO {
 		List<Student> studentLogin = new ArrayList<Student>();
 		try {
 			session.beginTransaction();
-			Query query = session.createQuery("FROM User WHERE user =:user AND pwd =:password").setParameter("user", user ).setParameter("password", password);
+			Query query = session.createQuery("FROM Student WHERE email =:user AND password =:password").setParameter("user", user ).setParameter("password", password);
 			studentLogin = query.list();
-			System.out.println(studentLogin.get(0));
+			System.out.println(studentLogin+"123");
+			System.out.println(user);
+			System.out.println(password);
+			System.out.println(studentLogin != null);
 			if(studentLogin != null) {
 				return true;
 			}		
@@ -46,20 +49,5 @@ public class LoginDAO {
 		return false;
 	}
 	
-	public List<User> showAll() {
-		Session session = sessionFactory.openSession();
-		List<User> listUser = new ArrayList<User>();
-		try {
-			session.beginTransaction();
-			listUser = session.createQuery("FROM User").list();
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			session.getTransaction().rollback();
-		} finally {
-			session.close();
-		}
-		return listUser;
-	}
 
 }

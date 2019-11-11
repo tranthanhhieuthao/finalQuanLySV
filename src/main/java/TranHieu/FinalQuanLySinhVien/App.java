@@ -7,6 +7,7 @@ import org.primefaces.component.calendar.Calendar;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
 import TranHieu.FinalQuanLySinhVien.BO.Student;
+import TranHieu.FinalQuanLySinhVien.BO.User;
 import TranHieu.FinalQuanLySinhVien.DAO.StudentDAO;
 
 /**
@@ -33,16 +34,20 @@ public class App
         String idStudent ="2019M04";
         String user ="user";
         String password="123";
+        User user1 = new User("Admin");
+        studentDAO.save(user1);
+
         for(int i=1;i<=100;i++) {
       	
         	   Student student = new Student(idStudent +i,nameStudent[(int)Math.round(Math.random()*(nameStudent.length-1))],     		
         			provide[(int)Math.round(Math.random()*(provide.length-1))],
         			phone[(int)Math.round(Math.random()*(phone.length-1))],
-        			email[(int)Math.round(Math.random()*(email.length-1))],      			       	        			
+        			i+email[(int)Math.round(Math.random()*(email.length-1))],      			       	        			
         			note[(int)Math.round(Math.random()*(note.length-1))],
         			birthDay[(int)Math.round(Math.random()*(birthDay.length-1))],
-        			0
+        			0,"123"
         			);
+        	   student.setListUser(user1);
         	studentDAO.save(student);
 
         }

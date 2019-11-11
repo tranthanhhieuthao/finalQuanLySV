@@ -16,7 +16,7 @@
 <body>
 	<ui:composition>
 
-		<h:form
+		<h:form id="headerLogin"
 			style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
 			<p:growl id="messages" />
 			<p:menubar style="border:1px solid black;">
@@ -43,8 +43,8 @@
 
 				<f:facet name="options">
 		
-						Welcome : #{loginBean.userBean.user} 
-						<p:commandButton action="#{loginBean.logout()}" value="Logout" update="form"  />
+						Welcome : #{loginBean.studentBean.nameStudent} 
+						<p:commandButton action="#{loginBean.logout()}" value="Logout" update="headerLogin"  />
 				
 				</f:facet>
 			</p:menubar>
