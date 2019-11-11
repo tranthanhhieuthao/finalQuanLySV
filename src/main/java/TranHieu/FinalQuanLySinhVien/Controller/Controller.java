@@ -233,7 +233,7 @@ public class Controller implements Serializable {
 		return "ListStudent?faces-redirect=true";
 	}
 
-	public float Avg(int id) {
+	public String Avg(int id) {
 		float sum = 0;
 		float sumCoefficient = 0;
 		student = studentService.findStudentById(id);
@@ -241,13 +241,13 @@ public class Controller implements Serializable {
 			sum += list.getScoreStudent() * list.getCourse().getCoefficient();
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
-		if (sum == 0)
-			sumCoefficient = 1;
+		if (sum == 0) return "";
+			
 		avg = ((float) sum / sumCoefficient);
 
 		student.setAvgStudent((float) avg);
 		studentService.EditStudent(student);
-		return avg;
+		return avg+"";
 	}
 
 	public String pass_Failed() {

@@ -76,7 +76,7 @@ public class Login implements Serializable {
 	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.invalidate();
-		return "Login.xhtml";
+		return "Login?faces-redirect=true";
 	}
 	
 	
