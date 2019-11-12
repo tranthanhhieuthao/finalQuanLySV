@@ -12,7 +12,9 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpSession;
 
+import TranHieu.FinalQuanLySinhVien.Authentication.SessionUtils;
 import TranHieu.FinalQuanLySinhVien.BO.ClassStudent;
 import TranHieu.FinalQuanLySinhVien.BO.Course;
 import TranHieu.FinalQuanLySinhVien.BO.Score;
@@ -218,11 +220,31 @@ public class ControllerScore {
 	}
 
 	public String addStudentSubject(int id) {
+		System.out.println("chay vao day la sai");
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentService.findStudentById(id));
 		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreService.save(scoreBean);
 		return null;
+	}
+	
+	public String registerSubject(int id) {
+		HttpSession session = SessionUtils.getSession();
+		scoreBean = scoreService.findScoreOfStudentById(id);
+		if(session.getAttribute("permission").equals("Admin")) {
+			System.out.println("chay vao day la gan dung");
+			for(Student st: studentService.listStudent()) {
+				if(st.getEmail().equals(session.getAttribute("user"))) {
+					scoreBean.setStudent(st);
+					scoreBean.setScoreStudent(0);
+					scoreService.save(scoreBean);
+					System.out.println("cha vao day la dung");					
+				}
+			}
+			
+		}
+			
+		return "DetailStudent?faces-redirect=true";
 	}
 
 	public String DeleteScore(int id) {
