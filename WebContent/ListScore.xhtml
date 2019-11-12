@@ -91,7 +91,16 @@
 					oncomplete="PF('dlg7').show();" />
 					<p:commandButton value="Register"  rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
 					action="#{controllerScore.registerSubject(list.id)}" update="addSubject"
-					 />
+					 >
+					 <p:confirm header="Confirmation" message="Are you sure?"
+								icon="pi pi-exclamation-triangle" />
+					 </p:commandButton>
+					 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Yes" type="button" style="color:red;"
+								styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+							<p:commandButton value="No" type="button" style="color:blue;"
+								styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+						</p:confirmDialog>
 
 			</p:column>
 		</p:dataTable>

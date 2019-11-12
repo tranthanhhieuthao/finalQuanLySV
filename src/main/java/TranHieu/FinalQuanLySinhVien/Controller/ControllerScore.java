@@ -55,8 +55,8 @@ public class ControllerScore {
 	private List<Score> listScoreStudent;
 
 	private List<Score> newListScore;
-	
-	private List<Score> detailScore =new ArrayList<Score>();
+
+	private List<Score> detailScore = new ArrayList<Score>();
 
 	public List<Score> getNewListScore() {
 		newListScore = scoreService.listScoreStudent();
@@ -72,20 +72,17 @@ public class ControllerScore {
 
 				}
 			}
-		}	
+		}
 		return newListScore;
 	}
-	
-	
+
 	public List<Score> getDetailScore() {
 		return this.detailScore;
 	}
 
-
 	public void setDetailScore(List<Score> detailScore) {
 		this.detailScore = detailScore;
 	}
-
 
 	public void setClassService(ClassService classService) {
 		this.classService = classService;
@@ -157,7 +154,7 @@ public class ControllerScore {
 
 	public Score viewEditScore(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		return scoreBean ;
+		return scoreBean;
 
 	}
 
@@ -176,7 +173,6 @@ public class ControllerScore {
 		return null;
 	}
 
-
 	public String MarkScoreForStudent() {
 		studentBean = studentService.findStudentById(12);
 		System.out.println(studentBean.getNameStudent());
@@ -185,16 +181,15 @@ public class ControllerScore {
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
 		scoreBean.setClassStudent(classBean);
-		for(Score sc: listScoreStudent) {
-		if(scoreBean.getClassStudent().getNameClass().equals(sc.getClassStudent().getNameClass()) 
-				&& scoreBean.getTimeStart().equals(sc.getTimeStart())) {
-			return null;
-		}
+		for (Score sc : listScoreStudent) {
+			if (scoreBean.getClassStudent().getNameClass().equals(sc.getClassStudent().getNameClass())
+					&& scoreBean.getTimeStart().equals(sc.getTimeStart())) {
+				return null;
+			}
 		}
 		scoreService.save(scoreBean);
 		return "ListScore?faces-redirect=true";
 	}
-	
 
 	public String statusClass(int id) {
 		int quatityScoreOfStudent = 0;
@@ -207,8 +202,8 @@ public class ControllerScore {
 				quatityScoreOfStudent++;
 			}
 		}
-		if (quatityScoreOfStudent < 50) {
-			return "remain" + " " + (50 - quatityScoreOfStudent) + " " + "slot";
+		if (quatityScoreOfStudent < 51) {
+			return "remain" + " " + (51 - quatityScoreOfStudent) + " " + "slot";
 		}
 		return "Full can't add more Student";
 	}
@@ -227,39 +222,41 @@ public class ControllerScore {
 		scoreService.save(scoreBean);
 		return null;
 	}
-	
+
 	public String registerSubject(int id) {
 		HttpSession session = SessionUtils.getSession();
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		if(session.getAttribute("permission").equals("Admin")) {
+		if (session.getAttribute("permission").equals("Admin")) {
 			System.out.println("chay vao day la gan dung");
-			for(Student st: studentService.listStudent()) {
-				if(st.getEmail().equals(session.getAttribute("user"))) {
+			for (Student st : studentService.listStudent()) {
+				if (st.getEmail().equals(session.getAttribute("user"))) {
 					scoreBean.setStudent(st);
 					scoreBean.setScoreStudent(0);
 					scoreService.save(scoreBean);
-					System.out.println("cha vao day la dung");					
+					System.out.println("cha vao day la dung");
 				}
 			}
-			
+
 		}
-			
+
 		return "DetailStudent?faces-redirect=true";
 	}
 
 	public String DeleteScore(int id) {
+		HttpSession session = SessionUtils.getSession();
 		scoreService.Delete(id);
+		if (session.getAttribute("permission").equals("Admin")) {
+			return null;
+
+		}
 		return "ScoreEditStudentAndDelete";
 	}
-	
 
-	
 	public List<Score> detailSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
-		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(),scoreBean.getTimeStart(),scoreBean.getCourse().getId());	
+		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(), scoreBean.getTimeStart(),
+				scoreBean.getCourse().getId());
 		return detailScore;
 	}
-	
-
 
 }

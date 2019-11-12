@@ -57,8 +57,8 @@
 		</h:form>
 
 
-		 <h:form >
-			<ui:repeat   var="list" value="#{controllerStudent.student}">			
+		 <h:form id="subject" >
+			<ui:repeat  var="list" value="#{controllerStudent.student}">			
 				<p:dataTable var="score" value="#{list.listScore.toArray()}">
 
 					<p:column>
@@ -107,7 +107,7 @@
 						</h:outputText>
 					</p:column>
 
-					<p:column>
+					<p:column >
 						<f:facet name="header">
 							<h:outputText value="Time End" />
 							</f:facet>
@@ -115,6 +115,15 @@
 							<f:convertDateTime pattern="hh:mm:ss " />
 						</h:outputText>
 					</p:column>
+					
+					<p:column rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}">
+						<f:facet name="header">
+							<h:outputText value="Action" />
+							</f:facet>
+						<p:commandButton action="#{controllerScore.DeleteScore(score.id)}" update="subject" value="Delete"/>
+							
+					</p:column>
+					
 				</p:dataTable>
 			</ui:repeat>
 		</h:form>  
