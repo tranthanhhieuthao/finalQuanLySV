@@ -45,7 +45,7 @@
 
 			<tr>
 				<td><h3>Email</h3></td>
-				<td><p:inputText id="email" value="#{controllerStudent.student.email}" validator="#{controllerStudent.validateEmailNoDuplicate}">
+				<td><p:inputText id="email" value="#{controllerStudent.student.email}" validator="#{controllerStudent.validateEmailNoDuplicate}" readonly="true">
 				<p:messages for="email" style="color:red" />
 				</p:inputText>
 				</td>

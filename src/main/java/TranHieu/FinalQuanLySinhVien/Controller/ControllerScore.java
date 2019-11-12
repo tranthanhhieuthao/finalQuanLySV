@@ -256,6 +256,7 @@ public class ControllerScore {
 		scoreBean = scoreService.findScoreOfStudentById(id);
 		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(), scoreBean.getTimeStart(),
 				scoreBean.getCourse().getId());
+		detailScore.remove(0);
 		return detailScore;
 	}
 

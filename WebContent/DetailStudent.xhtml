@@ -23,7 +23,7 @@
 		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" rendered="#{loginBean.studentBean.listUser.permission eq 'Host'}" />
 	</h:form> 
 
- 	<p:panelGrid columns="2" style="margin-bottom:20px;margin-left:150px;margin-right:150px;"> 
+ 	<p:panelGrid id="all" columns="2" style="margin-bottom:20px;margin-left:150px;margin-right:150px;"> 
  		<h:form >
 			<ui:repeat var="list" value="#{controllerStudent.student}">
 				<p:panelGrid columns="2">
@@ -44,13 +44,14 @@
 					<h:outputText value="#{list.phone}" />
 
 					<h:outputText value="Email" />
-					<h:outputText value="#{list.email}" />
+					<h:outputText value="#{list.email}"  />
 
 					<h:outputText value="Birth Day" />
 					<h:outputText value="#{list.birthDay}" />
 					
 					<h:outputText value="Avg" />
-					<h:outputText value="#{controllerStudent.Avg(list.id)}" />
+					<h:outputText id ="avg" value="#{controllerStudent.Avg(list.id)}" />
+
 
 				</p:panelGrid>
 			</ui:repeat>
@@ -120,10 +121,8 @@
 						<f:facet name="header">
 							<h:outputText value="Action" />
 							</f:facet>
-						<p:commandButton action="#{controllerScore.DeleteScore(score.id)}" update="subject" value="Delete"/>
-							
-					</p:column>
-					
+						<p:commandButton id ="delete" action="#{controllerScore.DeleteScore(score.id)}" update="all" value="Delete" />							
+					</p:column>				
 				</p:dataTable>
 			</ui:repeat>
 		</h:form>  

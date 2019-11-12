@@ -102,7 +102,7 @@ public class Controller implements Serializable {
 		this.idStudent = idStudent;
 	}
 
-	public String getNameStudent() {	
+	public String getNameStudent() {
 		return nameStudent;
 	}
 
@@ -110,7 +110,7 @@ public class Controller implements Serializable {
 		this.nameStudent = nameStudent;
 	}
 
-	public String getVillageStudent() {	
+	public String getVillageStudent() {
 		return villageStudent;
 	}
 
@@ -118,15 +118,13 @@ public class Controller implements Serializable {
 		this.villageStudent = villageStudent;
 	}
 
-	public String getEmailStudent() {	
+	public String getEmailStudent() {
 		return emailStudent;
 	}
 
 	public void setEmailStudent(String emailStudent) {
 		this.emailStudent = emailStudent;
 	}
-
-
 
 	public boolean isTickId() {
 		return tickId;
@@ -161,12 +159,11 @@ public class Controller implements Serializable {
 	}
 
 	public List<Student> getStudents() {
-		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {		
+		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {
 			students = studentService.SearchFillterStudent(students, idStudent, nameStudent, villageStudent,
 					emailStudent, tickId, tickName, tickVillage, tickEmail);
-			
-		}
-		else if (sort != null && tickId == false) {
+
+		} else if (sort != null && tickId == false) {
 			students = studentService.sortBy(students, sort, value);
 		} else
 			students = studentService.listStudent();
@@ -185,12 +182,12 @@ public class Controller implements Serializable {
 	public Student getStudent() {
 		String sessionEmail = SessionUtils.getUserName();
 		HttpSession session = SessionUtils.getSession();
-		if(session.getAttribute("permission").equals("Admin")) {
-		for(Student st : studentService.listStudent()) {
-			if(sessionEmail.equals(st.getEmail())) {
-				student = st;
+		if (session.getAttribute("permission").equals("Admin")) {
+			for (Student st : studentService.listStudent()) {
+				if (sessionEmail.equals(st.getEmail())) {
+					student = st;
+				}
 			}
-		}
 		}
 		return student;
 	}
@@ -252,20 +249,23 @@ public class Controller implements Serializable {
 			sum += list.getScoreStudent() * list.getCourse().getCoefficient();
 			sumCoefficient += list.getCourse().getCoefficient();
 		}
-		if (sum == 0) return "";
-			
+		if (sum == 0)
+			return "";
+
 		avg = ((float) sum / sumCoefficient);
 
 		student.setAvgStudent((float) avg);
 		studentService.EditStudent(student);
-		return avg+"";
+		return avg + "";
 	}
 
 	public String pass_Failed() {
-		if (student.getAvgStudent() == 0) return "";
-		else if (avg >= 5.0f) return "Pass";
-			
-			return "Failed";
+		if (student.getAvgStudent() == 0)
+			return "";
+		else if (avg >= 5.0f)
+			return "Pass";
+
+		return "Failed";
 
 	}
 
@@ -285,19 +285,19 @@ public class Controller implements Serializable {
 		}
 		return scMax;
 	}
-	
-	public void validateEmailNoDuplicate(FacesContext context,UIComponent comp ,Object value) throws ValidatorException
-	{ 
+
+	public void validateEmailNoDuplicate(FacesContext context, UIComponent comp, Object value)
+			throws ValidatorException {
 		FacesMessage message = new FacesMessage();
-		String email =(String) value;
-		if(email != null) {
-		for(Student st: students) {
-			if(email.equals(st.getEmail())) { message = new FacesMessage(
-					"can't add Student due to duplicate email");
-			throw new ValidatorException( message);	
+		String email = (String) value;
+		if (email != null) {
+			for (Student st : students) {
+				if (email.equals(st.getEmail())) {
+					message = new FacesMessage("can't add Student due to duplicate email");
+					throw new ValidatorException(message);
+				}
 			}
-		}
-		
+
 		}
 
 	}
