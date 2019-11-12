@@ -60,7 +60,7 @@ public class Student {
 	@Column(name = "birthDay")
 	@NotNull(message = "BirthDay can't be empty")
 	@Temporal(TemporalType.DATE)
-	@Past(message = "birthDay can't be in the future ")
+//	@Past(message = "birthDay can't be in the future ")
 	private Date birthDay;
 	
 	@Column(name ="avgStudent")

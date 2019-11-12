@@ -244,6 +244,9 @@ public class ControllerScore {
 
 	public String DeleteScore(int id) {
 		HttpSession session = SessionUtils.getSession();
+		if( scoreService.findScoreOfStudentById(id).getTimeStart().after(new Date()) ) {
+			return null;
+		}
 		scoreService.Delete(id);
 		if (session.getAttribute("permission").equals("Admin")) {
 			return null;
