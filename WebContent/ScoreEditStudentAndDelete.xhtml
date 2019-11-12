@@ -60,7 +60,7 @@
 					<h:outputText value="Name Course" />
 				</f:facet>
 				<h:outputText value="#{list.course.nameCourse}" />
-			</p:column>	
+			</p:column>
 
 			<p:column>
 				<f:facet name="header">
@@ -75,8 +75,8 @@
 				</f:facet>
 				<h:outputText value="#{list.teacher}" />
 			</p:column>
-			
-				<p:column>
+
+			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Score" />
 				</f:facet>
@@ -85,12 +85,14 @@
 
 			<p:column>
 				<f:facet name="header">Edit Score</f:facet>
-				<p:commandButton value="Edit Score " icon="pi pi-cog"			
+			 	<p:commandButton value="Edit Score " icon="pi pi-cog"			
 					action="#{controllerScore.viewEditScore(list.id)}"
 					update="editScore" oncomplete="PF('dlg6').show();" />
-
-
+				
 			</p:column>
+
+
+
 
 			<p:column>
 				<f:facet name="header">Delete Subject</f:facet>
@@ -121,25 +123,28 @@
 			<table>
 				<tr>
 					<td><h:outputText value="Time Start" /></td>
-					<td><p:calendar id="timeStart" value="#{controllerScore.scoreBean.timeStart}"
-							pattern="MM/dd/yyyy HH:mm:ss" >
+					<td><p:calendar id="timeStart"
+							value="#{controllerScore.scoreBean.timeStart}"
+							pattern="MM/dd/yyyy HH:mm:ss">
 							<p:messages for="timeStart" style="color:red" />
-							</p:calendar></td>
+						</p:calendar></td>
 				</tr>
 
 				<tr>
 					<td><h:outputText value="Time End" /></td>
-					<td><p:calendar id="timeEnd" value="#{controllerScore.scoreBean.timeEnd}"
-							pattern="MM/dd/yyyy HH:mm:ss" >
+					<td><p:calendar id="timeEnd"
+							value="#{controllerScore.scoreBean.timeEnd}"
+							pattern="MM/dd/yyyy HH:mm:ss">
 							<p:messages for="timeEnd" style="Color:red" />
-							</p:calendar></td>
+						</p:calendar></td>
 
 				</tr>
 				<tr>
 					<td><h:outputText value="Teacher" /></td>
-					<td><p:inputText id="teacher" value="#{controllerScore.scoreBean.teacher}" >
-					<p:messages for="teacher" style="Color:red" />
-					</p:inputText></td>
+					<td><p:inputText id="teacher"
+							value="#{controllerScore.scoreBean.teacher}">
+							<p:messages for="teacher" style="Color:red" />
+						</p:inputText></td>
 				</tr>
 				<tr>
 

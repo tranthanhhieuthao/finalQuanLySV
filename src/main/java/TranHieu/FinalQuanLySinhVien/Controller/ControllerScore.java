@@ -175,7 +175,6 @@ public class ControllerScore {
 
 	public String MarkScoreForStudent() {
 		studentBean = studentService.findStudentById(12);
-		System.out.println(studentBean.getNameStudent());
 		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
 		scoreBean.setScoreStudent(0);
@@ -215,7 +214,6 @@ public class ControllerScore {
 	}
 
 	public String addStudentSubject(int id) {
-		System.out.println("chay vao day la sai");
 		scoreBean.setScoreStudent(0);
 		scoreBean.setStudent(studentService.findStudentById(id));
 		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
@@ -233,26 +231,20 @@ public class ControllerScore {
 					scoreBean.setStudent(st);
 					scoreBean.setScoreStudent(0);
 					scoreService.save(scoreBean);
-					System.out.println("cha vao day la dung");
 				}
 			}
-
 		}
-
 		return "DetailStudent?faces-redirect=true";
 	}
 
 	public String DeleteScore(int id) {
-		HttpSession session = SessionUtils.getSession();
-		
-		
+		HttpSession session = SessionUtils.getSession();	
 		if (session.getAttribute("permission").equals("Admin")) {
 			if( scoreService.findScoreOfStudentById(id).getTimeStart().before(new Date()) ) {
 				return null;
 			}
 			scoreService.Delete(id);
 			return null;
-
 		}
 		scoreService.Delete(id);
 		return "ScoreEditStudentAndDelete";

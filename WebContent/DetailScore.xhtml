@@ -16,6 +16,8 @@
 <body>
 
 	<h:form>
+	<p:commandButton value="Edit Score" icon="pi pi-key"
+						action="#{controllerScore.EditScore()}" update="form" />
 
 		<p:dataTable id="tbl" var="list"
 			value="#{controllerScore.detailScore}" rows="20"
@@ -41,6 +43,16 @@
 				</f:facet>
 				<h:outputText value="#{list.student.email}" />
 			</p:column>
+			
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Score" />
+				</f:facet>
+				<p:inplace editor="true">
+				<h:inputText value="#{list.scoreStudent}" required="true" label="text" />
+				  </p:inplace>
+			</p:column>
+		
 
 		</p:dataTable>
 	</h:form>

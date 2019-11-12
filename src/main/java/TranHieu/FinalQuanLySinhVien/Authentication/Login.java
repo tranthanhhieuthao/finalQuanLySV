@@ -82,8 +82,6 @@ public class Login implements Serializable {
 		
 	}
 	
-
-	
 	public String validateUserNamePassword() {
 		boolean valid =loginDAO.validate(emailLogin, passwordLogin);
 		for(Student st: studentService.listStudent()) {
@@ -95,7 +93,6 @@ public class Login implements Serializable {
 			HttpSession session =SessionUtils.getSession();
 			session.setAttribute("user",studentBean.getEmail());
 			session.setAttribute("permission", studentBean.getListUser().getPermission());
-			System.out.println(session.getAttribute("permission"));
 			if(session.getAttribute("permission").equals("Admin")) return "DetailStudent?faces-redirect=true";
 			else return "ListStudent?faces-redirect=true";
 		} else {
