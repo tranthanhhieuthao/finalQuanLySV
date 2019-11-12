@@ -224,6 +224,7 @@ public class Controller implements Serializable {
 		student.setIdStudent("2019M04" + students.size() + 1);
 		student.setId(students.size() + 1);
 		student.setAvgStudent(0);
+		student.setPassword("123");
 		studentService.SaveStudent(student);
 		student = new Student();
 		return "ListStudent?faces-redirect=true";

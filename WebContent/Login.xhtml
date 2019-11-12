@@ -13,19 +13,27 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h3>JSF Login Logout</h3>
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{loginBean.emailLogin}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br><br></br>
-		
-		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{loginBean.passwordLogin}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br><br></br>
-		
-		<h:commandButton action="#{loginBean.validateUserNamePassword()}"
-			value="Login"></h:commandButton>
+<p:panel style="width:400px; border: 2px solid green; margin-left: 720px;margin-top: 250px;">
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel for="username" value="Username:" />
+			<p:inputText id="username" value="#{loginBean.emailLogin}" placeholder="Username"
+				required="true" label="username" />
+
+
+			<h:outputLabel for="password" value="Password:" />
+			<p:password id="password" value="#{loginBean.passwordLogin}" placeholder="Password"
+				required="true" label="password" />
+
+
+			<f:facet name="footer">
+				<p:commandButton value="Login"
+					action="#{loginBean.validateUserNamePassword()}" />
+					<p:commandButton value="Register"
+					action="#{loginBean.validateUserNamePassword()}" />
+				<h:message for="username" />
+			</f:facet>
+		</h:panelGrid>
+		</p:panel>
 	</h:form>
 </h:body>
 </html>

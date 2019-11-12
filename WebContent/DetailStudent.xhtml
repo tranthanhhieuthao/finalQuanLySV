@@ -20,7 +20,7 @@
 	</div>  
 
  	<h:form style="margin-left:150px;margin-right:150px;">
-		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" />
+		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" rendered="#{loginBean.studentBean.listUser.permission eq 'Host'}" />
 	</h:form> 
 
  	<p:panelGrid columns="2" style="margin-bottom:20px;margin-left:150px;margin-right:150px;"> 
@@ -30,6 +30,9 @@
 					<f:facet name="header">
 						<h:outputText value="Student" />
 					</f:facet>
+					
+					<h:outputText value="Id" />
+					<h:outputText value="#{list.idStudent}" />
 
 					<h:outputText value="Name" />
 					<h:outputText value="#{list.nameStudent}" />
@@ -43,8 +46,11 @@
 					<h:outputText value="Email" />
 					<h:outputText value="#{list.email}" />
 
-					<h:outputText value="Note" />
-					<h:outputText value="#{list.note}" />
+					<h:outputText value="Birth Day" />
+					<h:outputText value="#{list.birthDay}" />
+					
+					<h:outputText value="Avg" />
+					<h:outputText value="#{controllerStudent.Avg(list.id)}" />
 
 				</p:panelGrid>
 			</ui:repeat>
