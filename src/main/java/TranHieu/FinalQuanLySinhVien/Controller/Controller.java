@@ -183,11 +183,14 @@ public class Controller implements Serializable {
 	}
 
 	public Student getStudent() {
-		String session = SessionUtils.getUserName();
+		String sessionEmail = SessionUtils.getUserName();
+		HttpSession session = SessionUtils.getSession();
+		if(session.getAttribute("permission").equals("Admin")) {
 		for(Student st : studentService.listStudent()) {
-			if(session.equals(st.getEmail())) {
+			if(sessionEmail.equals(st.getEmail())) {
 				student = st;
 			}
+		}
 		}
 		return student;
 	}
@@ -258,9 +261,9 @@ public class Controller implements Serializable {
 	}
 
 	public String pass_Failed() {
-		if (avg >= 5.0f)
-			return "Pass";
-		else
+		if (student.getAvgStudent() == 0) return "";
+		else if (avg >= 5.0f) return "Pass";
+			
 			return "Failed";
 
 	}

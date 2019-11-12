@@ -94,7 +94,10 @@ public class Login implements Serializable {
 		if(valid && studentBean.getNameStudent() !=null) {
 			HttpSession session =SessionUtils.getSession();
 			session.setAttribute("user",studentBean.getEmail());
-			return "DetailStudent?faces-redirect=true";
+			session.setAttribute("permission", studentBean.getListUser().getPermission());
+			System.out.println(session.getAttribute("permission"));
+			if(session.getAttribute("permission").equals("Admin")) return "DetailStudent?faces-redirect=true";
+			else return "ListStudent?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Incorrect Username and Passowrd","Please enter correct username and Password"));
 			return "Login";

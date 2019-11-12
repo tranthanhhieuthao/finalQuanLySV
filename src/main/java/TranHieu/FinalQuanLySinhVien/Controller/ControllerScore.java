@@ -176,7 +176,8 @@ public class ControllerScore {
 
 
 	public String MarkScoreForStudent() {
-		studentBean = studentService.findStudentById(1);
+		studentBean = studentService.findStudentById(12);
+		System.out.println(studentBean.getNameStudent());
 		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
 		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
 		scoreBean.setScoreStudent(0);
