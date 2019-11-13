@@ -23,6 +23,8 @@ public interface StudentInterface {
 	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
 			String villageStudent, String emailStudent, boolean tickId, boolean tickName,
 			boolean tickVillage, boolean tickEmail);
+	
+	public Student findByEmail(String email);
 
 
 }

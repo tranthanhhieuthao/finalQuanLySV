@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.BO.User;
+import TranHieu.FinalQuanLySinhVien.Controller.Controller;
 import TranHieu.FinalQuanLySinhVien.Controller.StudentService;
 import TranHieu.FinalQuanLySinhVien.DAO.LoginDAO;
 
@@ -31,6 +32,9 @@ public class Login implements Serializable {
 	@ManagedProperty(value="#{studentService}")
 	private StudentService studentService;
 	
+	@ManagedProperty(value="#{controllerStudent}")
+	private Controller controllerStudent;
+	
 	private List<Student> listStudent;
 	
 	private String emailLogin ;
@@ -38,6 +42,10 @@ public class Login implements Serializable {
 	private String passwordLogin;
 	
 	
+	public void setControllerStudent(Controller controllerStudent) {
+		this.controllerStudent = controllerStudent;
+	}
+
 	public String getEmailLogin() {
 		return emailLogin;
 	}
@@ -89,6 +97,7 @@ public class Login implements Serializable {
 				studentBean =st;
 			}
 		}
+		controllerStudent.setStudent(studentBean);
 		if(valid && studentBean.getNameStudent() !=null) {
 			HttpSession session =SessionUtils.getSession();
 			session.setAttribute("user",studentBean.getEmail());

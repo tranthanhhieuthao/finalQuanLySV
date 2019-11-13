@@ -47,6 +47,15 @@ public class StudentDAO {
 		session.close();
 		return student;
 	}
+	
+	public Student findByEmail(String email) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Student student = (Student)session.createQuery("FROM Student WHERE email =:email").setParameter("email", email).uniqueResult();
+		session.getTransaction().commit();
+		session.close();
+		return student;
+	}
 
 	public List<Student> showAll() {
 		Session session = sessionFactory.openSession();

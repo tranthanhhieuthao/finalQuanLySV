@@ -61,6 +61,10 @@ public class StudentService implements StudentInterface {
 			boolean tickVillage, boolean tickEmail){
 		return studentDAO.SearchFillterStudent(list, idStudent, nameStudent, villageStudent, emailStudent, tickId, tickName, tickVillage, tickEmail);
 	}
+	
+	public Student findByEmail(String email) {
+		return studentDAO.findByEmail(email);
+	}
 
 
 

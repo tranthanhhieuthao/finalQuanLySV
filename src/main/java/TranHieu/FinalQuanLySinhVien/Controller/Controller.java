@@ -44,6 +44,7 @@ public class Controller implements Serializable {
 	private String value;
 	private String column;
 	private float avg = 0;
+	public int count =0;
 
 	public float getAvg() {
 		return avg;
@@ -179,17 +180,7 @@ public class Controller implements Serializable {
 		return "ListStudent?faces-redirect=true";
 	}
 
-	public Student getStudent() {
-		String sessionEmail = SessionUtils.getUserName();
-		HttpSession session = SessionUtils.getSession();
-		if (session.getAttribute("permission").equals("Admin")) {
-			for (Student st : studentService.listStudent()) {
-				if (sessionEmail.equals(st.getEmail())) {
-					this.setStudent(st);
-					break;
-				}
-			}
-		}
+	public Student getStudent() {		
 		return student;
 	}
 
@@ -208,11 +199,12 @@ public class Controller implements Serializable {
 	}
 
 	public String EditStudent() {
-		HttpSession session = SessionUtils.getSession();			
+		HttpSession session = SessionUtils.getSession();
 		studentService.EditStudent(student);
 		if(session.getAttribute("permission").equals("Admin")) {
 				return null;
 		}
+		
 		return "ListStudent?faces-redirect=true";
 	}
 
