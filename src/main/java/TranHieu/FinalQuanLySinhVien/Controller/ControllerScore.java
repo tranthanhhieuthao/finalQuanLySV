@@ -146,7 +146,7 @@ public class ControllerScore {
 		this.listScoreStudent = listScoreStudent;
 	}
 
-	public String EditScore() {	
+	public String EditScore() {
 		scoreService.update(scoreBean);
 		return null;
 
@@ -174,18 +174,15 @@ public class ControllerScore {
 	}
 
 	public String MarkScoreForStudent() {
-		studentBean = studentService.findStudentById(12);
-		scoreBean.setId(scoreService.listScoreStudent().size() + 1);
-		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
-		scoreBean.setScoreStudent(0);
-		scoreBean.setStudent(studentBean);// hien 1 list student roi pick theo id
-		scoreBean.setClassStudent(classBean);
-		for (Score sc : listScoreStudent) {
-			if (scoreBean.getClassStudent().getNameClass().equals(sc.getClassStudent().getNameClass())
-					&& scoreBean.getTimeStart().equals(sc.getTimeStart())) {
-				return null;
+		HttpSession session = SessionUtils.getSession();
+		for (Student st : studentService.listStudent()) {
+			if (st.getEmail().equals(session.getAttribute("user"))) {
+				scoreBean.setStudent(st);
 			}
 		}
+		scoreBean.setCourse(courseBean);// hien 1 list course roi pick theo id
+		scoreBean.setScoreStudent(0);
+		scoreBean.setClassStudent(classBean);
 		scoreService.save(scoreBean);
 		return "ListScore?faces-redirect=true";
 	}
@@ -237,9 +234,9 @@ public class ControllerScore {
 	}
 
 	public String DeleteScore(int id) {
-		HttpSession session = SessionUtils.getSession();	
+		HttpSession session = SessionUtils.getSession();
 		if (session.getAttribute("permission").equals("Admin")) {
-			if( scoreService.findScoreOfStudentById(id).getTimeStart().before(new Date()) ) {
+			if (scoreService.findScoreOfStudentById(id).getTimeStart().before(new Date())) {
 				return null;
 			}
 			scoreService.Delete(id);

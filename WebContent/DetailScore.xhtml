@@ -49,7 +49,7 @@
 					value="#{controllerScore.viewEditScore(list.id).scoreStudent}" />
 			</p:column>
 
-			<p:column>
+			<p:column rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}">
 				<f:facet name="header">Edit Score</f:facet>
 				<p:commandButton value="Edit" icon="pi pi-cog"
 					action="#{controllerScore.viewEditScore(list.id)}"
@@ -57,7 +57,7 @@
 
 			</p:column>
 
-			<p:column>
+			<p:column rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}">
 				<f:facet name="header">Delete Subject</f:facet>
 
 				<p:growl id="message" showDetail="true" />

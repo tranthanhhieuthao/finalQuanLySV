@@ -19,7 +19,7 @@
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
-	<p:commandButton value="Add Subject"
+	<p:commandButton value="Add Subject" rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
 		style="margin-left:150px;margin-right:150px;"
 		styleClass="ui-priority-primary" icon="pi pi-plus"
 		onclick="PF('dlg3').show();" />
