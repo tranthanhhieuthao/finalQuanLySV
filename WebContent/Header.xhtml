@@ -37,9 +37,6 @@
 				<p:menuitem type="button" value="Register Subject"
 					style="border:1px solid black;margin:2px;" icon="pi pi-star-o"
 					action="ListScore?faces-redirect=true"></p:menuitem>
-				<p:menuitem type="button" value="Score" rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
-					style="border:1px solid black;margin:2px;" icon="pi pi-star-o"
-					action="ScoreEditStudentAndDelete?faces-redirect=true"></p:menuitem>
 					<p:menuitem type="button" value="Detail" rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
 					style="border:1px solid black;margin:2px;" icon="pi pi-star-o"
 					action="DetailStudent?faces-redirect=true"></p:menuitem>

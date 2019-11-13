@@ -19,7 +19,15 @@
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
 	</div>
-
+	<p:commandButton value="Add Subject"
+		style="margin-left:150px;margin-right:150px;"
+		styleClass="ui-priority-primary" icon="pi pi-plus"
+		onclick="PF('dlg3').show();" />
+		<p:dialog header="Add Subject" widgetVar="dlg3" minHeight="40">
+		<ui:insert name="header">
+			<ui:include src="/ScoreEditStudentAndDelete.xhtml" />
+		</ui:insert>
+		</p:dialog>
 	<h:form id="form">
 
 		<p:dataTable id="tbl" var="list"
@@ -90,8 +98,7 @@
 					update="addSubject" icon="pi pi-plus" onclick="PF('dlg7').show();" onchange="PF('dlg7').show();"
 					oncomplete="PF('dlg7').show();" />
 					<p:commandButton value="Register"  rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
-					action="#{controllerScore.registerSubject(list.id)}" update="addSubject"
-					 >
+					action="#{controllerScore.registerSubject(list.id)}" update="addSubject">
 					 <p:confirm header="Confirmation" message="Are you sure?"
 								icon="pi pi-exclamation-triangle" />
 					 </p:commandButton>
@@ -117,7 +124,7 @@
 	</p:dialog>
 	
 		<p:dialog header="Detail" widgetVar="dlg9" minHeight="40" id="detailScore"
-		style="margin-left:500px;margin-right:500px;">
+		style="margin-left:400px;margin-right:400px;">
 
 		<ui:insert name="header">
 			<ui:include src="/DetailScore.xhtml" />

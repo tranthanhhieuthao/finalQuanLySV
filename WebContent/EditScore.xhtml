@@ -13,27 +13,24 @@
 		library="primefaces" />
 </h:head>
 <h:body>
-	<h:form id="editStudent">
-		<table>
-			<tr>
-				<td><h3>Score</h3></td>
-				<td>
-				<p:inplace id="ajax" editor="true">
-				<p:inputText id="score" required="true" label="text"
-						value="#{controllerScore.scoreBean.scoreStudent}" >
-						<p:messages for="score" style="color:red" />
-						</p:inputText>
-						</p:inplace></td>
-			</tr>
-				
-			<tr>
-				<td></td>
-				<td><p:commandButton value="Edit Score" icon="pi pi-key"
-						action="#{controllerScore.EditScore()}" update="form" /></td>
-			</tr>
-		</table>
-	</h:form>
 
+	<table>
+		<tr>
+			<td><h3>Score</h3></td>
+			<td><p:inplace id="ajax" editor="true">
+					<p:inputText id="score" required="true" label="text"
+						value="#{controllerScore.scoreBean.scoreStudent}">
+						<p:messages for="score" style="color:red" />
+					</p:inputText>
+				</p:inplace></td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><p:commandButton value="Update" icon="pi pi-key"
+					action="#{controllerScore.EditScore()}" update="form" /></td>
+		</tr>
+	</table>
 
 </h:body>
 </html>

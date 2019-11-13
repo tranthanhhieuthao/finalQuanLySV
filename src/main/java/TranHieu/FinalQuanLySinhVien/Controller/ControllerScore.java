@@ -146,9 +146,9 @@ public class ControllerScore {
 		this.listScoreStudent = listScoreStudent;
 	}
 
-	public String EditScore() {
+	public String EditScore() {	
 		scoreService.update(scoreBean);
-		return "ScoreEditStudentAndDelete";
+		return null;
 
 	}
 
@@ -225,7 +225,6 @@ public class ControllerScore {
 		HttpSession session = SessionUtils.getSession();
 		scoreBean = scoreService.findScoreOfStudentById(id);
 		if (session.getAttribute("permission").equals("Admin")) {
-			System.out.println("chay vao day la gan dung");
 			for (Student st : studentService.listStudent()) {
 				if (st.getEmail().equals(session.getAttribute("user"))) {
 					scoreBean.setStudent(st);
@@ -247,14 +246,14 @@ public class ControllerScore {
 			return null;
 		}
 		scoreService.Delete(id);
-		return "ScoreEditStudentAndDelete";
+		return "ListScore?faces-redirect=true";
 	}
 
 	public List<Score> detailSubject(int id) {
 		scoreBean = scoreService.findScoreOfStudentById(id);
 		detailScore = scoreService.detailSubject(scoreBean.getClassStudent().getId(), scoreBean.getTimeStart(),
 				scoreBean.getCourse().getId());
-		detailScore.remove(0);
+//		detailScore.remove(0);
 		return detailScore;
 	}
 

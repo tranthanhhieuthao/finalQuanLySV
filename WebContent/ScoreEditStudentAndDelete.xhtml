@@ -15,110 +15,6 @@
 </h:head>
 <h:body>
 
-
-	<div id="header">
-		<ui:insert name="header">
-			<ui:include src="/Header.xhtml" />
-		</ui:insert>
-	</div>
-
-	<p:commandButton value="Add Subject"
-		style="margin-left:150px;margin-right:150px;"
-		styleClass="ui-priority-primary" icon="pi pi-plus"
-		onclick="PF('dlg3').show();" />
-
-	<h:form id="form">
-		<p:dataTable id="tbl" var="list"
-			value="#{controllerScore.listScoreStudent}"
-			style="margin-bottom:20px;margin-left:150px;margin-right:150px;"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-			paginator="true" rows="15">
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="ID Student" />
-				</f:facet>
-				<h:outputText value="#{list.student.idStudent}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Name Student" />
-				</f:facet>
-				<h:outputText value="#{list.student.nameStudent}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Email Student" />
-				</f:facet>
-				<h:outputText value="#{list.student.email}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Name Course" />
-				</f:facet>
-				<h:outputText value="#{list.course.nameCourse}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Class Room" />
-				</f:facet>
-				<h:outputText value="#{list.classStudent.nameClass}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Teacher" />
-				</f:facet>
-				<h:outputText value="#{list.teacher}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="Score" />
-				</f:facet>
-				<h:outputText value="#{list.scoreStudent}" />
-			</p:column>
-
-			<p:column>
-				<f:facet name="header">Edit Score</f:facet>
-			 	<p:commandButton value="Edit Score " icon="pi pi-cog"			
-					action="#{controllerScore.viewEditScore(list.id)}"
-					update="editScore" oncomplete="PF('dlg6').show();" />
-				
-			</p:column>
-
-
-
-
-			<p:column>
-				<f:facet name="header">Delete Subject</f:facet>
-
-				<p:growl id="message" showDetail="true" />
-				<p:commandButton value="Delete" icon="pi pi-times"
-					action="#{controllerScore.DeleteScore(list.id)}" update="message">
-					<p:confirm header="Confirmation" message="Are you sure?"
-						icon="pi pi-exclamation-triangle" />
-				</p:commandButton>
-
-				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					<p:commandButton value="Yes" type="button"
-						styleClass="ui-confirmdialog-yes" icon="pi pi-check">
-						<f:ajax execute="delete" render="tbl" />
-					</p:commandButton>
-					<p:commandButton value="No" type="button"
-						styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-				</p:confirmDialog>
-			</p:column>
-
-		</p:dataTable>
-	</h:form>
-
-
-	<p:dialog header="Add Subject" widgetVar="dlg3" minHeight="40">
 		<h:form id="formNow">
 			<table>
 				<tr>
@@ -239,15 +135,6 @@
 				</h:form>
 			</p:column>
 		</p:dialog>
-
-	</p:dialog>
-
-	<p:dialog id="editScore" header="Edit Score" widgetVar="dlg6"
-		minHeight="40">
-		<ui:insert name="Edit">
-			<ui:include src="/EditScore.xhtml" />
-		</ui:insert>
-	</p:dialog>
 
 </h:body>
 </html>
