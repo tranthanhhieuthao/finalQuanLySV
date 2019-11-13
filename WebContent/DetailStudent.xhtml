@@ -61,7 +61,7 @@
 						rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}" />
 					<p:commandButton value="Edit" type="button" icon="pi pi-search" update="editInfor" rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
 						onclick="PF('dlg15').show();" id="edit">
-						<f:ajax execute="edit" render="all" />
+						<!-- <f:ajax execute="edit" render="all" /> -->
 						</p:commandButton>
 
 				</p:panelGrid>

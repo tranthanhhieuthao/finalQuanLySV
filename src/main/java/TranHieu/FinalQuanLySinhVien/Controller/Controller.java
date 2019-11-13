@@ -202,7 +202,7 @@ public class Controller implements Serializable {
 		HttpSession session = SessionUtils.getSession();
 		studentService.EditStudent(student);
 		if(session.getAttribute("permission").equals("Admin")) {
-				return null;
+				return "DetailStudent?faces-redirect=true";
 		}
 		
 		return "ListStudent?faces-redirect=true";
