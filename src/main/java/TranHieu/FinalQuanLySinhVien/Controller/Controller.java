@@ -185,14 +185,15 @@ public class Controller implements Serializable {
 		if (session.getAttribute("permission").equals("Admin")) {
 			for (Student st : studentService.listStudent()) {
 				if (sessionEmail.equals(st.getEmail())) {
-					student = st;
+					this.setStudent(st);
+					break;
 				}
 			}
 		}
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setStudent(Student student) {	
 		this.student = student;
 	}
 
@@ -207,7 +208,11 @@ public class Controller implements Serializable {
 	}
 
 	public String EditStudent() {
+		HttpSession session = SessionUtils.getSession();			
 		studentService.EditStudent(student);
+		if(session.getAttribute("permission").equals("Admin")) {
+				return null;
+		}
 		return "ListStudent?faces-redirect=true";
 	}
 

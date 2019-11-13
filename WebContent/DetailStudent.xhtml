@@ -9,28 +9,33 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Quan ly Sinh Vien</title>
-<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	<h:outputStylesheet name="primeicons/primeicons.css"
+		library="primefaces" />
 </h:head>
 <h:body>
 
-	 <div id="header" >
+	<div id="header">
 		<ui:insert name="header">
 			<ui:include src="/Header.xhtml" />
 		</ui:insert>
-	</div>  
+	</div>
 
- 	<h:form style="margin-left:150px;margin-right:150px;">
-		<p:commandButton value="Back" action="#{controllerStudent.Back()}"  icon="pi pi-angle-double-left" rendered="#{loginBean.studentBean.listUser.permission eq 'Host'}" />
-	</h:form> 
+	<h:form style="margin-left:150px;margin-right:150px;">
+		<p:commandButton value="Back" action="#{controllerStudent.Back()}"
+			icon="pi pi-angle-double-left"
+			rendered="#{loginBean.studentBean.listUser.permission eq 'Host'}" />
+	</h:form>
 
- 	<p:panelGrid id="all" columns="2" style="margin-bottom:20px;margin-left:150px;margin-right:150px;"> 
- 		<h:form >
+	<p:panelGrid id="all" columns="2"
+		style="margin-bottom:20px;margin-left:150px;margin-right:150px;">
+		<h:form>
 			<ui:repeat var="list" value="#{controllerStudent.student}">
 				<p:panelGrid columns="2">
 					<f:facet name="header">
 						<h:outputText value="Student" />
 					</f:facet>
 					
+
 					<h:outputText value="Id" />
 					<h:outputText value="#{list.idStudent}" />
 
@@ -44,22 +49,30 @@
 					<h:outputText value="#{list.phone}" />
 
 					<h:outputText value="Email" />
-					<h:outputText value="#{list.email}"  />
+					<h:outputText value="#{list.email}" />
 
 					<h:outputText value="Birth Day" />
 					<h:outputText value="#{list.birthDay}" />
-					
-					<h:outputText value="Avg" />
-					<h:outputText id ="avg" value="#{controllerStudent.Avg(list.id)}" />
 
+					<h:outputText value="Avg" />
+					<h:outputText id="avg" value="#{controllerStudent.Avg(list.id)}" />
+
+					<h:outputText value="Edit Infor"
+						rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}" />
+					<p:commandButton value="Edit" type="button" icon="pi pi-search" update="editInfor" rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
+						onclick="PF('dlg15').show();" id="edit">
+						<f:ajax execute="edit" render="all" />
+						</p:commandButton>
 
 				</p:panelGrid>
 			</ui:repeat>
+
 		</h:form>
 
 
-		 <h:form id="subject" >
-			<ui:repeat  var="list" value="#{controllerStudent.student}">			
+
+		<h:form id="subject">
+			<ui:repeat var="list" value="#{controllerStudent.student}">
 				<p:dataTable var="score" value="#{list.listScore.toArray()}">
 
 					<p:column>
@@ -108,26 +121,33 @@
 						</h:outputText>
 					</p:column>
 
-					<p:column >
+					<p:column>
 						<f:facet name="header">
 							<h:outputText value="Time End" />
-							</f:facet>
+						</f:facet>
 						<h:outputText value="#{score.timeEnd}">
 							<f:convertDateTime pattern="hh:mm:ss " />
 						</h:outputText>
 					</p:column>
-					
-					<p:column rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}">
+
+					<p:column
+						rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}">
 						<f:facet name="header">
 							<h:outputText value="Action" />
-							</f:facet>
-						<p:commandButton id ="delete" action="#{controllerScore.DeleteScore(score.id)}" update="all" value="Delete" />							
-					</p:column>				
+						</f:facet>
+						<p:commandButton id="delete"
+							action="#{controllerScore.DeleteScore(score.id)}" update="all"
+							value="Delete" />
+					</p:column>
 				</p:dataTable>
 			</ui:repeat>
-		</h:form>  
-	 </p:panelGrid> 
-
+		</h:form>
+	</p:panelGrid>
+	<p:dialog id="editInfor" header="Edit Student" widgetVar="dlg15" minHeight="40">
+		<ui:insert name="Edit">
+			<ui:include src="/EditStudent.xhtml" />
+		</ui:insert>
+	</p:dialog>
 
 </h:body>
 </html>

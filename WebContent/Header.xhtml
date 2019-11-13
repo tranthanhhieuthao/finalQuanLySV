@@ -25,19 +25,23 @@
 				</p:submenu>
 
 
-				<p:menuitem type="button" value="Student" rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
+				<p:menuitem type="button" value="Student"
+					rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
 					style="border:1px solid black;margin:2px;" icon="pi pi-user"
 					action="ListStudent?faces-redirect=true"></p:menuitem>
-				<p:menuitem type="button" value="Class Room" rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
+				<p:menuitem type="button" value="Class Room"
+					rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
 					style="border:1px solid black;margin:2px;" icon="pi pi-users"
 					action="ListClass?faces-redirect=true"></p:menuitem>
-				<p:menuitem type="button" value="Course" rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
+				<p:menuitem type="button" value="Course"
+					rendered="#{loginBean.studentBean.listUser.permission ne 'Admin'}"
 					style="border:1px solid black;margin:2px;" icon="pi pi-tablet"
 					action="ListCourse?faces-redirect=true"></p:menuitem>
 				<p:menuitem type="button" value="Register Subject"
 					style="border:1px solid black;margin:2px;" icon="pi pi-star-o"
 					action="ListScore?faces-redirect=true"></p:menuitem>
-					<p:menuitem type="button" value="Detail" rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
+				<p:menuitem type="button" value="Detail"
+					rendered="#{loginBean.studentBean.listUser.permission eq 'Admin'}"
 					style="border:1px solid black;margin:2px;" icon="pi pi-star-o"
 					action="DetailStudent?faces-redirect=true"></p:menuitem>
 
@@ -45,12 +49,17 @@
 	
 						Welcome : #{loginBean.studentBean.nameStudent} 
 					
-						<p:commandButton action="#{loginBean.logout()}" value="Logout" update="headerLogin"  />
-				
+						<p:commandButton action="#{loginBean.logout()}" value="Logout"
+						update="headerLogin" />
+
 				</f:facet>
 			</p:menubar>
+			
 		</h:form>
 	</ui:composition>
+
+
+
 
 </body>
 </html>
