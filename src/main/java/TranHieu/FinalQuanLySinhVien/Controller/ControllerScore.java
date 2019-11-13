@@ -189,12 +189,14 @@ public class ControllerScore {
 
 	public String statusClass(int id) {
 		int quatityScoreOfStudent = 0;
-		for (Score sc : scoreService.listScoreStudent()) {
+		List<Score> statusList = scoreService.listScoreStudent();
+		Score statusScore = scoreService.findScoreOfStudentById(id);
+		for (Score sc : statusList) {
 			if (sc.getClassStudent().getNameClass()
-					.equals(scoreService.findScoreOfStudentById(id).getClassStudent().getNameClass())
+					.equals(statusScore.getClassStudent().getNameClass())
 					&& sc.getCourse().getNameCourse()
-							.equals(scoreService.findScoreOfStudentById(id).getCourse().getNameCourse())
-					&& sc.getTimeStart().equals(scoreService.findScoreOfStudentById(id).getTimeStart())) {
+							.equals(statusScore.getCourse().getNameCourse())
+					&& sc.getTimeStart().equals(statusScore.getTimeStart())) {
 				quatityScoreOfStudent++;
 			}
 		}

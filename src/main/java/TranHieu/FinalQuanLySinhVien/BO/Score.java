@@ -24,13 +24,11 @@ public class Score {
 	
 	@Column(name="timeStart")
 	@NotNull(message = "Time Start can't be empty")
-//	@Temporal(TemporalType.DATE)
 	@Future(message = "can't set time in the past")
 	private Date timeStart;
 	
 	@Column(name="timeEnd")
 	@NotNull(message = "Time End can't be empty")
-//	@Temporal(TemporalType.DATE)
 	@Future(message="can't set time in the past")
 	private Date timeEnd;
 	
