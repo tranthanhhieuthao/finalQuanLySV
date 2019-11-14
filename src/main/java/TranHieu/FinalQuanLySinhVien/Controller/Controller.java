@@ -90,10 +90,38 @@ public class Controller implements Serializable {
 	private String nameStudent;
 	private String villageStudent;
 	private String emailStudent;
+	private float agvOne;
+	private float agvTwo;
 	private boolean tickId;
 	private boolean tickName;
 	private boolean tickVillage;
 	private boolean tickEmail;
+	private boolean tickAgv;
+
+	
+	public float getAgvOne() {
+		return agvOne;
+	}
+
+	public void setAgvOne(float agvOne) {
+		this.agvOne = agvOne;
+	}
+
+	public float getAgvTwo() {
+		return agvTwo;
+	}
+
+	public void setAgvTwo(float agvTwo) {
+		this.agvTwo = agvTwo;
+	}
+
+	public boolean isTickAgv() {
+		return tickAgv;
+	}
+
+	public void setTickAgv(boolean tickAgv) {
+		this.tickAgv = tickAgv;
+	}
 
 	public String getIdStudent() {
 		return idStudent;
@@ -160,11 +188,11 @@ public class Controller implements Serializable {
 	}
 
 	public List<Student> getStudents() {
-		if (tickId == true || tickName == true || tickVillage == true || tickEmail == true) {
+		if (tickId || tickName|| tickVillage || tickEmail|| tickAgv) {
 			students = studentService.SearchFillterStudent(students, idStudent, nameStudent, villageStudent,
-					emailStudent, tickId, tickName, tickVillage, tickEmail);
+					emailStudent,agvOne,agvTwo, tickId, tickName, tickVillage, tickEmail,tickAgv);
 
-		} else if (sort != null && tickId == false) {
+		} else if (sort != null && !tickId ) {
 			students = studentService.sortBy(students, sort, value);
 		} else
 			students = studentService.listStudent();
@@ -229,10 +257,13 @@ public class Controller implements Serializable {
 		nameStudent = null;
 		villageStudent = null;
 		emailStudent = null;
+		agvOne =0;
+		agvTwo=0;
 		tickId = false;
 		tickName = false;
 		tickVillage = false;
 		tickEmail = false;
+		tickAgv =false;
 		column = null;
 		students = studentService.listStudent();
 		return "ListStudent?faces-redirect=true";

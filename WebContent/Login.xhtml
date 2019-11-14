@@ -13,26 +13,29 @@
 </h:head>
 <h:body>
 	<h:form>
-<p:panel style="width:400px; border: 2px solid green; margin-left: 720px;margin-top: 250px;">
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputLabel for="username" value="Username:" />
-			<p:inputText id="username" value="#{loginBean.emailLogin}" placeholder="Username"
-				required="true" label="username" />
+		<p:panel
+			style="width:400px; border: 2px solid green; margin-left: 720px;margin-top: 250px;">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="Username:" />
+				<p:inputText id="username" value="#{loginBean.emailLogin}"
+					placeholder="Username" required="true" label="username">
+					<h:message for="username" style="color:red" />
+				</p:inputText>
 
 
-			<h:outputLabel for="password" value="Password:" />
-			<p:password id="password" value="#{loginBean.passwordLogin}" placeholder="Password"
-				required="true" label="password" />
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" value="#{loginBean.passwordLogin}"
+					placeholder="Password" required="true" label="password">
+					<h:message for="password" style="color:red" />
+				</p:password>
 
 
-			<f:facet name="footer">
-				<p:commandButton value="Login"
-					action="#{loginBean.validateUserNamePassword()}" />
-					<p:commandButton value="Register"
-					action="#{loginBean.validateUserNamePassword()}" />
-				<h:message for="username" />
-			</f:facet>
-		</h:panelGrid>
+				<f:facet name="footer">
+					<p:commandButton value="Login" validateClient="true"
+						action="#{loginBean.validateUserNamePassword()}" />
+
+				</f:facet>
+			</h:panelGrid>
 		</p:panel>
 	</h:form>
 </h:body>

@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.NotNull;
 
 import TranHieu.FinalQuanLySinhVien.BO.Student;
 import TranHieu.FinalQuanLySinhVien.BO.User;
@@ -91,6 +92,9 @@ public class Login implements Serializable {
 	}
 	
 	public String validateUserNamePassword() {
+		if(emailLogin == null) {
+			FacesMessage message = new FacesMessage("email can't be empty");
+		}
 		boolean valid =loginDAO.validate(emailLogin, passwordLogin);
 		for(Student st: studentService.listStudent()) {
 			if(emailLogin.equals(st.getEmail())) {

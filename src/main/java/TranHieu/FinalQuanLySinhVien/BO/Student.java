@@ -67,6 +67,7 @@ public class Student {
 	private float avgStudent;
 	
 	@Column(name ="password")
+	@NotNull(message = "Password can't be empty")
 	private String password;
 	
 

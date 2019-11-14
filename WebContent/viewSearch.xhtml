@@ -29,6 +29,10 @@
 				<p:inputText value="#{controllerStudent.villageStudent}"/>
 				<p:selectBooleanCheckbox value="#{controllerStudent.tickEmail}" itemLabel="Email"/> 
 				<p:inputText value="#{controllerStudent.emailStudent}" />
+				<p:selectBooleanCheckbox value="#{controllerStudent.tickAgv}" itemLabel="Avg"/> 
+				<p:inputText value="#{controllerStudent.agvOne}" />
+				<i class="pi pi-angle-double-right"></i>
+				<p:inputText value="#{controllerStudent.agvTwo}" />
 
 				<p:commandButton id="buttonSearch2" value="Search start"
 					icon="pi pi-caret-up" action="#{controllerStudent. getStudents()}"

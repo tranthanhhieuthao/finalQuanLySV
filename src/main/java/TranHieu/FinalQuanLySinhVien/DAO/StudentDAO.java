@@ -102,14 +102,14 @@ public class StudentDAO {
 	}
 
 	public List<Student> SearchFillterStudent(List<Student> list, String idStudent, String nameStudent,
-			String villageStudent, String emailStudent, boolean tickId, boolean tickName, boolean tickVillage,
-			boolean tickEmail) {
+			String villageStudent, String emailStudent,float agvOne,float agvTwo, boolean tickId, boolean tickName, boolean tickVillage,
+			boolean tickEmail,boolean tickAgv) {
 		Session session = sessionFactory.openSession();
 		int count = 0;
 		String hql = "FROM Student WHERE" + " ";
-		boolean[] valueTick = { tickId, tickName, tickVillage, tickEmail };
+		boolean[] valueTick = { tickId, tickName, tickVillage, tickEmail ,tickAgv };
 		String[] queryText = { "idStudent LIKE :idStudent ", "nameStudent LIKE :nameStudent ",
-				"village LIKE :villageStudent ", "email LIKE :emailStudent " };
+				"village LIKE :villageStudent ", "email LIKE :emailStudent ","avgStudent BETWEEN :agvOne AND :agvTwo " };
 		try {
 			session.beginTransaction();
 			for (int i = 0; i < valueTick.length; i++) {
@@ -131,6 +131,8 @@ public class StudentDAO {
 				query = query.setParameter("villageStudent", "%" + villageStudent + "%");
 			if (tickEmail)
 				query = query.setParameter("emailStudent", "%" + emailStudent + "%");
+			if(tickAgv)
+				query = query.setParameter("agvOne", agvOne).setParameter("agvTwo", agvTwo);
 			list = query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
